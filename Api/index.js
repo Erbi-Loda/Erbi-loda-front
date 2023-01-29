@@ -2,8 +2,13 @@
 import express from "express";
 import morgan from "morgan";
 //importacion y configuracion para lectura del archivo .env
-import * as dotenv from 'dotenv';
-dotenv.config();
+import * as dotenv from 'dotenv'
+dotenv.config()
+
+//Conexion con la base de Datos
+import {connectDB} from "./src/db/mongodb.js";
+connectDB();
+
 
 //importacion de las rutas
 import index_router from "./src/router/index.router.js"
