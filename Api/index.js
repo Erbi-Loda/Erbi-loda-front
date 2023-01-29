@@ -11,7 +11,8 @@ connectDB();
 
 
 //importacion de las rutas
-import index_router from "./src/router/index.router.js"
+import userRoutes from "./src/routes/userRoutes.js";
+import index_router from "./src/routes/index.router.js"
 
 //Preparacion del servidor
 const server= express();
@@ -26,6 +27,7 @@ server.use(express.urlencoded({extended:true}));
 
 //rutas aqui
 server.use(index_router)
+server.use(userRoutes);
 
 
 //escuchador del server/app
