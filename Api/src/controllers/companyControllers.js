@@ -1,10 +1,10 @@
-import User from "../models/User.js";
+import Company from "../models/Company.js";
 import { encrypt, compare } from "../helpers/bCrypt.js";
 import { tokenSign } from "../helpers/generadorDeToken.js";
 
 
 
-export const postUser = async (req, res) => {
+export const postCompany = async (req, res) => {
     try {
         function random(min, max) {
             return Math.floor((Math.random() * (max - min + 1)) + min);
@@ -14,11 +14,11 @@ export const postUser = async (req, res) => {
         function passwordcpucreador(){for (let i=0;i<15;i++){
             arrayDePasswordCPUNuevo.push(caracteres[random(0,62)])
         }}
+        const { companyname, password, email } = req.body
         const passwordHash = await encrypt(password)
-        const { username, password, email } = req.body
         passwordcpucreador()
-        await User.create({
-            username: username,
+        await Company.create({
+            companyname: companyname,
             password: passwordHash,
             email: email,
             passwordCPU:arrayDePasswordCPUNuevo.join("")
@@ -29,19 +29,19 @@ export const postUser = async (req, res) => {
     }
 }
 
-export const loginUser = async (req, res) => {
+export const loginCompany = async (req, res) => {
     try {
         const { email, password } = req.body
-        const user = await User.findOne({ email })
-        if(!user) {
+        const company = await Company.findOne({ email })
+        if(!company) {
             return res.status(405).json({ msg: "Usario no encontrado" })
         }
-        const checkPassword = await compare(password, user.password)
-        const tokenSession = await tokenSign(user)
+        const checkPassword = await compare(password, company.password)
+        const tokenSession = await tokenSign(company)
         if(!checkPassword) {
             return res.status(401).json({ msg: "Contraseña invalida" })
         }
-        return res.status(200).send(`Login exitoso! token: ${tokenSession}`)
+        return res.status(200).json({token:tokenSession,id:company._id})
     } catch(e) {
         return res.json({ msg: `Error - ${e}` })
     }
@@ -49,14 +49,14 @@ export const loginUser = async (req, res) => {
 
 
 
-export const getUser = async (req, res) => {
+export const getCompany = async (req, res) => {
     const { id } = req.params
     try {
-        const user = await User.findById(id)
-        if(!user) {
+        const company = await Company.findById(id)
+        if(!company) {
             return res.status(405).send("Usuario no encontrado")
         }
-        return res.status(200).json(user.username)
+        return res.status(200).json(company)
     } catch(e) {
         return res.status(404).send({ msg: `Error - ${e}` })
     }
