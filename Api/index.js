@@ -11,9 +11,6 @@ connectDB();
 
 
 //importacion de las rutas
-import userRoutes from "./src/routes/userRoutes.js";
-import companyRoutes from "./src/routes/companyRoutes.js";
-import productosRoutes from "./src/routes/productosRoutes.js";
 import index_router from "./src/routes/index.router.js"
 
 //Preparacion del servidor
@@ -28,11 +25,7 @@ server.use(express.json());
 server.use(express.urlencoded({extended:true}));
 
 //rutas aqui
-server.use(index_router)
-server.use(userRoutes);
-server.use(productosRoutes);
-server.use(companyRoutes);
-
+server.use(index_router);
 
 //escuchador del server/app
 server.listen(portServ,()=>{

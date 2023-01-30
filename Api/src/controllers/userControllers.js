@@ -14,8 +14,8 @@ export const postUser = async (req, res) => {
         function passwordcpucreador(){for (let i=0;i<15;i++){
             arrayDePasswordCPUNuevo.push(caracteres[random(0,62)])
         }}
-        const passwordHash = await encrypt(password)
         const { username, password, email } = req.body
+        const passwordHash = await encrypt(password)
         passwordcpucreador()
         await User.create({
             username: username,
@@ -56,7 +56,7 @@ export const getUser = async (req, res) => {
         if(!user) {
             return res.status(405).send("Usuario no encontrado")
         }
-        return res.status(200).json(user.username)
+        return res.status(200).json({...user})
     } catch(e) {
         return res.status(404).send({ msg: `Error - ${e}` })
     }

@@ -3,7 +3,7 @@ import { postProducto,deleteProducto } from "../controllers/productosControllers
 
 const router = Router()
 
-router.post("/company/postProducto", postProducto)
-router.delete("/company/:id", deleteProducto)
+router.post("/company/postProduct", postProducto)
+router.delete("/company/deleteProduct/:id", deleteProducto)
 
 export default router
