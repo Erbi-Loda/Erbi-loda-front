@@ -2,11 +2,16 @@
 import express from "express";
 import morgan from "morgan";
 //importacion y configuracion para lectura del archivo .env
-import * as dotenv from 'dotenv';
-dotenv.config();
+import * as dotenv from 'dotenv'
+dotenv.config()
+
+//Conexion con la base de Datos
+import {connectDB} from "./src/db/mongodb.js";
+connectDB();
+
 
 //importacion de las rutas
-import index_router from "./src/router/index.router.js"
+import index_router from "./src/routes/index.router.js"
 
 //Preparacion del servidor
 const server= express();
@@ -20,8 +25,7 @@ server.use(express.json());
 server.use(express.urlencoded({extended:true}));
 
 //rutas aqui
-server.use(index_router)
-
+server.use(index_router);
 
 //escuchador del server/app
 server.listen(portServ,()=>{
