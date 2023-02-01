@@ -1,8 +1,15 @@
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import Home from './Components/Home'
+import PostProduct from './Components/PostProduct'
+
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/post" element={<PostProduct/>}/>
+    </Routes>
+    </BrowserRouter>
   )
 }
 

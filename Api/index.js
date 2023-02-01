@@ -1,6 +1,7 @@
 //importacion de librerias para generacion del puerto y testeo de endpoints
 import express from "express";
 import morgan from "morgan";
+import cors from 'cors'
 //importacion y configuracion para lectura del archivo .env
 import * as dotenv from 'dotenv'
 dotenv.config()
@@ -20,6 +21,7 @@ const {PORT} = process.env;
 const portServ = PORT || 3001 ;
 
 //midlws
+server.use(cors());
 server.use(morgan("dev"));
 server.use(express.json());
 server.use(express.urlencoded({extended:true}));
