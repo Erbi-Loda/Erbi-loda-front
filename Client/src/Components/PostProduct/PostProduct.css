@@ -1,0 +1,131 @@
+.aspect-ratio-1-1 {
+    width: 41.75rem;
+    display: flex;
+    background: #fff;
+    height: 29.25rem;
+ object-fit: cover; 
+    object-position: center; 
+    justify-content: center;
+}
+.aspect-ratio-1-1-sub {
+    min-width: 50px;
+    max-width: 50px;
+    display: flex;
+    background: #fff;
+    height: 50px;
+    padding: 4px;
+    object-fit: cover;
+    object-position: center;
+    justify-content: center;
+    border: 2px solid #003A00;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.aspect-ratio-1-1-sub-selected {
+    min-width: 50px;
+    max-width: 50px;
+    display: flex;
+    background: #fff;
+    height: 50px;
+    padding: 4px;
+    object-fit: cover;
+    object-position: center;
+    justify-content: center;
+    border: 2px solid #009200;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.aspect-ratio-1-1-sub-content{  
+    width: 41.75rem;
+    display: flex;
+    background: #fff;
+    overflow-x: auto;
+    gap: 3px;
+    padding: 0px 3px;
+    margin: 5px 0px;
+    
+}
+.aspect-ratio-1-1-sub-content::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+.aspect-ratio-1-1-sub-content::-webkit-scrollbar-track {
+    background: #003A00;        /* color of the tracking area */   /* color of the scroll thumb */
+    border-radius: 20px;      
+  }
+.aspect-ratio-1-1-sub-content::-webkit-scrollbar-thumb {
+    background-color: #00F106;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid #003A00;  /* creates padding around scroll thumb */
+  }
+  .label-button{
+    display: inline-flex;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+    border: 0;
+    margin: 0;
+    gap: 7px;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    text-decoration: none;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    min-width: 64px;
+    padding: 8px 22px;
+    border-radius: 4px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    color: #fff;
+    background-color: #1976d2;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+  }
+  .label-button-cargando{
+    display: inline-flex;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+    border: 0;
+    margin: 0;
+    gap: 7px;
+    cursor: initial;
+    user-select: none;
+    vertical-align: middle;
+    text-decoration: none;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    min-width: 64px;
+    padding: 8px 22px;
+    border-radius: 4px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    color: #fff;
+    background-color: #757575;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+  }
+/* .color1 { #2f1335 };
+.color2 { #620e5d };
+.color3 { #9d007a };
+.color4 { #ce3762 };
+.color5 { #ff6e49 }; */
+
+
+/* .color1 { #00F106};
+.color2 { #00C000 };
+.color3 { #009200 };
+.color4 { #006400 };
+.color5 { #003A00 }; */
