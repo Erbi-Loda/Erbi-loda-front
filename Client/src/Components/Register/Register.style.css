@@ -1,0 +1,33 @@
+.Register-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../../imgs/image.png") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 35%;
+    height: 45%;
+    /* padding: 2rem 2rem 3rem 2rem; */
+    border-radius: 2%;
+    background-color:aliceblue;
+}
+
+
+.box{
+    /* width: 100%; */
+    /* padding: 2rem; */
+    margin: .5rem 0rem .5rem 0rem;
+}
+
+.button{
+    margin: 2rem;
+}
