@@ -2,6 +2,7 @@ import React from 'react'
 import './PostProduct.css'
 
 export default function ImgSmalls({stateimg,setImgGrande,imgGrande}) {
+  
   return (
     stateimg.map((e, index) => {
         return (

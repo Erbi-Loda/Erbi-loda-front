@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import axios from "axios";
 
+
 export default function({state,setState,loading,setLoading,setImgGrande,imgGrande}){
   const [loadingImagen, setLoadingImagen] = useState(false)
   const handleimage = useCallback(async (e, estado) => {

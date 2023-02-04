@@ -6,6 +6,7 @@ import ImgLarge from "./ImgLarge";
 import ImgSmalls from "./ImgSmalls";
 import "./PostProduct.css";
 
+
 export default function PostProduct() {
   const [loading, setLoading] = useState(false);
   const [imgGrande, setImgGrande] = useState("");
