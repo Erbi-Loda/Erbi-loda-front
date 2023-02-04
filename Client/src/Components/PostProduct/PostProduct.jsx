@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PrimarySearchAppBar from "../NavBar";
+import NavBarComponent from "../NavBar";
 import steps1 from "./steps.jsx";
 import BoxSteps from "./BoxSteps";
 import ImgLarge from "./ImgLarge";
@@ -30,7 +30,7 @@ export default function PostProduct() {
   return (
     <div style={{ width: "100vw", display: "flex", justifyContent: "center" }}>
       <div>
-        <PrimarySearchAppBar/>
+        <NavBarComponent/>
         <BoxSteps steps={steps} />
         <div style={{ width: "100%", flexGrow: 1, justifyContent: "center" }}>
           {imgGrande && <ImgLarge imgGrande={imgGrande} />}
