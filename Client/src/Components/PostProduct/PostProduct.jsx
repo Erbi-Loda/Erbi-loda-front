@@ -17,9 +17,9 @@ export default function PostProduct() {
     shortDescription: "",
     img: [],
     stock: "",
-    companyId: "63d6e7843175bd63792f32ab",
+    companyId: "63def89a96e705cd69d05ff3",
   });
-
+// 
   const steps = steps1({
     state,
     setState,
