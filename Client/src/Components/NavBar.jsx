@@ -18,7 +18,7 @@ import logo from '../imgs/logo.png'
 import { isExpired, decodeToken } from "react-jwt";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { Button, Stack } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -106,6 +106,7 @@ export default function NavBarComponent() {
       <MenuItem onClick={handleMenuClose}>PERFIL</MenuItem>
       <MenuItem onClick={handleMenuClose}>CONFIGURACION</MenuItem>
       <MenuItem onClick={handleMenuClose}>CREAR EMPRESA</MenuItem>
+      <MenuItem onClick={()=>{localStorage.removeItem('userloda');handleMenuClose();window.location.reload()}}>CERRAR SESSION</MenuItem>
     </Menu>
   );
 
