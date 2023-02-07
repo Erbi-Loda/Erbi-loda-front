@@ -5,6 +5,9 @@ body {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-image: url('./imgs/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   
   code {
@@ -12,4 +15,13 @@ body {
       monospace;
   }
   
-  
+  @media (max-width: 1440px) {
+    .container-cards{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(224px, 240px));
+      width: 100%;
+      justify-content: center;
+      padding-top: 16px;
+      position: relative;
+  }
+  }

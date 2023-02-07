@@ -7,7 +7,7 @@ import Carrousel from "../Carrousel/Carrousel";
 export default function Home() {
   const [productos,setProductos]=useState([
     {
-      "_id": "63defe0596e705cd69d05ff2",
+      "_id": "63defe0596e705cd69d05ff22",
       "productname": "te",
       "price": "20",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolorLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolorLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor",
@@ -24,7 +24,7 @@ export default function Home() {
       "companyId": "63def89a96e705cd69d05ff3",
       "__v": 0
   },{
-    "_id": "63defe0596e705cd69d05ff6",
+    "_id": "63defe0596e705cd69d05ff63",
     "productname": "Cafe",
     "price": "1400",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolorLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolorLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor",
@@ -41,7 +41,7 @@ export default function Home() {
     "companyId": "63def89a96e705cd69d05ff3",
     "__v": 0
 },{
-  "_id": "63defe0596e705cd69d05ff6",
+  "_id": "63defe0596e705cd69d05ff64",
   "productname": "Cafe",
   "price": "1400",
   "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolorLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolorLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor",
@@ -58,7 +58,7 @@ export default function Home() {
   "companyId": "63def89a96e705cd69d05ff3",
   "__v": 0
 },{
-  "_id": "63defe0596e705cd69d05ff6",
+  "_id": "63defe0596e705cd69d05ff65",
   "productname": "Cafe",
   "price": "1400",
   "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolorLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolorLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor",
@@ -75,7 +75,7 @@ export default function Home() {
   "companyId": "63def89a96e705cd69d05ff3",
   "__v": 0
 },{
-  "_id": "63defe0596e705cd69d05ff6",
+  "_id": "63defe0596e705cd69d05ff66",
   "productname": "Cafe",
   "price": "1400",
   "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolorLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolorLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor",
@@ -116,12 +116,17 @@ export default function Home() {
     <div className="containerHome">
       <NavBarComponent></NavBarComponent>
       <Carrousel toShow={toShow}></Carrousel>
-      <div className="container-cards">
-      {productos.map((product)=>{
+      <div className="container-container-cards">
+        <div className="container-cards">
+      {productos.map((product,index)=>{
         return(
-          <Card key={product._id} name={product.productname} shDesc={product.shortDescription} price={product.price} img={product.img[0]}/>
-        )
-      })}
+          <div>
+          {index===0&&<h4 className="titulo-cards">Productos:</h4>}
+          <Card key={product._id} id={product._id} name={product.productname} shDesc={product.shortDescription} price={product.price} img={product.img[0]}/>
+          </div>
+          )
+        })}
+        </div>
       </div>
     </div>
   );
