@@ -46,11 +46,11 @@
 
 .logofondo {
     width: 100%;
-    height: 100%;
+    height: 90%;
     position: absolute;
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 15%;
+    opacity: 40%;
     z-index: 1;
 }
 
