@@ -22,7 +22,7 @@ export default function ({ steps }) {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
   return (
-    <Box sx={{ width: "80vw", flexGrow: 1, justifyContent: "center" }}>
+    <Box sx={{ width: "100vw", flexGrow: 1, justifyContent: "center" }}>
       <Paper
         square
         elevation={0}
@@ -44,6 +44,7 @@ export default function ({ steps }) {
           display: "flex",
           justifyContent: "center",
           padding: "1vh 0",
+          bgcolor:'white'
         }}
       >
         {steps[activeStep].description}

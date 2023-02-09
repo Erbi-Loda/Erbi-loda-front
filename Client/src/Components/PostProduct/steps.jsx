@@ -79,7 +79,7 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
             </ThemeProvider>,
         },
         {
-          label: 'Descripcion corta del producto(250 caracteres maximo)',
+          label: 'Descripcion corta del producto(100 caracteres maximo)',
           description:
             <ThemeProvider theme={theme1}>
               <TextField
