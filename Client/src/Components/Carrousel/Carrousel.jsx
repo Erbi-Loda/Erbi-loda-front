@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import Carousel from "react-material-ui-carousel";
 import Box from "@mui/material/Box";
 import { Paper } from "@mui/material";

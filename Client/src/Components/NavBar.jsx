@@ -185,7 +185,7 @@ export default function NavBarComponent() {
         <Toolbar>
             <img src={logo} style={{width:'40px',height:'40px',marginRight:'1rem'}} alt=""/>
           <Typography variant="h6" noWrap component="div" sx={{ display: { xs: "none", md: "flex" } }} >
-            Erbi Loda
+           <a href="/">Erbi Loda</a>
           </Typography>
           <Search>
             <SearchIconWrapper>

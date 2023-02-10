@@ -3,6 +3,7 @@ import Card from "../Card/Card";
 import { useState } from "react";
 import './Home.style.css'
 import Carrousel from "../Carrousel/Carrousel";
+import Footer from "../Footer/footer";
 
 export default function Home() {
   const [productos,setProductos]=useState([
@@ -128,6 +129,7 @@ export default function Home() {
         })}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
