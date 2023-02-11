@@ -20,7 +20,13 @@ export default function Card({
   return (
     <CardBox sx={{ margin: "15px", width: "224px" }} className='contenedor-carta-postproduct'>
       <div className="conetnedor-hover-shDesct-postproduct">
-      <CardMedia sx={{ height: 224 }} image={img} title="image product" />
+      <div className="contenedor-img-card">
+        <img
+        src={img}
+        alt={"image product"}
+        style={{ maxWidth: "100%", maxHeight: "100%" }}
+      />
+      </div>
       <div className="hover-shDesct-postproduct">
           <Typography
             style={{
