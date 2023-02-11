@@ -22,8 +22,9 @@ export default function ({ steps }) {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
   return (
-    <Box sx={{ width: "100vw", flexGrow: 1, justifyContent: "center" }}>
+    <Box className="contenedor-argegar-postproduct" >
       <Paper
+        className='contenedor-argegar-postproduct-sub1'
         square
         elevation={0}
         style={{ textAlign: "center" }}
@@ -37,6 +38,7 @@ export default function ({ steps }) {
         <Typography>{steps[activeStep].label}</Typography>
       </Paper>
       <Box
+        className='contenedor-argegar-postproduct-sub2'
         sx={{
           height: "max-content",
           maxWidth: "100vw",
@@ -50,6 +52,7 @@ export default function ({ steps }) {
         {steps[activeStep].description}
       </Box>
       <MobileStepper
+        className='contenedor-argegar-postproduct-sub3'
         variant="progress"
         steps={maxSteps}
         position="static"

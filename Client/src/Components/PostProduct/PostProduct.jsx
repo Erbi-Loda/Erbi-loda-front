@@ -74,7 +74,31 @@ export default function PostProduct() {
                   {state.stock.length < 1 ? "STOCK:" : "Stock: " + state.stock}
                 </h6>
                 <div className="buttons-postproduct-contenedor">
-                <Button
+                  <div className="contenedor-boton-postproduct">
+                    {/* <button> <ShoppingCartCheckoutIcon></ShoppingCartCheckoutIcon> COMPRAR</button> */}
+                    <button>
+                      <span>
+                        {" "}
+                        <ShoppingCartCheckoutIcon></ShoppingCartCheckoutIcon>{" "}
+                        COMPRAR
+                      </span>
+                    </button>
+                    <button>
+                      <span>
+                        {" "}
+                        <AddShoppingCartIcon></AddShoppingCartIcon> {" "}Agregar al carrito
+                      </span>
+                    </button>
+                    <button>
+                      <span>
+                        {" "}
+                        <FavoriteBorderIcon></FavoriteBorderIcon> {" "}Favorito
+                      </span>
+                    </button>
+                    {/* <button> <AddShoppingCartIcon></AddShoppingCartIcon> Agregar al carrito</button>
+                <button> <FavoriteBorderIcon></FavoriteBorderIcon> Favorito</button> */}
+                  </div>
+                  {/* <Button
                   variant="outlined"
                   style={{
                     color: "black",
@@ -84,8 +108,8 @@ export default function PostProduct() {
                   }}
                 >
                   <ShoppingCartCheckoutIcon></ShoppingCartCheckoutIcon> COMPRAR
-                </Button>
-                <Button
+                </Button> */}
+                  {/* <Button
                   variant="outlined"
                   style={{
                     color: "black",
@@ -106,8 +130,8 @@ export default function PostProduct() {
                   }}
                 >
                   <FavoriteBorderIcon></FavoriteBorderIcon> Favorito
-                </Button>                  
-                  </div>
+                </Button>                   */}
+                </div>
               </div>
             </div>
             <h6 className="descripcion-completa-post-product">

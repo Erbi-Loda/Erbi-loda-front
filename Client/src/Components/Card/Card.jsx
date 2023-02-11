@@ -87,7 +87,7 @@ export default function Card({
         </div>{" "}
         
       </CardContent>
-      <CardActions>
+      <CardActions style={{justifyContent:'space-around'}}>
         <Button size="small">Comprar</Button>
         <Button size="small">carrito</Button>
       </CardActions>

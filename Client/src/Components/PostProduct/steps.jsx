@@ -58,6 +58,7 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
           description:
             <ThemeProvider theme={theme1}>
               <TextField
+              className="contenedor-argegar-postproduct-sub2-sub"
                 color="pagina1"
                 value={state.productoname}
                 label="Titulo:"
@@ -70,6 +71,7 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
           description:
             <ThemeProvider theme={theme1}>
               <TextField
+              className="contenedor-argegar-postproduct-sub2-sub"
                 color="pagina1"
                 label="Precio:"
                 style={{ width: '8.75rem' }}
@@ -83,6 +85,7 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
           description:
             <ThemeProvider theme={theme1}>
               <TextField
+              className="contenedor-argegar-postproduct-sub2-sub"
                 color="pagina1"
                 multiline
                 maxRows={3}
@@ -100,6 +103,7 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
           description:
             <ThemeProvider theme={theme1}>
               <TextField
+              className="contenedor-argegar-postproduct-sub2-sub"
                 color="pagina1"
                 multiline
                 label="descripcion:"
@@ -115,6 +119,7 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
           description: 
           <ThemeProvider theme={theme1}>
             <TextField
+              className="contenedor-argegar-postproduct-sub2-sub"
               color="pagina1"
             style={{ width: '8.438rem' }}
             label="stock:"
