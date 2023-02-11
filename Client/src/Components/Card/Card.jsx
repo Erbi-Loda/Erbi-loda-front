@@ -14,13 +14,29 @@ export default function Card({
   shDesc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor",
   price = "$$$",
   img,
-  id
+  id,
 }) {
-  const [favorite, setfavorite] = React.useState([])
+  const [favorite, setfavorite] = React.useState([]);
   return (
-    <CardBox sx={{ margin: "15px", width: "224px" }}>
+    <CardBox sx={{ margin: "15px", width: "224px" }} className='contenedor-carta-postproduct'>
+      <div className="conetnedor-hover-shDesct-postproduct">
       <CardMedia sx={{ height: 224 }} image={img} title="image product" />
-      <CardContent sx={{ position: "relative" }}>
+      <div className="hover-shDesct-postproduct">
+          <Typography
+            style={{
+              width: "224px",
+              height: "80px",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+            variant="body2"
+            color="text.secondary"
+          >
+            {shDesc.length > 70 ? shDesc.slice(0, 70) + "..." : shDesc}
+          </Typography>
+        </div>
+      </div>
+      <CardContent sx={{ position: "relative", padding: "16px 16px 0px 16px" }}>
         <Typography gutterBottom variant="h5" component="div">
           ${price}
         </Typography>
@@ -32,18 +48,22 @@ export default function Card({
             right: "55px",
           }}
         >
-          <div style={{ position: "relative", width: "max-content" }}>
+          <div style={{ position: "relative", width: "max-content" ,zIndex:'2'}}>
             <TurnedInIcon
               sx={{
                 width: "55px",
                 height: "55px",
                 position: "absolute",
                 top: "-10px",
-                color:'#003A00'
+                color: "#003A00",
               }}
             ></TurnedInIcon>
             <FavoriteIcon
-            onClick={()=>{favorite.includes(id)?setfavorite(favorite.filter(e=>e!==id)):setfavorite([...favorite,id])}}
+              onClick={() => {
+                favorite.includes(id)
+                  ? setfavorite(favorite.filter((e) => e !== id))
+                  : setfavorite([...favorite, id]);
+              }}
               sx={[
                 {
                   position: "absolute",
@@ -51,14 +71,15 @@ export default function Card({
                   height: "25px",
                   left: "10px",
                   top: "0px",
-                },favorite.includes(id)? {color: "#00F106"}:{color: "white"},
+                },
+                favorite.includes(id)
+                  ? { color: "#00F106" }
+                  : { color: "white" },
               ]}
             ></FavoriteIcon>
           </div>
-        </div>
-        <Typography variant="body2" color="text.secondary">
-          {shDesc}
-        </Typography>
+        </div>{" "}
+        
       </CardContent>
       <CardActions>
         <Button size="small">Comprar</Button>

@@ -103,6 +103,7 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
                 color="pagina1"
                 multiline
                 label="descripcion:"
+                maxRows={3}
                 style={{ width: '15.625rem' }}
                 value={state.description}
                 onChange={(e) => setState({ ...state, description: e.target.value })}

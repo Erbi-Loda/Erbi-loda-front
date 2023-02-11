@@ -1,0 +1,44 @@
+.conetnedor-hover-shDesct-postproduct{
+position: relative;
+overflow: hidden;
+}
+.hover-shDesct-postproduct{
+    display: flex;
+    position: absolute;
+    background: whitesmoke;
+    left: 0;
+    top: 300px;
+    border-top-left-radius: 20px;
+    z-index: 1;
+    padding: 5px;
+    transition: all .5s;
+    text-align: center;
+}
+.hover-shDesct-postproduct:after {
+    content: '';
+    position: absolute;
+    top: -47px;
+    right: -45px;
+    width: 100px;
+    height: 100px;
+    z-index: -1;
+    transform: rotate(-175deg);
+    border-radius: 50%;
+    box-shadow: inset 48px 48px whitesmoke;
+  }
+.hover-shDesct-postproduct:before {
+    content: '';
+    position: absolute;
+    top: -47px;
+    left: -45px;
+    width: 100px;
+    height: 100px;
+    z-index: -1;
+    transform: rotate(-95deg);
+    border-radius: 50%;
+    box-shadow: inset 48px 48px whitesmoke;
+  }
+.contenedor-carta-postproduct:hover .hover-shDesct-postproduct{
+    display: flex;
+    top: 150px;
+}

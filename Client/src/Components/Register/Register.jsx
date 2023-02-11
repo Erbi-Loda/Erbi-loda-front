@@ -57,7 +57,7 @@ export default function Register() {
       <form className="form-container-register">
         {/* <div className="logofondo"></div>       */}
         <img src={logo} className="logofondo" alt="" />
-        <Link to={".."} style={{ textDecoration: "none" }}>
+        <Link to={".."} style={{ textDecoration: "none" ,color:'black' }}>
           <div className="volver-register-contenedor">
             <span className="volver-register">
               <ReplyIcon></ReplyIcon> Volver

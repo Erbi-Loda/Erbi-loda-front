@@ -7,6 +7,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
+import { Link } from "react-router-dom";
 
 // function Card() {
 //   const creadores = [
@@ -88,16 +89,16 @@ export default function Footer() {
             {/* <hr/> */}
             <section className="container-sections">
               <div className="Ayuda">
-                <a href="/infoAyuda" className="link-footer">Ayuda</a>
+                <Link to="/infoAyuda" className="link-footer">Ayuda</Link>
               </div>
               <div className="AcercaDe">
-                <a href="/acercaDe" className="link-footer">Acerca de...</a>
+                <Link to="/acercaDe" className="link-footer">Acerca de...</Link>
               </div>
               <div className="RedesSociales">
-                <a href="/redesSociales" className="link-footer">Redes Sociales</a>
+                <Link to="/redesSociales" className="link-footer">Redes Sociales</Link>
               </div>
               <div className="MiCuenta">
-                <a href="/miCuenta" className="link-footer">Mi Cuenta</a>
+                <Link to="/miCuenta" className="link-footer">Mi Cuenta</Link>
               </div>
             </section>
           </Paper>

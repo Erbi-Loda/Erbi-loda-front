@@ -54,7 +54,7 @@ export default function Login() {
     <div className="Login-container">
       <div className="form-container">
         <img src={logo} className="logofondo" alt="" />
-        <Link to={".."} style={{ textDecoration: "none" }}>
+        <Link to={".."} style={{ textDecoration: "none",color:'black' }}>
           <div className="volver-login-contenedor">
             <span className="volver-login" onClick={() => navigate(-1)}>
               <ReplyIcon></ReplyIcon> Volver

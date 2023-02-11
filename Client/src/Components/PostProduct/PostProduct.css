@@ -39,7 +39,6 @@
 .aspect-ratio-1-1-sub-content{  
     width: 41.75rem;
     display: flex;
-    background: #fff;
     overflow-x: auto;
     gap: 3px;
     padding: 0px 3px;
@@ -117,6 +116,25 @@
     color: #fff;
     background-color: #757575;
     box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+  }
+
+  .contenedor-postproduct-producto{    
+    width: max-content;
+    background: #ffffffb0;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+  .titulo-postproduct{
+    text-align: center;
+  }
+  .buttons-postproduct-contenedor{    
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .descripcion-completa-post-product{    
+    max-width: 41.75rem;
   }
 /* .color1 { #2f1335 };
 .color2 { #620e5d };
