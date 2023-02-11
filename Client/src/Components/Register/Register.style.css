@@ -1,33 +1,69 @@
-.Register-container{
+.Register-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-image: url("../../imgs/image.png") ;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.form-container{
+
+.form-container-register {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 35%;
+    width: 30%;
     height: 45%;
-    /* padding: 2rem 2rem 3rem 2rem; */
+    overflow: hidden;
+    padding: 2rem 2rem 2rem 2rem;
     border-radius: 2%;
-    background-color:aliceblue;
+    background-color: aliceblue;
+    position: relative;
 }
 
+.form-container-sub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    position: relative;
+    z-index: 2;
+}
 
-.box{
+.box {
     /* width: 100%; */
     /* padding: 2rem; */
     margin: .5rem 0rem .5rem 0rem;
 }
 
-.button{
+.button {
     margin: 2rem;
+}
+
+.logofondo {
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 40%;
+    z-index: 1;
+}
+
+.volver-register-contenedor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1rem;
+}
+
+.volver-register {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
 }

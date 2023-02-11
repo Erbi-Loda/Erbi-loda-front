@@ -1,6 +1,7 @@
 import React from "react";
 import "./PostProduct.css";
 export default function ImgLarge({ imgGrande }) {
+  
   return (
     <div className="aspect-ratio-1-1">
       <img

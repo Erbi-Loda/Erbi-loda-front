@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import axios from "axios";
 
+
 export default function({state,setState,loading,setLoading,setImgGrande,imgGrande}){
   const [loadingImagen, setLoadingImagen] = useState(false)
   const handleimage = useCallback(async (e, estado) => {
@@ -57,6 +58,7 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
           description:
             <ThemeProvider theme={theme1}>
               <TextField
+              className="contenedor-argegar-postproduct-sub2-sub"
                 color="pagina1"
                 value={state.productoname}
                 label="Titulo:"
@@ -69,6 +71,7 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
           description:
             <ThemeProvider theme={theme1}>
               <TextField
+              className="contenedor-argegar-postproduct-sub2-sub"
                 color="pagina1"
                 label="Precio:"
                 style={{ width: '8.75rem' }}
@@ -78,10 +81,11 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
             </ThemeProvider>,
         },
         {
-          label: 'Descripcion corta del producto(250 caracteres maximo)',
+          label: 'Descripcion corta del producto(100 caracteres maximo)',
           description:
             <ThemeProvider theme={theme1}>
               <TextField
+              className="contenedor-argegar-postproduct-sub2-sub"
                 color="pagina1"
                 multiline
                 maxRows={3}
@@ -99,9 +103,11 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
           description:
             <ThemeProvider theme={theme1}>
               <TextField
+              className="contenedor-argegar-postproduct-sub2-sub"
                 color="pagina1"
                 multiline
                 label="descripcion:"
+                maxRows={3}
                 style={{ width: '15.625rem' }}
                 value={state.description}
                 onChange={(e) => setState({ ...state, description: e.target.value })}
@@ -113,6 +119,7 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
           description: 
           <ThemeProvider theme={theme1}>
             <TextField
+              className="contenedor-argegar-postproduct-sub2-sub"
               color="pagina1"
             style={{ width: '8.438rem' }}
             label="stock:"

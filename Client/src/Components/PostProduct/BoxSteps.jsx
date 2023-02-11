@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
+
 export default function ({ steps }) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
@@ -21,8 +22,9 @@ export default function ({ steps }) {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
   return (
-    <Box sx={{ width: "80vw", flexGrow: 1, justifyContent: "center" }}>
+    <Box className="contenedor-argegar-postproduct" >
       <Paper
+        className='contenedor-argegar-postproduct-sub1'
         square
         elevation={0}
         style={{ textAlign: "center" }}
@@ -36,6 +38,7 @@ export default function ({ steps }) {
         <Typography>{steps[activeStep].label}</Typography>
       </Paper>
       <Box
+        className='contenedor-argegar-postproduct-sub2'
         sx={{
           height: "max-content",
           maxWidth: "100vw",
@@ -43,11 +46,13 @@ export default function ({ steps }) {
           display: "flex",
           justifyContent: "center",
           padding: "1vh 0",
+          bgcolor:'white'
         }}
       >
         {steps[activeStep].description}
       </Box>
       <MobileStepper
+        className='contenedor-argegar-postproduct-sub3'
         variant="progress"
         steps={maxSteps}
         position="static"

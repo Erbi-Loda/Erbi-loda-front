@@ -7,6 +7,7 @@
     object-position: center; 
     justify-content: center;
 }
+
 .aspect-ratio-1-1-sub {
     min-width: 50px;
     max-width: 50px;
@@ -38,7 +39,6 @@
 .aspect-ratio-1-1-sub-content{  
     width: 41.75rem;
     display: flex;
-    background: #fff;
     overflow-x: auto;
     gap: 3px;
     padding: 0px 3px;
@@ -73,7 +73,6 @@
     user-select: none;
     vertical-align: middle;
     text-decoration: none;
-    font-family: "Roboto","Helvetica","Arial",sans-serif;
     font-weight: 500;
     font-size: 0.9375rem;
     line-height: 1.75;
@@ -103,7 +102,6 @@
     user-select: none;
     vertical-align: middle;
     text-decoration: none;
-    font-family: "Roboto","Helvetica","Arial",sans-serif;
     font-weight: 500;
     font-size: 0.9375rem;
     line-height: 1.75;
@@ -117,6 +115,76 @@
     background-color: #757575;
     box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
   }
+
+  .contenedor-postproduct-producto{    
+    width: max-content;
+    background: #ffffffb0;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+  .titulo-postproduct{
+    text-align: center;
+  }
+  .buttons-postproduct-contenedor{    
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .descripcion-completa-post-product{    
+    max-width: 41.75rem;
+  }
+  .contenedor-argegar-postproduct{
+    width: 100vw; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+  }
+  .contenedor-argegar-postproduct-sub1{
+    width: 80vw !important;
+  }
+  .contenedor-argegar-postproduct-sub2{
+    width: 80vw !important;
+  }
+  .contenedor-argegar-postproduct-sub2-sub{
+    width: 80% !important;
+  }
+  .contenedor-argegar-postproduct-sub3{
+    width: 80vw !important;
+  }
+  .contenedor-boton-postproduct{
+    display: grid;
+    gap: 10px;
+  }
+  /* .contenedor-boton-postproduct button {
+    position: relative;
+    padding: 7px;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: #009200;
+    background: white;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    border: 2px solid #009200;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 0 #009200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .contenedor-boton-postproduct button:hover {
+    color: white;
+    box-shadow: inset 0 -100px 0 0 #009200;
+  }
+  
+  .contenedor-boton-postproduct button:active {
+    transform: scale(0.9);
+  } */
 /* .color1 { #2f1335 };
 .color2 { #620e5d };
 .color3 { #9d007a };
@@ -129,3 +197,60 @@
 .color3 { #009200 };
 .color4 { #006400 };
 .color5 { #003A00 }; */
+
+.contenedor-boton-postproduct button {
+  display: inline-block;
+  border-radius: 10px;
+  border: 1px solid #003A00;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in;
+  z-index: 1;
+  padding: 7px;
+  width: 100%;
+  cursor: pointer;
+ }
+ 
+ .contenedor-boton-postproduct button::before,
+ .contenedor-boton-postproduct button::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  width: 0;
+  height: 150%;
+  transform: skew(15deg);
+  transition: all 0.3s;
+  overflow: hidden;
+  z-index: -1;
+ }
+ 
+ .contenedor-boton-postproduct button::before {
+  left: -25px;
+  background: #006400;
+  filter: blur(8px);
+ }
+ 
+ .contenedor-boton-postproduct button::after {
+  right: -25px;
+  background: #009200;
+  filter: blur(8px);
+ }
+ 
+ .contenedor-boton-postproduct button:hover::before,
+ .contenedor-boton-postproduct button:hover::after {
+  width: 62%;
+ }
+ 
+ .contenedor-boton-postproduct button:hover span {
+  color: #ffffff;
+  transition: 0.3s;
+ }
+ 
+ .contenedor-boton-postproduct button span {
+  color: #003A00;
+  font-size: 18px;
+  transition: all 0.3s ease-in;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }

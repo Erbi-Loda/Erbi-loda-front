@@ -1,0 +1,24 @@
+.container-cards{
+   
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+.container-cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(224px, 240px));
+    width: 80%;
+    justify-content: center;
+    padding-top: 16px;
+    position: relative;
+}
+.container-container-cards{    
+    display: flex;
+    justify-content: center;
+}
+.titulo-cards{    
+    position: absolute;
+    top: 0;
+    color: white;
+    margin: 0;
+}
