@@ -3,7 +3,6 @@ import Card from "../Card/Card";
 import { useEffect, useState } from "react";
 import './Home.style.css'
 import Carrousel from "../Carrousel/Carrousel";
-import Footer from "../Footer/footer";
 import Loading from "../Loading2/Loading";
 
 export default function Home() {
@@ -141,7 +140,6 @@ export default function Home() {
         })}
         </div>
       </div>
-      <Footer/>
     </div>
   );
 }
