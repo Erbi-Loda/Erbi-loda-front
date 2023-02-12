@@ -5,7 +5,9 @@ import { Paper } from "@mui/material";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import "./Carrousel.style.css";
 import Logo from "../../imgs/logo.png";
-
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import EmailIcon from '@mui/icons-material/Email';
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   display: "flex",
@@ -103,18 +105,65 @@ function Diapo(props) {
           {info.title === "Diapositiva 3" ? (
             <div style={{ display: "flex", justifyContent: "space-between",height:'calc(100vh - 270px)',width:'80vw'}}>
               
+              <div className="card-carrousel-creador-contenedor">
+            <div style={{display:'flex',width:'100%',alignItems:'center',justifyContent:'space-evenly'}}>
+              <div>
+                <h2 style={{color:'black',fontSize:'2.5em'}}>Alexis Coronel</h2>
+                <h4 style={{color:'black',fontSize:'1.5em'}}>Front-End Developer</h4>
+              </div>
+                <div className="user-photo-card">
+                  <img style={{width:'100%'}} src="https://avatars.githubusercontent.com/u/80395647?s=400&u=01e7b604469ed2c7dd1fc1eda1798fe6a6ccc291&v=4" alt="perfil"></img>
+                </div>
+            </div>
               <img
+              className="img-card"
                 align="left"
-                width="49%"
                 src="https://github-readme-stats.vercel.app/api?username=SacZ16&show_icons=true&theme=yeblu"
                 alt="SacZ16"
-              />
-              <img
+                />
+                <div className="button-card-contenedor">
+
+                <button className="button-card">
+                <GitHubIcon></GitHubIcon>  Github
+                </button>
+                <button className="button-card">
+                 <LinkedInIcon></LinkedInIcon> LinkedIn
+                </button>
+                <button className="button-card">
+                 <EmailIcon></EmailIcon> Email
+                </button>
+                </div>
+                </div>
+              <div className="card-carrousel-creador-contenedor">
+            <div style={{display:'flex',width:'100%',alignItems:'center',justifyContent:'space-evenly'}}>
+              <div>
+                <h2 style={{color:'black',fontSize:'2.5em'}}>Agustin Kowalczuk</h2>
+                <h4 style={{color:'black',fontSize:'1.5em'}}>Front-End Developer</h4>
+              </div>
+                <div className="user-photo-card">
+                  <img style={{width:'100%'}} src="https://media.licdn.com/dms/image/C5603AQHkB-TvtMPboQ/profile-displayphoto-shrink_200_200/0/1621871796102?e=1681948800&v=beta&t=DW7j_Lu-PsH1iXLDQBJE0yEt1r0yRhxzZ3Lx1cwgKUk" alt="perfil"></img>
+                </div>
+            </div>
+            <img
                 align="left"
-                width="47%"
+                className="img-card"
                 src="https://github-readme-stats.vercel.app/api?username=AgustinKowalczuk&count_private=true&bg_color=202020&text_color=B9B9B9"
                 alt="AgustinKowalczuk"
               />
+                <div className="button-card-contenedor">
+
+                <button className="button-card">
+                <GitHubIcon></GitHubIcon>  Github
+                </button>
+                <button className="button-card">
+                 <LinkedInIcon></LinkedInIcon> LinkedIn
+                </button>
+                <button className="button-card">
+                 <EmailIcon></EmailIcon> Email
+                </button>
+                </div>
+                </div>
+              
             </div>
           ) :info.title === "Diapositiva 2" ?<div  style={{ display: "grid", gridTemplateColumns:'repeat(auto-fit, minmax(224px, 1fr))',height:'calc(100vh - 270px)',width:'80vw'}}>
           <img width={'100%'}  height='100%' src="https://www.datocms-assets.com/45470/1631110818-logo-react-js.png" alt="" />
