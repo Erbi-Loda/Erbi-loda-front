@@ -247,7 +247,9 @@ export default function NavBarComponent() {
             component="div"
             sx={{ display: { xs: "none", md: "flex" } }}
           >
-            <Link to={'/'}>Erbi Loda</Link>
+            <Link style={
+              {textDecoration:"none",color:"white",fontSize:"30px", fontWeight:"bold" }
+            } to={'/'}>Erbi Loda</Link>
           </Typography>
           <Search>
             <SearchIconWrapper>
