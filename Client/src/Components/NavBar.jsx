@@ -22,6 +22,7 @@ import { Link, redirect } from "react-router-dom";
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import List from '@mui/material/List';
 import ShoppingCartSharpIcon from '@mui/icons-material/ShoppingCartSharp';
+import './navbar.css'
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -72,7 +73,17 @@ export default function NavBarComponent() {
       role="presentation"
     >
       <List>
-        
+      <div className="contenedor-boton-navbar">
+                    <button>
+                      <span>
+                        PAGAR
+                      </span>
+                    </button>
+                    <button>
+                      <span>BORRAR CARRITO
+                      </span>
+                    </button>
+                  </div>
       </List>
       
     </Box>

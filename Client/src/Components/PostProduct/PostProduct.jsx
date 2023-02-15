@@ -4,12 +4,11 @@ import steps1 from "./steps.jsx";
 import BoxSteps from "./BoxSteps";
 import ImgLarge from "./ImgLarge";
 import ImgSmalls from "./ImgSmalls";
-import { Button } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import TurnedInIcon from "@mui/icons-material/TurnedIn";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import Rating from '@mui/material/Rating';
 import "./PostProduct.css";
 
 export default function PostProduct() {
@@ -25,7 +24,7 @@ export default function PostProduct() {
     stock: "",
     companyId: "63def89a96e705cd69d05ff3",
   });
-  //
+  
   const steps = steps1({
     state,
     setState,
@@ -110,7 +109,6 @@ export default function PostProduct() {
                 </h6>
                 <div className="buttons-postproduct-contenedor">
                   <div className="contenedor-boton-postproduct">
-                    {/* <button> <ShoppingCartCheckoutIcon></ShoppingCartCheckoutIcon> COMPRAR</button> */}
                     <button>
                       <span>
                         {" "}
@@ -125,6 +123,9 @@ export default function PostProduct() {
                       </span>
                     </button>
                   </div>
+            <div className="rating-completa-post-product">
+      <Rating name="half-rating" style={{fontSize:'60px'}} defaultValue={3} precision={0.5} readOnly />
+            </div>
                 </div>
               </div>
             </div>

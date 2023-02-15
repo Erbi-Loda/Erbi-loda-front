@@ -131,7 +131,19 @@
     gap: 10px;
   }
   .descripcion-completa-post-product{    
-    max-width: 41.75rem;
+    max-width: 64.75rem;
+    border-radius: 10px;
+    padding: 10px;
+    background: #ffffff70;
+  }
+  .rating-completa-post-product{    
+    max-width: 64.75rem;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    background: #ffffff70;
+    display: flex;
+    justify-content: center;
   }
   .contenedor-argegar-postproduct{
     width: 100vw; 

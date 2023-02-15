@@ -1,0 +1,65 @@
+
+.contenedor-boton-navbar{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 95vh;
+    justify-content: flex-end;
+    gap: 10px;    
+  }
+.contenedor-boton-navbar button {
+  display: inline-block;
+  border-radius: 10px;
+  border: 1px solid #003A00;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in;
+  z-index: 1;
+  padding: 7px;
+  width: 100%;
+  cursor: pointer;
+ }
+ 
+ .contenedor-boton-navbar button::before,
+ .contenedor-boton-navbar button::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  width: 0;
+  height: 150%;
+  transform: skew(15deg);
+  transition: all 0.3s;
+  overflow: hidden;
+  z-index: -1;
+ }
+ 
+ .contenedor-boton-navbar button::before {
+  left: -25px;
+  background: #006400;
+  filter: blur(8px);
+ }
+ 
+ .contenedor-boton-navbar button::after {
+  right: -25px;
+  background: #009200;
+  filter: blur(8px);
+ }
+ 
+ .contenedor-boton-navbar button:hover::before,
+ .contenedor-boton-navbar button:hover::after {
+  width: 62%;
+ }
+ 
+ .contenedor-boton-navbar button:hover span {
+  color: #ffffff;
+  transition: 0.3s;
+ }
+ 
+ .contenedor-boton-navbar button span {
+  color: #003A00;
+  font-size: 18px;
+  transition: all 0.3s ease-in;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
