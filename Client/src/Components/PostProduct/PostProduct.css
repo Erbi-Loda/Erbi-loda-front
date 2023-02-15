@@ -118,7 +118,6 @@
 
   .contenedor-postproduct-producto{    
     width: max-content;
-    background: #ffffffb0;
     padding: 20px;
     border-radius: 10px;
     margin-top: 10px;
@@ -253,4 +252,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+ }
+ .contenedor-derecha-postproduct{  
+  background: #009200;
+  border: 0.5rem solid #006400;
+  padding: 0.5rem;
+  position: relative;
+ }
+ .contenedor-fotos-postproduct{  
+  background: #ffffff70;
+  border-radius: 10px;
+  margin-right: 10px;
+  padding: 10px;
  }

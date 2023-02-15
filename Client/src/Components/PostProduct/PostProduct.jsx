@@ -8,11 +8,14 @@ import { Button } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import TurnedInIcon from "@mui/icons-material/TurnedIn";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./PostProduct.css";
 
 export default function PostProduct() {
   const [loading, setLoading] = useState(false);
   const [imgGrande, setImgGrande] = useState("");
+  const [favorite, setfavorite] = React.useState(false);
   const [state, setState] = useState({
     productoname: "",
     price: "",
@@ -40,14 +43,8 @@ export default function PostProduct() {
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
           <div className="contenedor-postproduct-producto">
-            <h3 className="titulo-postproduct">
-              {" "}
-              {state.productoname.length < 1
-                ? "TITULO DEL PRODUCTO"
-                : state.productoname}
-            </h3>
             <div style={{ width: "max-content", display: "flex" }}>
-              <div>
+              <div className="contenedor-fotos-postproduct">
                 {<ImgLarge imgGrande={imgGrande} />}
                 <div className="aspect-ratio-1-1-sub-content">
                   <ImgSmalls
@@ -57,7 +54,45 @@ export default function PostProduct() {
                   />
                 </div>
               </div>
-              <div>
+              <div className="contenedor-derecha-postproduct">
+                {/* aqui */}
+                <div style={{ position: "absolute", width: "max-content" ,zIndex:'2',right:'50px',top:'-10px'}}>
+            <TurnedInIcon
+              sx={{
+                width: "55px",
+                height: "55px",
+                position: "absolute",
+                top: "-10px",
+                color: "#003A00",
+              }}
+            ></TurnedInIcon>
+            <FavoriteIcon
+              onClick={() => {
+                favorite
+                  ? setfavorite(false)
+                  : setfavorite(true);
+              }}
+              sx={[
+                {
+                  position: "absolute",
+                  width: "35px",
+                  height: "25px",
+                  left: "10px",
+                  top: "0px",
+                },
+                favorite
+                  ? { color: "#00F106" }
+                  : { color: "white" },
+              ]}
+            ></FavoriteIcon>
+          </div>
+                {/* aqui */}
+            <h3 className="titulo-postproduct">
+              {" "}
+              {state.productoname.length < 1
+                ? "TITULO DEL PRODUCTO"
+                : state.productoname}
+            </h3>
                 <h4>
                   {" "}
                   {state.price.length < 1
@@ -89,48 +124,7 @@ export default function PostProduct() {
                         <AddShoppingCartIcon></AddShoppingCartIcon> {" "}Agregar al carrito
                       </span>
                     </button>
-                    <button>
-                      <span>
-                        {" "}
-                        <FavoriteBorderIcon></FavoriteBorderIcon> {" "}Favorito
-                      </span>
-                    </button>
-                    {/* <button> <AddShoppingCartIcon></AddShoppingCartIcon> Agregar al carrito</button>
-                <button> <FavoriteBorderIcon></FavoriteBorderIcon> Favorito</button> */}
                   </div>
-                  {/* <Button
-                  variant="outlined"
-                  style={{
-                    color: "black",
-                    fontweight: "600",
-                    borderColor: "#009007",
-                    background:'radial-gradient(circle, #00f106, #00f106, #00f106, #00f106, #00f106, #00e007, #00cf08, #00bf08, #009b08, #007906, #005904, #003a00)'
-                  }}
-                >
-                  <ShoppingCartCheckoutIcon></ShoppingCartCheckoutIcon> COMPRAR
-                </Button> */}
-                  {/* <Button
-                  variant="outlined"
-                  style={{
-                    color: "black",
-                    fontweight: "600",
-                    borderColor: "#00033a",
-                    background:'radial-gradient(circle, #2ad1ff, #2ad1ff, #2ad1ff, #2ad1ff, #2ad1ff, #1bbef1, #0cace2, #009ad2, #0072ae, #004c88, #002961, #00033a)'
-                  }}
-                >
-                  <AddShoppingCartIcon></AddShoppingCartIcon> Agregar al carrito
-                </Button>
-                <Button
-                  variant="outlined"
-                  style={{
-                    color: "black",
-                    fontweight: "600",
-                    borderColor: "#3a0000",
-                    background:'radial-gradient(circle, #ff2a2a, #ff2a2a, #ff2a2a, #ff2a2a, #ff2a2a, #ed2429, #dc1e27, #ca1825, #a40d1f, #7f0519, #5b0110, #3a0000)'
-                  }}
-                >
-                  <FavoriteBorderIcon></FavoriteBorderIcon> Favorito
-                </Button>                   */}
                 </div>
               </div>
             </div>
