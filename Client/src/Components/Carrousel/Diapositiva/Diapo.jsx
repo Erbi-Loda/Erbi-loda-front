@@ -165,8 +165,8 @@ export default function Diapo(props) {
                 width: "80vw",
               }}
             >
-              {techs.map((img) => {
-                return <CardTech urlImg={img} />;
+              {techs.map((img,i) => {
+                return <CardTech key={i+'diapo'} urlImg={img} />;
               })}
             </div>
           ) : (

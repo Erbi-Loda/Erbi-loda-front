@@ -78,7 +78,6 @@ export default function NavBarComponent() {
     </Box>
   );
   const myDecodedToken = decodeToken(localStorage.getItem("userloda"));
-  console.log("myDecodedToken", myDecodedToken);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 

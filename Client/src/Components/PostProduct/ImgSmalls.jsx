@@ -7,6 +7,7 @@ export default function ImgSmalls({stateimg,setImgGrande,imgGrande}) {
     stateimg.map((e, index) => {
         return (
           <div
+          key={index+'imgsmall'}
             onClick={() => setImgGrande(e)}
             className={
               imgGrande === e

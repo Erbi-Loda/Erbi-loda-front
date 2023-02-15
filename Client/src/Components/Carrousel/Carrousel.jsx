@@ -75,6 +75,7 @@ export default function Carrousel(props) {
           >
             {items.map((item, i) => (
               <Item
+              key={i+'carrousel'}
                 sx={{
                   backgroundColor: "rgba(0,0,0,0)",
                 }}
