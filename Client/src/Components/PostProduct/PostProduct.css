@@ -168,34 +168,6 @@
     display: grid;
     gap: 10px;
   }
-  /* .contenedor-boton-postproduct button {
-    position: relative;
-    padding: 7px;
-    width: 100%;
-    text-align: center;
-    font-size: 18px;
-    letter-spacing: 1px;
-    text-decoration: none;
-    color: #009200;
-    background: white;
-    cursor: pointer;
-    transition: ease-out 0.5s;
-    border: 2px solid #009200;
-    border-radius: 10px;
-    box-shadow: inset 0 0 0 0 #009200;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .contenedor-boton-postproduct button:hover {
-    color: white;
-    box-shadow: inset 0 -100px 0 0 #009200;
-  }
-  
-  .contenedor-boton-postproduct button:active {
-    transform: scale(0.9);
-  } */
 /* .color1 { #2f1335 };
 .color2 { #620e5d };
 .color3 { #9d007a };
