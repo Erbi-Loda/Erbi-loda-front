@@ -3,8 +3,10 @@ import Carousel from "react-material-ui-carousel";
 import Box from "@mui/material/Box";
 import { Paper } from "@mui/material";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
-import "./Carrousel.style.css";
 import Logo from "../../imgs/logo.png";
+import Diapo from "./Diapositiva/Diapo";
+
+import "./Carrousel.style.css";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -37,7 +39,8 @@ export default function Carrousel(props) {
     {
       title: "Diapositiva 3 de ejemplo",
       img: "https://ichef.bbci.co.uk/news/640/cpsprodpb/76B0/production/_105848303_gettyimages-996540050.jpg",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolorLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolorLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor",
+      description:
+        "<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolorLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolorLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor</div>",
     },
   ];
 
@@ -72,6 +75,7 @@ export default function Carrousel(props) {
           >
             {items.map((item, i) => (
               <Item
+              key={i+'carrousel'}
                 sx={{
                   backgroundColor: "rgba(0,0,0,0)",
                 }}
@@ -84,23 +88,5 @@ export default function Carrousel(props) {
         </Box>
       </ThemeProvider>
     </div>
-  );
-}
-
-function Diapo(props) {
-  const info = props.item;
-  return (
-    <Paper  sx={{
-      p: "15px",
-      bgcolor: "rgba(1,1,1,.8)",
-    }}>
-      <div className=".Container">
-        <h1 className="title-diapo">{info.title}</h1>
-        <div className="row">
-          <img draggable="false" className="img-diapo" src={`${info.img}`} />
-          <p>{info.description}</p>
-        </div>
-      </div>
-    </Paper>
   );
 }

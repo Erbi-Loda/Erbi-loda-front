@@ -19,6 +19,10 @@ import { isExpired, decodeToken } from "react-jwt";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { Button, Stack } from "@mui/material";
 import { Link, redirect } from "react-router-dom";
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
+import List from "@mui/material/List";
+import ShoppingCartSharpIcon from "@mui/icons-material/ShoppingCartSharp";
+import "./navbar.css";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -61,8 +65,22 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function NavBarComponent() {
+  const [state, setState] = React.useState({ right: false });
+  const list = () => (
+    <Box sx={{ width: 250 }} role="presentation">
+      <List>
+        <div className="contenedor-boton-navbar">
+          <button>
+            <span>PAGAR</span>
+          </button>
+          <button>
+            <span>BORRAR CARRITO</span>
+          </button>
+        </div>
+      </List>
+    </Box>
+  );
   const myDecodedToken = decodeToken(localStorage.getItem("userloda"));
-  console.log("myDecodedToken", myDecodedToken);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -137,6 +155,19 @@ export default function NavBarComponent() {
     >
       {myDecodedToken + "" !== "null" ? (
         <>
+          <MenuItem>
+            <Button onClick={() => setState({ right: true })}>
+              <ShoppingCartSharpIcon />
+            </Button>
+            <SwipeableDrawer
+              anchor={"right"}
+              open={state["right"]}
+              onClose={() => setState({ right: false })}
+              onOpen={() => setState({ right: true })}
+            >
+              {list()}
+            </SwipeableDrawer>
+          </MenuItem>
           <MenuItem>
             <IconButton
               size="large"
@@ -220,7 +251,17 @@ export default function NavBarComponent() {
             component="div"
             sx={{ display: { xs: "none", md: "flex" } }}
           >
-            <Link to={'/'}>Erbi Loda</Link>
+            <Link
+              style={{
+                textDecoration: "none",
+                color: "white",
+                fontSize: "30px",
+                fontWeight: "bold",
+              }}
+              to={"/"}
+            >
+              Erbi Loda
+            </Link>
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -242,6 +283,24 @@ export default function NavBarComponent() {
                 >
                   <Badge badgeContent={0} color="error">
                     <MailIcon />
+                  </Badge>
+                </IconButton>
+                <IconButton
+                  size="large"
+                  aria-label="show 4 new mails"
+                  color="inherit"
+                  onClick={() => setState({ right: true })}
+                >
+                  <Badge badgeContent={0} color="error">
+                    <ShoppingCartSharpIcon />
+                    <SwipeableDrawer
+                      anchor={"right"}
+                      open={state["right"]}
+                      onClose={() => setState({ right: false })}
+                      onOpen={() => setState({ right: true })}
+                    >
+                      {list()}
+                    </SwipeableDrawer>
                   </Badge>
                 </IconButton>
                 <IconButton
