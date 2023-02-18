@@ -6,6 +6,7 @@ import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import Logo from "../../imgs/logo.png";
 import Diapo from "./Diapositiva/Diapo";
 
+// estilos
 import "./Carrousel.style.css";
 
 const Item = styled(Paper)(({ theme }) => ({

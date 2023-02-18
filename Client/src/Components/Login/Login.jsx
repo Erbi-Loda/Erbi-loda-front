@@ -10,11 +10,13 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import axios from "axios";
-import "./Login.style.css";
 import { Alert } from "@mui/material";
 import logo from "../../imgs/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import ReplyIcon from "@mui/icons-material/Reply";
+
+// estilos
+import "./Login.style.css";
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
