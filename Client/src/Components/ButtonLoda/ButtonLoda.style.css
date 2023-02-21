@@ -1,0 +1,46 @@
+/* .color1 { #00F106};
+.color2 { #00C000 };
+.color3 { #009200 };
+.color4 { #006400 };
+.color5 { #003A00 }; */
+
+.buttonLoda{
+    border: 0;
+    background: rgb(34,57,195);
+background: linear-gradient(150deg, rgba(34,57,195,1) 20%, #009200 100%);
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    font-size: 18px;
+    padding: 6px;
+    cursor: pointer;
+    transition: all .5s;
+    justify-content: center;
+    margin: 5px;
+    /* box-shadow: 0px 0px 11px 0px rgba(0,0,0,1); */
+}
+
+.buttonLoda span{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    background-color: #111;
+    padding: 16px 24px;
+    border-radius: 6px;
+    transition: all .5s;
+    width: 200px;
+}
+
+.buttonLoda:hover span{
+    background: none;
+    /* color: rgb(66, 0, 104); */
+}
+
+.buttonLoda:hover{
+    /* box-shadow: 0px 0px 20px 15px rgba(0,0,0,1); */
+}
+
+.buttonLoda:active{
+    transform: scale(0.9);
+}
