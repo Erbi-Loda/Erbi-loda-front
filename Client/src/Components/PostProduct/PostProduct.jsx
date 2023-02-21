@@ -92,13 +92,13 @@ export default function PostProduct() {
                 ? "TITULO DEL PRODUCTO"
                 : state.productoname}
             </h3>
-                <h4>
+                <h4 style={{overflowWrap:'break-word'}}>
                   {" "}
                   {state.price.length < 1
                     ? "$ PRECIO"
-                    : "$ " + state.price}{" "}
+                    : "$"+ new Intl.NumberFormat( { style: 'currency', currency: 'ARS' }).format(state.price)}
                 </h4>
-                <h6>
+                <h6  style={{overflowWrap:'break-word'}}>
                   {" "}
                   {state.shortDescription.length < 1
                     ? "DESCRIPCION CORTA DEL PRODUCTO (100 CARACTERES)"

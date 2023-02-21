@@ -9,7 +9,7 @@ export const useProductsStore = create((set, get) => ({
       'Accept': 'application/json',
       'Content-Type': 'application/json',
       'Origin': '',
-      'authorization':'algo'
+      'authorization':'Bearer '+localStorage.getItem('userloda')
     } };
     await fetch("http://localhost:8080/getProductos", options)
       .then((response) => response.json())

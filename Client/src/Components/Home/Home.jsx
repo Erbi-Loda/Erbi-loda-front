@@ -4,9 +4,9 @@ import Card from "../Card/Card";
 import { useEffect, useState } from "react";
 import Carrousel from "../Carrousel/Carrousel";
 import {useProductsStore} from '../../store/productosStore';
-
 // estilos
 import './Home.style.css'
+import { Link } from "react-router-dom";
 
 
 export default function Home() {
@@ -15,7 +15,6 @@ export default function Home() {
  useEffect(()=>{
   getProducts()
  },[])
-
   const [toShow,setToShow] = useState([
     // {
     //   title:"Diapositiva 1",
@@ -33,13 +32,39 @@ export default function Home() {
     //   description:"Esta es la descripcion del elemento 3",
     // }
   ])
-
+  const [historial,setHistorial]=useState(false)
+  const pedirHistorial=async()=>{
+    const options = { method: "GET",headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Origin': '',
+      'authorization':'Bearer '+localStorage.getItem('userloda')
+    } };
+    await fetch("http://localhost:8080/gethistorialuser", options)
+      .then((response) => response.json())
+      .then((response) => {response.historial.length>0&&setHistorial(response.historial)})
+      .catch((err) => console.error(err));
+  }
+useEffect(()=>{
+  if(localStorage.getItem('userloda'))pedirHistorial()
+},[])
   return (
     <div className="containerHome">
       <NavBarComponent></NavBarComponent>
       <Carrousel toShow={toShow}></Carrousel>
       <div className="container-container-cards">
+
         <div className="container-cards">
+      {historial&&historial.map((product,index)=>{
+        return(
+          <div key={product._id}>
+          {index===0&&<h4 className="titulo-cards">Historial:</h4>}
+          <Card key={product._id} id={product._id} name={product.productname} shDesc={product.shortDescription} price={product.price} img={product.img[0]}/>
+          </div>
+          )
+        })}
+        </div>
+            <div className="container-cards">
       {product&&product.map((product,index)=>{
         return(
           <div key={product._id}>
