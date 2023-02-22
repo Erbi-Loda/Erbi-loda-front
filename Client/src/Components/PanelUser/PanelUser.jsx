@@ -115,10 +115,10 @@ export default function PanelUser(params) {
             <h1 className="userName"> {infoUser.username} </h1>
           </div>
           <div className="container-Buttons">
-              <ButtonLoda text={"Mi Historial"} icon={<HistoryIcon/>} />
-              <ButtonLoda  text={"Mis Compras"} icon={<ShoppingCartCheckoutIcon/>}/>
-              <ButtonLoda text={"Configuracio"} icon={<SettingsIcon />} />
-              <ButtonLoda text={"Cerrar Secion"} icon={<MeetingRoomIcon/>} />
+              <ButtonLoda fs={18} text={"Mi Historial"} icon={<HistoryIcon style={{fontSize:'18px'}}/>} />
+              <ButtonLoda fs={18} text={"Mis Compras"} icon={<ShoppingCartCheckoutIcon style={{fontSize:'18px'}}/>}/>
+              <ButtonLoda fs={18} text={"Configuracio"} icon={<SettingsIcon style={{fontSize:'18px'}}/>} />
+              <ButtonLoda fs={18} text={"Cerrar Secion"} icon={<MeetingRoomIcon style={{fontSize:'18px'}}/>} />
           </div>
         </section>
         {/* Espacio de Muestra para las compras/configuracion/historial */}
