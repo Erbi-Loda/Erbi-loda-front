@@ -33,7 +33,7 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
     await axios
       .post("http://localhost:8080/company/postProduct", state)
       .then((e) =>
-        setState({
+        {setState({
           productoname: "",
           price: "",
           description: "",
@@ -41,8 +41,13 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
           img: [],
           stock: "",
           companyId: "63d6e7843175bd63792f32ab",
-        })
-      );
+        })      
+        
+    setImgGrande('')
+        setLoading(false)}
+      ).catch((e)=>{        
+    setLoading(false);
+      });
   };
     const theme1 = createTheme({
         palette: {
@@ -76,7 +81,7 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
                 label="Precio:"
                 style={{ width: '8.75rem' }}
                 value={state.price}
-                onChange={(e) => setState({ ...state, price: e.target.value })}
+                onChange={(e) =>{Number(e.target.value)? setState({ ...state, price: e.target.value }):null}}
               ></TextField>
             </ThemeProvider>,
         },
@@ -92,8 +97,8 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
                 label="descripcion corta:"
                 style={{ width: '25rem' }}
                 value={state.shortDescription}
-                onChange={(e) =>
-                  setState({ ...state, shortDescription: e.target.value })
+                onChange={(e) =>{e.target.value.length<101&&
+                  setState({ ...state, shortDescription: e.target.value })}
                 }
               ></TextField>
             </ThemeProvider>,
@@ -124,7 +129,7 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
             style={{ width: '8.438rem' }}
             label="stock:"
             value={state.stock}
-            onChange={(e) => setState({ ...state, stock: e.target.value })}
+            onChange={(e) => {e.target.value<700&&setState({ ...state, stock: e.target.value })}}
             ></TextField>
             </ThemeProvider>,
         },

@@ -63,3 +63,11 @@
       transform: scale(1.2, 1);
     }
   }
+
+
+  .container-Loader{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

@@ -1,13 +1,23 @@
 import { Paper } from "@mui/material";
 //icons
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import  GitHubIcon  from "@mui/icons-material/GitHub";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
 //style
 import "../Carrousel.style.css";
 
+//img Tech
+import reactIMG from "../../../imgs/Tech/logo-react-js.png";
+import vite from "../../../imgs/Tech/logo-vite.svg";
+import cloudinary from "../../../imgs/Tech/logo-cloudinary.png";
+import jwt from "../../../imgs/Tech/logo-jwt.png";
+import mui from "../../../imgs/Tech/logo-mui.png";
+import node from "../../../imgs/Tech/logo-nodeJS.png";
+import ex from "../../../imgs/Tech/logo-EX.webp";
+import mongo from "../../../imgs/Tech/logo-mongodb.png";
+import BCrypt from "../../../imgs/Tech/logo-BCrypt.png";
+
 function CardTech(props) {
- 
   return (
     <div className="card-container-diapo">
       <img src={props.urlImg} width="150px" alt="imgTech" />
@@ -21,17 +31,7 @@ export default function Diapo(props) {
   //NO un array de url's  / Si un array de obj
   // ["url","url"]        / [{ nameTech: Mongo.png, urlImg:"url" }]
 
-  const techs = [
-    "https://www.datocms-assets.com/45470/1631110818-logo-react-js.png",
-    "https://camo.githubusercontent.com/61e102d7c605ff91efedb9d7e47c1c4a07cef59d3e1da202fd74f4772122ca4e/68747470733a2f2f766974656a732e6465762f6c6f676f2e737667",
-    "https://miro.medium.com/max/500/1*pLhqRKXZAmpJP4wpEPfM4w.png",
-    "https://miro.medium.com/max/480/1*qMC7g40mcQmeI3r-hMjY8Q.png",
-    "https://mui.com/static/logo.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/590px-Node.js_logo.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Status_iucn_EX_icon.svg/480px-Status_iucn_EX_icon.svg.png",
-    "https://img.icons8.com/color/512/mongodb.png",
-    "https://cdn-icons-png.flaticon.com/512/3132/3132127.png",
-  ];
+  const techs = [reactIMG, vite, cloudinary, jwt, mui, node, ex, mongo, BCrypt];
   return (
     <Paper
       sx={{
@@ -165,8 +165,8 @@ export default function Diapo(props) {
                 width: "80vw",
               }}
             >
-              {techs.map((img,i) => {
-                return <CardTech key={i+'diapo'} urlImg={img} />;
+              {techs.map((img, i) => {
+                return <CardTech key={i + "diapo"} urlImg={img} />;
               })}
             </div>
           ) : (

@@ -8,26 +8,76 @@ import Typography from "@mui/material/Typography";
 import TurnedInIcon from "@mui/icons-material/TurnedIn";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./Card.style.css";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function Card({
   name,
+  favorite,
   shDesc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor",
   price = "$$$",
   img,
   id,
 }) {
-  const [favorite, setfavorite] = React.useState([]);
+  // const [favorite, setfavorite] = React.useState([]);
+  // const getFavorite = async (e) => {
+  //   if (localStorage.getItem("userloda")) {
+  //     const options = {
+  //       method: "GET",
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json",
+  //         Origin: "",
+  //         authorization: "Bearer " + localStorage.getItem("userloda"),
+  //       },
+  //     };
+  //     await fetch("http://localhost:8080/getFavoritoUser", options)
+  //       .then((response) => response.json())
+  //       .then((response) => {
+  //         console.log(response.favoritos);
+  //         setfavorite(response.favoritos);
+  //       })
+  //       .catch((err) => console.error(err));
+  //   }
+  // };
+  // useEffect(() => {
+  //   getFavorite();
+  // }, []);
+
+  const putFavorite = async () => {
+    const options = {
+      method: "PUT",
+      body: JSON.stringify({ producto: id }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Origin: "",
+        authorization: "Bearer " + localStorage.getItem("userloda"),
+      },
+    };
+    await fetch("http://localhost:8080/putFavoritoUser", options)
+      .then((response) => response.json())
+      .then((response) => {
+        console.log("response", response);
+        setfavorite(response.favorito);
+      })
+      .catch((err) => console.error(err));
+  };
   return (
-    <CardBox sx={{ margin: "15px", width: "224px" }} className='contenedor-carta-postproduct'>
+    <CardBox
+      sx={{ margin: "15px", width: "224px" }}
+      className="contenedor-carta-postproduct"
+    >
+        <Link to={"/producto/" + id} style={{textDecoration:'none'}}>
       <div className="conetnedor-hover-shDesct-postproduct">
-      <div className="contenedor-img-card">
-        <img
-        src={img}
-        alt={"image product"}
-        style={{ maxWidth: "100%", maxHeight: "100%" }}
-      />
-      </div>
-      <div className="hover-shDesct-postproduct">
+          <div className="contenedor-img-card">
+            <img
+              src={img}
+              alt={"image product"}
+              style={{ maxWidth: "100%", maxHeight: "100%" }}
+            />
+          </div>
+        <div className="hover-shDesct-postproduct">
           <Typography
             style={{
               width: "224px",
@@ -42,6 +92,7 @@ export default function Card({
           </Typography>
         </div>
       </div>
+        </Link>
       <CardContent sx={{ position: "relative", padding: "16px 16px 0px 16px" }}>
         <Typography gutterBottom variant="h5" component="div">
           ${price}
@@ -54,8 +105,11 @@ export default function Card({
             right: "55px",
           }}
         >
-          <div style={{ position: "relative", width: "max-content" ,zIndex:'2'}}>
+          <div
+            style={{ position: "relative", width: "max-content", zIndex: "2" }}
+          >
             <TurnedInIcon
+              //onClick={putFavorite}
               sx={{
                 width: "55px",
                 height: "55px",
@@ -65,11 +119,7 @@ export default function Card({
               }}
             ></TurnedInIcon>
             <FavoriteIcon
-              onClick={() => {
-                favorite.includes(id)
-                  ? setfavorite(favorite.filter((e) => e !== id))
-                  : setfavorite([...favorite, id]);
-              }}
+              //onClick={putFavorite}
               sx={[
                 {
                   position: "absolute",
@@ -78,18 +128,23 @@ export default function Card({
                   left: "10px",
                   top: "0px",
                 },
-                favorite.includes(id)
+                favorite
                   ? { color: "#00F106" }
                   : { color: "white" },
               ]}
             ></FavoriteIcon>
           </div>
         </div>{" "}
-        
       </CardContent>
-      <CardActions style={{justifyContent:'space-around'}}>
-        <Button size="small">Comprar</Button>
-        <Button size="small">carrito</Button>
+      <CardActions style={{ justifyContent: "space-around" }}>
+        <Link to={"/producto/" + id} style={{textDecoration:'none'}}>
+          <Button size="small" style={{ border: "2px solid #016c12" }}>
+            Ver mas
+          </Button>
+        </Link>
+        <Button size="small" style={{ border: "2px solid #016c12" }}>
+          carrito
+        </Button>
       </CardActions>
     </CardBox>
   );

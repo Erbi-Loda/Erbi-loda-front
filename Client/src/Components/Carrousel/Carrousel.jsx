@@ -6,6 +6,7 @@ import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import Logo from "../../imgs/logo.png";
 import Diapo from "./Diapositiva/Diapo";
 
+// estilos
 import "./Carrousel.style.css";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -51,9 +52,12 @@ export default function Carrousel(props) {
           sx={{
             p: 1,
             bgcolor: "rgba(0,0,0,0)",
+            transition:"0"
           }}
         >
           <Carousel
+            height={"90vh"}
+            width={"80vh"}
             indicatorIconButtonProps={{
               style: {
                 padding: "1rem",
@@ -61,6 +65,7 @@ export default function Carrousel(props) {
                 width: ".5rem",
                 height: ".5rem",
                 margin: `1rem`,
+                // transition:"all 0ms"
               },
             }}
             activeIndicatorIconButtonProps={{

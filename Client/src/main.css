@@ -23,14 +23,6 @@ code {
 }
 
 @media (max-width: 1440px) {
-  .container-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(224px, 240px));
-    width: 100%;
-    justify-content: center;
-    padding-top: 16px;
-    position: relative;
-  }
   .img-diapo {
     width: 100%;
     height: 20rem;
@@ -41,6 +33,11 @@ code {
   .row p{
     display: none;
   }
+}
+@media (max-width: 499px){
+  .container-cards{
+    justify-content: center;
+}
 }
 .css-1knaqv7-MuiButtonBase-root-MuiButton-root{
   font-family:  'Poppins', sans-serif !important;
