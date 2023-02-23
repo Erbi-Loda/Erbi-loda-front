@@ -13,35 +13,36 @@ import { Link } from "react-router-dom";
 
 export default function Card({
   name,
+  favorite,
   shDesc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor",
   price = "$$$",
   img,
   id,
 }) {
-  const [favorite, setfavorite] = React.useState([]);
-  const getFavorite = async (e) => {
-    if (localStorage.getItem("userloda")) {
-      const options = {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Origin: "",
-          authorization: "Bearer " + localStorage.getItem("userloda"),
-        },
-      };
-      await fetch("http://localhost:8080/getFavoritoUser", options)
-        .then((response) => response.json())
-        .then((response) => {
-          console.log(response.favoritos);
-          setfavorite(response.favoritos);
-        })
-        .catch((err) => console.error(err));
-    }
-  };
-  useEffect(() => {
-    getFavorite();
-  }, []);
+  // const [favorite, setfavorite] = React.useState([]);
+  // const getFavorite = async (e) => {
+  //   if (localStorage.getItem("userloda")) {
+  //     const options = {
+  //       method: "GET",
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json",
+  //         Origin: "",
+  //         authorization: "Bearer " + localStorage.getItem("userloda"),
+  //       },
+  //     };
+  //     await fetch("http://localhost:8080/getFavoritoUser", options)
+  //       .then((response) => response.json())
+  //       .then((response) => {
+  //         console.log(response.favoritos);
+  //         setfavorite(response.favoritos);
+  //       })
+  //       .catch((err) => console.error(err));
+  //   }
+  // };
+  // useEffect(() => {
+  //   getFavorite();
+  // }, []);
 
   const putFavorite = async () => {
     const options = {
@@ -108,7 +109,7 @@ export default function Card({
             style={{ position: "relative", width: "max-content", zIndex: "2" }}
           >
             <TurnedInIcon
-              onClick={putFavorite}
+              //onClick={putFavorite}
               sx={{
                 width: "55px",
                 height: "55px",
@@ -118,7 +119,7 @@ export default function Card({
               }}
             ></TurnedInIcon>
             <FavoriteIcon
-              onClick={putFavorite}
+              //onClick={putFavorite}
               sx={[
                 {
                   position: "absolute",
@@ -127,7 +128,7 @@ export default function Card({
                   left: "10px",
                   top: "0px",
                 },
-                favorite.includes(id)
+                favorite
                   ? { color: "#00F106" }
                   : { color: "white" },
               ]}
