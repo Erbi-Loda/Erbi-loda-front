@@ -7,7 +7,7 @@ import {useProductsStore} from '../../store/productosStore';
 // estilos
 import './Home.style.css'
 import { Link } from "react-router-dom";
-
+import CarouselBoostrap from "./Carousel-Boostrap/Carousel";
 
 export default function Home() {
   const {product,getProducts,favorite,getfavorite}= useProductsStore()
@@ -52,7 +52,8 @@ useEffect(()=>{
   return (
     <div className="containerHome">
       <NavBarComponent></NavBarComponent>
-      <Carrousel toShow={toShow}></Carrousel>
+      {/* //<Carrousel toShow={toShow}></Carrousel> */}
+      <CarouselBoostrap></CarouselBoostrap>
       <div className="container-container-cards">
 
         <div className="container-cards">
