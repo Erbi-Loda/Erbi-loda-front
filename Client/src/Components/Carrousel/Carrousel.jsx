@@ -56,7 +56,7 @@ export default function Carrousel(props) {
           }}
         >
           <Carousel
-            height={"90vh"}
+            height={"87vh"}
             width={"80vh"}
             indicatorIconButtonProps={{
               style: {
@@ -64,7 +64,6 @@ export default function Carrousel(props) {
                 color: "gray",
                 width: ".5rem",
                 height: ".5rem",
-                margin: `1rem`,
                 // transition:"all 0ms"
               },
             }}
