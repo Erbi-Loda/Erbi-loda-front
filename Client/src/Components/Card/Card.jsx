@@ -14,55 +14,32 @@ import { Link } from "react-router-dom";
 export default function Card({
   name,
   favorite,
+  putFavorite,
   shDesc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor",
   price = "$$$",
   img,
   id,
 }) {
-  // const [favorite, setfavorite] = React.useState([]);
-  // const getFavorite = async (e) => {
-  //   if (localStorage.getItem("userloda")) {
-  //     const options = {
-  //       method: "GET",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //         Origin: "",
-  //         authorization: "Bearer " + localStorage.getItem("userloda"),
-  //       },
-  //     };
-  //     await fetch("http://localhost:8080/getFavoritoUser", options)
-  //       .then((response) => response.json())
-  //       .then((response) => {
-  //         console.log(response.favoritos);
-  //         setfavorite(response.favoritos);
-  //       })
-  //       .catch((err) => console.error(err));
-  //   }
-  // };
-  // useEffect(() => {
-  //   getFavorite();
-  // }, []);
 
-  const putFavorite = async () => {
-    const options = {
-      method: "PUT",
-      body: JSON.stringify({ producto: id }),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Origin: "",
-        authorization: "Bearer " + localStorage.getItem("userloda"),
-      },
-    };
-    await fetch("http://localhost:8080/putFavoritoUser", options)
-      .then((response) => response.json())
-      .then((response) => {
-        console.log("response", response);
-        setfavorite(response.favorito);
-      })
-      .catch((err) => console.error(err));
-  };
+  // const putFavorite = async () => {
+  //   const options = {
+  //     method: "PUT",
+  //     body: JSON.stringify({ producto: id }),
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //       Origin: "",
+  //       authorization: "Bearer " + localStorage.getItem("userloda"),
+  //     },
+  //   };
+  //   await fetch("http://localhost:8080/putFavoritoUser", options)
+  //     .then((response) => response.json())
+  //     .then((response) => {
+  //       console.log("response", response);
+  //       setfavorite(response.favorito);
+  //     })
+  //     .catch((err) => console.error(err));
+  // };
   return (
     <CardBox
       sx={{ margin: "15px", width: "224px" }}
@@ -109,7 +86,7 @@ export default function Card({
             style={{ position: "relative", width: "max-content", zIndex: "2" }}
           >
             <TurnedInIcon
-              //onClick={putFavorite}
+              onClick={()=>putFavorite(id)}
               sx={{
                 width: "55px",
                 height: "55px",
@@ -119,7 +96,7 @@ export default function Card({
               }}
             ></TurnedInIcon>
             <FavoriteIcon
-              //onClick={putFavorite}
+              onClick={()=>putFavorite(id)}
               sx={[
                 {
                   position: "absolute",

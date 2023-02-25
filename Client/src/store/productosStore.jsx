@@ -31,10 +31,25 @@ export const useProductsStore = create((set, get) => ({
       await fetch("http://localhost:8080/getFavoritoUser", options)
         .then((response) => response.json())
         .then((response) => { set((state)=>({...state,favorite:response.favoritos}))
-          // console.log(response.favoritos);
-          // setfavorite(response.favoritos);
         })
         .catch((err) => console.error(err));
     }
+  },
+  putFavorite:async (id) => {
+    const options = {
+      method: "PUT",
+      body: JSON.stringify({ producto: id }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Origin: "",
+        authorization: "Bearer " + localStorage.getItem("userloda"),
+      },
+    };
+    await fetch("http://localhost:8080/putFavoritoUser", options)
+      .then((response) => response.json())
+      .then((response) => { {set((state)=>({...state,favorite:response.favorito}))}
+      })
+      .catch((err) => console.error(err));
   }
 }));

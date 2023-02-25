@@ -8,7 +8,7 @@ import './Home.style.css'
 import CarouselBoostrap from "./Carousel-Boostrap/Carousel";
 
 export default function Home() {
-  const {product,getProducts,favorite,getfavorite}= useProductsStore()
+  const {product,getProducts,favorite,getfavorite,putFavorite}= useProductsStore()
   
  useEffect(()=>{
   getProducts()
@@ -58,7 +58,7 @@ useEffect(()=>{
         return(
           <div key={product._id}>
           {index===0&&<h4 className="titulo-cards">Historial:</h4>}
-          <Card key={product._id}favorite={favorite?favorite.some(e=>e===product._id):false}   id={product._id} name={product.productname} shDesc={product.shortDescription} price={product.price}img={product.img[0]} />
+          <Card key={product._id}favorite={favorite?favorite.some(e=>e===product._id):false} putFavorite={putFavorite}  id={product._id} name={product.productname} shDesc={product.shortDescription} price={product.price}img={product.img[0]} />
           </div>
           )
         })}
@@ -68,7 +68,7 @@ useEffect(()=>{
         return(
           <div key={product._id}>
           {index===0&&<h4 className="titulo-cards">Productos:</h4>}
-          <Card key={product._id}favorite={favorite?favorite.some(e=>e===product._id):false}  id={product._id} name={product.productname} shDesc={product.shortDescription} price={product.price} img={product.img[0]}/>
+          <Card key={product._id}favorite={favorite?favorite.some(e=>e===product._id):false} putFavorite={putFavorite} id={product._id} name={product.productname} shDesc={product.shortDescription} price={product.price} img={product.img[0]}/>
           </div>
           )
         })}
