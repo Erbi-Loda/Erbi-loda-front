@@ -2,13 +2,11 @@ import * as React from "react";
 import CardBox from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TurnedInIcon from "@mui/icons-material/TurnedIn";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./Card.style.css";
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function Card({
@@ -20,26 +18,6 @@ export default function Card({
   img,
   id,
 }) {
-
-  // const putFavorite = async () => {
-  //   const options = {
-  //     method: "PUT",
-  //     body: JSON.stringify({ producto: id }),
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //       Origin: "",
-  //       authorization: "Bearer " + localStorage.getItem("userloda"),
-  //     },
-  //   };
-  //   await fetch("http://localhost:8080/putFavoritoUser", options)
-  //     .then((response) => response.json())
-  //     .then((response) => {
-  //       console.log("response", response);
-  //       setfavorite(response.favorito);
-  //     })
-  //     .catch((err) => console.error(err));
-  // };
   return (
     <CardBox
       sx={{ margin: "15px", width: "224px" }}
