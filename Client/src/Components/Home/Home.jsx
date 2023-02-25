@@ -1,5 +1,5 @@
 
-import NavBarComponent from "../Navbar/Navbar.jsx";
+// import NavBarComponent from "../Navbar/Navbar.jsx";
 import Card from "../Card/Card";
 import { useEffect, useState } from "react";
 import {useProductsStore} from '../../store/productosStore';
@@ -51,7 +51,7 @@ useEffect(()=>{
 },[])
   return (
     <div className="containerHome">
-      <NavBarComponent></NavBarComponent>
+      {/* <NavBarComponent></NavBarComponent> */}
       <CarouselBoostrap></CarouselBoostrap>
       <div className="container-container-cards">
 

@@ -4,7 +4,7 @@ import HistoryIcon from '@mui/icons-material/History';
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 
-import NavBarComponent from "../Navbar/NavBar.jsx";
+// import NavBarComponent from "../Navbar/NavBar.jsx";
 import "./PanelUser.style.css";
 import ButtonLoda from '../ButtonLoda/ButtonLoda';
 
@@ -104,7 +104,7 @@ export default function PanelUser(params) {
 
   return (
     <div>
-      <NavBarComponent />
+      {/* <NavBarComponent /> */}
       <div className="container-PanelUser">
         {/* Barra de navegacion de el usuario */}
         <section className="NavUser">
