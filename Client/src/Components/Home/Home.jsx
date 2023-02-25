@@ -1,5 +1,5 @@
 
-import NavBarComponent from "../Navbar/Navbar";
+import NavBarComponent from "../Navbar/Navbar.jsx";
 import Card from "../Card/Card";
 import { useEffect, useState } from "react";
 import {useProductsStore} from '../../store/productosStore';
