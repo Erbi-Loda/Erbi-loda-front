@@ -88,6 +88,7 @@ export default function NavbarComponent() {
                       width={"27px"}
                       style={{ filter: "invert(75%)" }}
                       src={profilesvglogo}
+                      alt="nojoda"
                     />
                   }
                 />
@@ -100,6 +101,7 @@ export default function NavbarComponent() {
                       width={"20px"}
                       style={{ filter: "invert(75%)" }}
                       src={miscomprassvglogo}
+                      alt="nojoda"
                     />
                   }
                 />
@@ -115,6 +117,7 @@ export default function NavbarComponent() {
                       width={"27px"}
                       style={{ filter: "invert(75%)" }}
                       src={loginsvglogo}
+                      alt="nojoda"
                     />
                   }
                 />
@@ -127,6 +130,7 @@ export default function NavbarComponent() {
                       width={"27px"}
                       style={{ filter: "invert(75%)" }}
                       src={registersvglogo}
+                      alt="nojoda"
                     />
                   }
                 />
@@ -141,6 +145,7 @@ export default function NavbarComponent() {
                   width={"27px"}
                   style={{ filter: "invert(75%)" }}
                   src={carritosvglogo}
+                  alt="nojoda"
                 />
               }
             />
@@ -169,6 +174,7 @@ export default function NavbarComponent() {
                     width={"27px"}
                     style={{ filter: "invert(75%)" }}
                     src={profilesvglogo}
+                    alt="nojoda"
                   />
                 }
               />
@@ -181,6 +187,7 @@ export default function NavbarComponent() {
                     width={"20px"}
                     style={{ filter: "invert(75%)" }}
                     src={miscomprassvglogo}
+                    alt="nojoda"
                   />
                 }
               />
@@ -196,6 +203,7 @@ export default function NavbarComponent() {
                     width={"27px"}
                     style={{ filter: "invert(75%)" }}
                     src={loginsvglogo}
+                    alt="nojoda"
                   />
                 }
               />
@@ -208,6 +216,7 @@ export default function NavbarComponent() {
                     width={"27px"}
                     style={{ filter: "invert(75%)" }}
                     src={registersvglogo}
+                    alt="nojoda"
                   />
                 }
               />
@@ -222,6 +231,7 @@ export default function NavbarComponent() {
                 width={"27px"}
                 style={{ filter: "invert(75%)" }}
                 src={carritosvglogo}
+                alt="nojoda"
               />
             }
           />
