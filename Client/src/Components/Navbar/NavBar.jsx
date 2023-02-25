@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import BurguerButton from "./BurguerButton.jsx";
-import ButtonLoda from "../ButtonLoda/ButtonLoda.jsx";
 import logologo from "../../imgs/logo.png";
-import loginsvglogo from "../../imgs/svg/loginsvg.svg";
-import registersvglogo from "../../imgs/svg/registersvg.svg";
-import profilesvglogo from "../../imgs/svg/profilesvg.svg";
-import miscomprassvglogo from "../../imgs/svg/miscomprassvg.svg";
-import carritosvglogo from "../../imgs/svg/carritosvg.svg";
+// import ButtonLoda from "../ButtonLoda/ButtonLoda.jsx";
+// import loginsvglogo from "../../imgs/svg/loginsvg.svg";
+// import registersvglogo from "../../imgs/svg/registersvg.svg";
+// import profilesvglogo from "../../imgs/svg/profilesvg.svg";
+// import miscomprassvglogo from "../../imgs/svg/miscomprassvg.svg";
+// import carritosvglogo from "../../imgs/svg/carritosvg.svg";
 import "./navbar.css";
 
 export default function NavbarComponent() {
@@ -79,7 +79,7 @@ export default function NavbarComponent() {
           <div className="noburguer">
             {localStorage.getItem("userloda") ? (
               <>
-                <ButtonLoda
+                {/* <ButtonLoda
                   fs={18}
                   text={"Perfil"}
                   type={"small"}
@@ -91,8 +91,8 @@ export default function NavbarComponent() {
                       alt="nojoda"
                     />
                   }
-                />
-                <ButtonLoda
+                /> */}
+                {/* <ButtonLoda
                   fs={18}
                   text={"Mis compras"}
                   type={"small"}
@@ -104,11 +104,11 @@ export default function NavbarComponent() {
                       alt="nojoda"
                     />
                   }
-                />
+                /> */}
               </>
             ) : (
               <>
-                <ButtonLoda
+                {/* <ButtonLoda
                   fs={18}
                   text={"Ingresá"}
                   type={"small"}
@@ -119,9 +119,9 @@ export default function NavbarComponent() {
                       src={loginsvglogo}
                       alt="nojoda"
                     />
-                  }
-                />
-                <ButtonLoda
+                  } 
+                />*/}
+                {/* <ButtonLoda
                   fs={18}
                   text={"Creá tu cuenta"}
                   type={"small"}
@@ -133,10 +133,10 @@ export default function NavbarComponent() {
                       alt="nojoda"
                     />
                   }
-                />
+                /> */}
               </>
             )}
-            <ButtonLoda
+            {/* <ButtonLoda
               fs={18}
               text={""}
               type={"small"}
@@ -148,7 +148,7 @@ export default function NavbarComponent() {
                   alt="nojoda"
                 />
               }
-            />
+            /> */}
           </div>
           {/* burger */}
         </nav>
@@ -165,7 +165,7 @@ export default function NavbarComponent() {
           </div>
           {localStorage.getItem("userloda") ? (
             <>
-              <ButtonLoda
+              {/* <ButtonLoda
                 fs={18}
                 text={"Perfil"}
                 type={"normal"}
@@ -190,11 +190,11 @@ export default function NavbarComponent() {
                     alt="nojoda"
                   />
                 }
-              />
+              /> */}
             </>
           ) : (
             <>
-              <ButtonLoda
+              {/* <ButtonLoda
                 fs={18}
                 text={"Ingresá"}
                 type={"normal"}
@@ -219,10 +219,10 @@ export default function NavbarComponent() {
                     alt="nojoda"
                   />
                 }
-              />
+              /> */}
             </>
           )}
-          <ButtonLoda
+          {/* <ButtonLoda
             fs={18}
             text={""}
             type={"normal"}
@@ -234,7 +234,7 @@ export default function NavbarComponent() {
                 alt="nojoda"
               />
             }
-          />
+          /> */}
         </div>
       </div>
     </>
