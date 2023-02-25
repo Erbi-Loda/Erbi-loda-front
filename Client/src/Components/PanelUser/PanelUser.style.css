@@ -1,6 +1,6 @@
 .NavUser {
   border: 14px green solid;
-  height: calc( 100vh - 91.99px );
+  height: calc( 100vh - 108px);
   overflow: hidden;
   display: flex;
   flex-direction: column;

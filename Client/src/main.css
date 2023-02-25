@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,900&display=swap");
+*, ::after, ::before{   box-sizing:border-box }
 body {
   margin: 0;
   font-family: "Poppins", sans-serif !important;
@@ -23,6 +24,12 @@ span,
 h6 {
   font-family: "Poppins", sans-serif !important;
 }
+
+h2{
+  font-weight: bold !important;
+  font-size: 40px !important;
+}
+
 code {
   font-family: "Poppins", sans-serif;
 }

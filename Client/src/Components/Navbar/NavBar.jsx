@@ -43,7 +43,7 @@ export default function NavbarComponent() {
             }}
             to={"/"}
           >
-            <h2 style={{ margin: "0" }}>
+            <h2 style={{ margin: "0", fontSize: "40px", display:"flex", justifyContent:"center", alignItems:"center"}}>
               <img
                 src={logologo}
                 style={{ width: "40px", height: "40px", marginRight: "1rem" }}
