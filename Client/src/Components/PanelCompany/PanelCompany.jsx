@@ -6,7 +6,7 @@ import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 
 import logoGraph from '../../imgs/svg/graphLogo.svg'
 
-import NavBarComponent from "../Navbar/NavBar";
+import NavBarComponent from "../Navbar/NavBar.jsx";
 import "./PanelCompany.style.css";
 import ButtonLoda from '../ButtonLoda/ButtonLoda';
 
