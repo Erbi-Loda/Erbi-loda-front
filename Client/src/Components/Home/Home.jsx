@@ -1,5 +1,5 @@
 
-import NavBarComponent from "../NavBar";
+import NavBarComponent from "../Navbar/NavBar";
 import Card from "../Card/Card";
 import { useEffect, useState } from "react";
 import Carrousel from "../Carrousel/Carrousel";

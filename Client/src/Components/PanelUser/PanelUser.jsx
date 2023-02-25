@@ -4,7 +4,7 @@ import HistoryIcon from '@mui/icons-material/History';
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 
-import NavBarComponent from "../NavBar";
+import NavBarComponent from "../Navbar/NavBar";
 import "./PanelUser.style.css";
 import ButtonLoda from '../ButtonLoda/ButtonLoda';
 

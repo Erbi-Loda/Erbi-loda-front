@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NavBarComponent from "../NavBar";
+import NavBarComponent from "../Navbar/NavBar";
 import steps1 from "./steps.jsx";
 import BoxSteps from "./BoxSteps";
 import ImgLarge from "./ImgLarge";

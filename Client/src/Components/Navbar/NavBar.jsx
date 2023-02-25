@@ -14,7 +14,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import logo from "../imgs/logo.png";
+import logo from "../../imgs/logo.png";
 import { isExpired, decodeToken } from "react-jwt";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { Button, Stack } from "@mui/material";
