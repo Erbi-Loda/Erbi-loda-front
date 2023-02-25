@@ -1,11 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,900&display=swap");
 body {
   margin: 0;
-  font-family:  'Poppins', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-   background: rgb(0,146,0);
-background: radial-gradient(circle, rgba(0,146,0,1) 0%, rgba(0,100,0,1) 40%, rgba(0,58,0,1) 100%);
+  background-image: linear-gradient(
+    to top,
+    #03242d,
+    #004149,
+    #005f51,
+    #007c40,
+    #009700
+  );
 }
 h1,
 h2,
@@ -14,11 +20,11 @@ h4,
 h5,
 div,
 span,
-h6{
-  font-family:  'Poppins', sans-serif !important;
+h6 {
+  font-family: "Poppins", sans-serif !important;
 }
 code {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .no-scroll {
   max-height: 100vh;
@@ -31,16 +37,16 @@ code {
   }
 }
 
-@media (max-width: 800px){
-  .row p{
+@media (max-width: 800px) {
+  .row p {
     display: none;
   }
 }
-@media (max-width: 499px){
-  .container-cards{
+@media (max-width: 499px) {
+  .container-cards {
     justify-content: center;
+  }
 }
-}
-.css-1knaqv7-MuiButtonBase-root-MuiButton-root{
-  font-family:  'Poppins', sans-serif !important;
+.css-1knaqv7-MuiButtonBase-root-MuiButton-root {
+  font-family: "Poppins", sans-serif !important;
 }
