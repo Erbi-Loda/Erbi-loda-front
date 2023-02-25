@@ -4,9 +4,8 @@ body {
   font-family:  'Poppins', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./imgs/background.png");
-  background-size: cover;
-  background-repeat: no-repeat;
+   background: rgb(0,146,0);
+background: radial-gradient(circle, rgba(0,146,0,1) 0%, rgba(0,100,0,1) 40%, rgba(0,58,0,1) 100%);
 }
 h1,
 h2,

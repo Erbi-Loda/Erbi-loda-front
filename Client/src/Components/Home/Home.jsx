@@ -1,12 +1,11 @@
 
-import NavBarComponent from "../Navbar/NavBar";
+import NavBarComponent from "../Navbar/NavBar2";
 import Card from "../Card/Card";
 import { useEffect, useState } from "react";
 import Carrousel from "../Carrousel/Carrousel";
 import {useProductsStore} from '../../store/productosStore';
 // estilos
 import './Home.style.css'
-import { Link } from "react-router-dom";
 import CarouselBoostrap from "./Carousel-Boostrap/Carousel";
 
 export default function Home() {

@@ -18,6 +18,20 @@ background: linear-gradient(150deg, rgba(34,57,195,1) 20%, #009200 100%);
     margin: 5px;
     /* box-shadow: 0px 0px 11px 0px rgba(0,0,0,1); */
 }
+.buttonLodaSmall{
+    border: 0;
+    background: rgb(34,57,195);
+    background: linear-gradient(150deg, rgba(34,57,195,1) 20%, #009200 100%);
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    padding: 3px;
+    cursor: pointer;
+    transition: all .5s;
+    justify-content: center;
+    margin: 5px;
+    /* box-shadow: 0px 0px 11px 0px rgba(0,0,0,1); */
+}
 
 .buttonLoda span{
     display: flex;
@@ -30,11 +44,31 @@ background: linear-gradient(150deg, rgba(34,57,195,1) 20%, #009200 100%);
     transition: all .5s;
     width: 200px;
 }
+.buttonLodaSmall span{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    background-color: #111;
+    padding: 6px 6px;
+    gap: 6px;
+    border-radius: 6px;
+    height: 100%;
+    transition: all .5s;
+    width: 100%;
+}
 
 .buttonLoda:hover span{
     background: none;
 }
 
 .buttonLoda:active{
+    transform: scale(0.9);
+}
+.buttonLodaSmall:hover span{
+    background: none;
+}
+
+.buttonLodaSmall:active{
     transform: scale(0.9);
 }
