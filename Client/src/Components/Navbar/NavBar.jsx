@@ -13,14 +13,14 @@ import "./navbar.css";
 export default function NavbarComponent() {
   const [estado, setestado] = useState(false);
   const cambiarestado = () => {
-    if(estado){
+    if (estado) {
       setestado(false);
-      document.body.classList.remove('no-scroll');
+      document.body.classList.remove("no-scroll");
     }
-    if(!estado){
+    if (!estado) {
       setestado(true);
-      document.body.classList.add('no-scroll');
-        }
+      document.body.classList.add("no-scroll");
+    }
   };
   return (
     <>
@@ -43,7 +43,15 @@ export default function NavbarComponent() {
             }}
             to={"/"}
           >
-            <h2 style={{ margin: "0", fontSize: "40px", display:"flex", justifyContent:"center", alignItems:"center"}}>
+            <h2
+              style={{
+                margin: "0",
+                fontSize: "40px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <img
                 src={logologo}
                 style={{ width: "40px", height: "40px", marginRight: "1rem" }}
@@ -63,10 +71,9 @@ export default function NavbarComponent() {
             </div>
           </div>
           {/* burger */}
-          <div onClick={cambiarestado} className="burguer">
+          <div onClick={()=>cambiarestado()} className="burguer">
             <BurguerButton
               estado={estado}
-              cambiarestado={cambiarestado}
             ></BurguerButton>
           </div>
           <div className="noburguer">
