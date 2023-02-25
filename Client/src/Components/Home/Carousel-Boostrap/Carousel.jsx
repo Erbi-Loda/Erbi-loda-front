@@ -2,7 +2,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 function CarouselBoostrap() {
   return (
-    <Carousel style={{height:'70vh',width:'100vw'}}>
+    <Carousel style={{height:'70vh'}}>
       <Carousel.Item interval={1000}>
         <img
           className="d-block w-100"
@@ -25,7 +25,7 @@ function CarouselBoostrap() {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item style={{background:'red',height:'70vh',width:'100vw'}}>
+      <Carousel.Item style={{background:'red',height:'70vh'}}>
         <img
           className="d-block w-100"
           src="holder.js/800x400?text=Third slide&bg=20232a"
