@@ -1,390 +1,225 @@
-import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-import Badge from "@mui/material/Badge";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import MoreIcon from "@mui/icons-material/MoreVert";
-import logo from "../../imgs/logo.png";
-import { isExpired, decodeToken } from "react-jwt";
-import LoadingButton from "@mui/lab/LoadingButton";
-import { Button, Stack } from "@mui/material";
-import { Link, redirect } from "react-router-dom";
-import SwipeableDrawer from "@mui/material/SwipeableDrawer";
-import List from "@mui/material/List";
-import ShoppingCartSharpIcon from "@mui/icons-material/ShoppingCartSharp";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import BurguerButton from "./BurguerButton.jsx";
+import ButtonLoda from "../ButtonLoda/ButtonLoda.jsx";
+import logologo from "../../imgs/logo.png";
+import loginsvglogo from "../../imgs/svg/loginsvg.svg";
+import registersvglogo from "../../imgs/svg/registersvg.svg";
+import profilesvglogo from "../../imgs/svg/profilesvg.svg";
+import miscomprassvglogo from "../../imgs/svg/miscomprassvg.svg";
+import carritosvglogo from "../../imgs/svg/carritosvg.svg";
 import "./navbar.css";
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
-    width: "auto",
-  },
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
-  },
-}));
-
-export default function NavBarComponent() {
-  const [state, setState] = React.useState({ right: false });
-  const list = () => (
-    <Box sx={{ width: 250 }} role="presentation">
-      <List>
-        <div className="contenedor-boton-navbar">
-          <button>
-            <span>PAGAR</span>
-          </button>
-          <button>
-            <span>BORRAR CARRITO</span>
-          </button>
-        </div>
-      </List>
-    </Box>
-  );
-  const myDecodedToken = decodeToken(localStorage.getItem("userloda"));
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
+export default function NavbarComponent() {
+  const [estado, setestado] = useState(false);
+  const cambiarestado = () => {
+    if(estado){
+      setestado(false);
+      document.body.classList.remove('no-scroll');
+    }
+    if(!estado){
+      setestado(true);
+      document.body.classList.add('no-scroll');
+        }
   };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const menuId = "primary-search-account-menu";
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>PERFIL</MenuItem>
-      <MenuItem onClick={handleMenuClose}>CONFIGURACION</MenuItem>
-      <MenuItem onClick={handleMenuClose}>CREAR EMPRESA</MenuItem>
-      <MenuItem
-        onClick={() => {
-          localStorage.removeItem("userloda");
-          handleMenuClose();
-          window.location.reload();
+  return (
+    <>
+      <div style={{ height: "80px" }}></div>
+      <div
+        style={{
+          overflow: "hidden",
+          position: "absolute",
+          zIndex: 10000,
+          top: "0",
         }}
       >
-        CERRAR SESSION
-      </MenuItem>
-    </Menu>
-  );
-
-  const mobileMenuId = "primary-search-account-menu-mobile";
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      {myDecodedToken + "" !== "null" ? (
-        <>
-          <MenuItem>
-            <Button onClick={() => setState({ right: true })}>
-              <ShoppingCartSharpIcon />
-            </Button>
-            <SwipeableDrawer
-              anchor={"right"}
-              open={state["right"]}
-              onClose={() => setState({ right: false })}
-              onOpen={() => setState({ right: true })}
-            >
-              {list()}
-            </SwipeableDrawer>
-          </MenuItem>
-          <MenuItem>
-            <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <Badge badgeContent={0} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <p>Messages</p>
-          </MenuItem>
-          <MenuItem>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={0} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <p>Notifications</p>
-          </MenuItem>
-          <MenuItem onClick={handleProfileMenuOpen}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="primary-search-account-menu"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-            <p>Profile</p>
-          </MenuItem>
-        </>
-      ) : (
-        <Stack direction="column" spacing={2}>
-          <Link to="/login" style={{ textDecoration: "none" }}>
-            <Button
-              variant="outlined"
-              style={{
-                color: "black",
-                fontweight: "600",
-                borderColor: "white",
-              }}
-            >
-              Ingresar
-            </Button>
-          </Link>
-          <Link to="/register" style={{ textDecoration: "none" }}>
-            <Button
-              variant="outlined"
-              style={{
-                color: "black",
-                fontweight: "600",
-                borderColor: "white",
-              }}
-            >
-              Registrate
-            </Button>
-          </Link>
-        </Stack>
-      )}
-    </Menu>
-  );
-
-  return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ backgroundColor: "#006400" }}>
-        <Toolbar>
-          <img
-            src={logo}
-            style={{ width: "40px", height: "40px", marginRight: "1rem" }}
-            alt=""
-          />
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", md: "flex" } }}
+        <nav className="NavContainer">
+          <Link
+            style={{
+              textDecoration: "none",
+              color: "white",
+              fontSize: "30px",
+              fontWeight: "bold",
+            }}
+            to={"/"}
           >
-            <Link
-              style={{
-                textDecoration: "none",
-                color: "white",
-                fontSize: "30px",
-                fontWeight: "bold",
-              }}
-              to={"/"}
-            >
+            <h2 style={{ margin: "0" }}>
+              <img
+                src={logologo}
+                style={{ width: "40px", height: "40px", marginRight: "1rem" }}
+                alt=""
+              />
               Erbi Loda
-            </Link>
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
+            </h2>
+          </Link>
+          <div className="noburguer">
+            <div className="group">
+              <svg className="icon" aria-hidden="true" viewBox="0 0 24 24">
+                <g>
+                  <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+                </g>
+              </svg>
+              <input placeholder="Search" type="search" className="input" />
+            </div>
+          </div>
+          {/* burger */}
+          <div onClick={cambiarestado} className="burguer">
+            <BurguerButton
+              estado={estado}
+              cambiarestado={cambiarestado}
+            ></BurguerButton>
+          </div>
+          <div className="noburguer">
+            {localStorage.getItem("userloda") ? (
+              <>
+                <ButtonLoda
+                  fs={18}
+                  text={"Perfil"}
+                  type={"small"}
+                  icon={
+                    <img
+                      width={"27px"}
+                      style={{ filter: "invert(75%)" }}
+                      src={profilesvglogo}
+                    />
+                  }
+                />
+                <ButtonLoda
+                  fs={18}
+                  text={"Mis compras"}
+                  type={"small"}
+                  icon={
+                    <img
+                      width={"20px"}
+                      style={{ filter: "invert(75%)" }}
+                      src={miscomprassvglogo}
+                    />
+                  }
+                />
+              </>
+            ) : (
+              <>
+                <ButtonLoda
+                  fs={18}
+                  text={"Ingresá"}
+                  type={"small"}
+                  icon={
+                    <img
+                      width={"27px"}
+                      style={{ filter: "invert(75%)" }}
+                      src={loginsvglogo}
+                    />
+                  }
+                />
+                <ButtonLoda
+                  fs={18}
+                  text={"Creá tu cuenta"}
+                  type={"small"}
+                  icon={
+                    <img
+                      width={"27px"}
+                      style={{ filter: "invert(75%)" }}
+                      src={registersvglogo}
+                    />
+                  }
+                />
+              </>
+            )}
+            <ButtonLoda
+              fs={18}
+              text={""}
+              type={"small"}
+              icon={
+                <img
+                  width={"27px"}
+                  style={{ filter: "invert(75%)" }}
+                  src={carritosvglogo}
+                />
+              }
             />
-          </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          {myDecodedToken + "" !== "null" ? (
+          </div>
+          {/* burger */}
+        </nav>
+        <div className={estado ? "burguerEffect" : "burguerEffectNoactive"}>
+          <div>
+            <div className="group">
+              <svg className="icon" aria-hidden="true" viewBox="0 0 24 24">
+                <g>
+                  <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+                </g>
+              </svg>
+              <input placeholder="Search" type="search" className="input" />
+            </div>
+          </div>
+          {localStorage.getItem("userloda") ? (
             <>
-              <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                <IconButton
-                  size="large"
-                  aria-label="show 4 new mails"
-                  color="inherit"
-                >
-                  <Badge badgeContent={0} color="error">
-                    <MailIcon />
-                  </Badge>
-                </IconButton>
-                <IconButton
-                  size="large"
-                  aria-label="show 4 new mails"
-                  color="inherit"
-                  onClick={() => setState({ right: true })}
-                >
-                  <Badge badgeContent={0} color="error">
-                    <ShoppingCartSharpIcon />
-                    <SwipeableDrawer
-                      anchor={"right"}
-                      open={state["right"]}
-                      onClose={() => setState({ right: false })}
-                      onOpen={() => setState({ right: true })}
-                    >
-                      {list()}
-                    </SwipeableDrawer>
-                  </Badge>
-                </IconButton>
-                <IconButton
-                  size="large"
-                  aria-label="show 17 new notifications"
-                  color="inherit"
-                >
-                  <Badge badgeContent={0} color="error">
-                    <NotificationsIcon />
-                  </Badge>
-                </IconButton>
-                <IconButton
-                  size="large"
-                  edge="end"
-                  aria-label="account of current user"
-                  aria-controls={menuId}
-                  aria-haspopup="true"
-                  onClick={handleProfileMenuOpen}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-              </Box>
-              <Box sx={{ display: { xs: "flex", md: "none" } }}>
-                <IconButton
-                  size="large"
-                  aria-label="show more"
-                  aria-controls={mobileMenuId}
-                  aria-haspopup="true"
-                  onClick={handleMobileMenuOpen}
-                  color="inherit"
-                >
-                  <MoreIcon />
-                </IconButton>
-              </Box>
+              <ButtonLoda
+                fs={18}
+                text={"Perfil"}
+                type={"normal"}
+                icon={
+                  <img
+                    width={"27px"}
+                    style={{ filter: "invert(75%)" }}
+                    src={profilesvglogo}
+                  />
+                }
+              />
+              <ButtonLoda
+                fs={18}
+                text={"Mis compras"}
+                type={"normal"}
+                icon={
+                  <img
+                    width={"20px"}
+                    style={{ filter: "invert(75%)" }}
+                    src={miscomprassvglogo}
+                  />
+                }
+              />
             </>
           ) : (
             <>
-              <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                <Stack direction="row" spacing={2}>
-                  <Link to="/login" style={{ textDecoration: "none" }}>
-                    <Button
-                      variant="outlined"
-                      style={{
-                        color: "white",
-                        fontweight: "600",
-                        borderColor: "white",
-                      }}
-                    >
-                      Ingresar
-                    </Button>
-                  </Link>
-                  <Link to="/register" style={{ textDecoration: "none" }}>
-                    <Button
-                      variant="outlined"
-                      style={{
-                        color: "white",
-                        fontweight: "600",
-                        borderColor: "white",
-                      }}
-                    >
-                      registrarse
-                    </Button>
-                  </Link>
-                </Stack>
-              </Box>
-              <Box sx={{ display: { xs: "flex", md: "none" } }}>
-                <IconButton
-                  size="large"
-                  aria-label="show more"
-                  aria-controls={mobileMenuId}
-                  aria-haspopup="true"
-                  onClick={handleMobileMenuOpen}
-                  color="inherit"
-                >
-                  <MoreIcon />
-                </IconButton>
-              </Box>
+              <ButtonLoda
+                fs={18}
+                text={"Ingresá"}
+                type={"normal"}
+                icon={
+                  <img
+                    width={"27px"}
+                    style={{ filter: "invert(75%)" }}
+                    src={loginsvglogo}
+                  />
+                }
+              />
+              <ButtonLoda
+                fs={18}
+                text={"Creá tu cuenta"}
+                type={"normal"}
+                icon={
+                  <img
+                    width={"27px"}
+                    style={{ filter: "invert(75%)" }}
+                    src={registersvglogo}
+                  />
+                }
+              />
             </>
           )}
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </Box>
+          <ButtonLoda
+            fs={18}
+            text={""}
+            type={"normal"}
+            icon={
+              <img
+                width={"27px"}
+                style={{ filter: "invert(75%)" }}
+                src={carritosvglogo}
+              />
+            }
+          />
+        </div>
+      </div>
+    </>
   );
 }

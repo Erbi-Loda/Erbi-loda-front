@@ -1,8 +1,7 @@
 
-import NavBarComponent from "../Navbar/NavBar2";
+import NavBarComponent from "../Navbar/Navbar";
 import Card from "../Card/Card";
 import { useEffect, useState } from "react";
-import Carrousel from "../Carrousel/Carrousel";
 import {useProductsStore} from '../../store/productosStore';
 // estilos
 import './Home.style.css'
@@ -51,7 +50,6 @@ useEffect(()=>{
   return (
     <div className="containerHome">
       <NavBarComponent></NavBarComponent>
-      {/* //<Carrousel toShow={toShow}></Carrousel> */}
       <CarouselBoostrap></CarouselBoostrap>
       <div className="container-container-cards">
 

@@ -20,7 +20,10 @@ h6{
 code {
   font-family: 'Poppins', sans-serif;
 }
-
+.no-scroll {
+  max-height: 100vh;
+  overflow: hidden;
+}
 @media (max-width: 1440px) {
   .img-diapo {
     width: 100%;
