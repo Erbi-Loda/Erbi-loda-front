@@ -1,7 +1,5 @@
 {
-    "version": 2,
-    "name": "erbiloda",
-    "routes": [
-       { "src": "/(.*)", "dest": "/main.js" }
-    ]
+   "rewrites":  [
+     {"source": "/(.*)", "destination": "/"}
+   ]
  }
