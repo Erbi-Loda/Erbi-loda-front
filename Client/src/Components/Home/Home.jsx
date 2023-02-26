@@ -7,7 +7,7 @@ import './Home.style.css'
 import CarouselBoostrap from "./Carousel-Boostrap/Carousel";
 
 export default function Home() {
-  const {getProductsRandom,getProducts,favorite,getfavorite,putFavorite,productsPopulate,productsRandom,getProductsPopulate}= useProductsStore()
+  const {getProductsRandom,getProducts,favorite,DetalleProduct,getfavorite,putFavorite,productsPopulate,productsRandom,getProductsPopulate}= useProductsStore()
   
  useEffect(()=>{
   getProducts()
@@ -59,18 +59,17 @@ useEffect(()=>{
         return(
           <div key={product._id}>
           {index===0&&<h4 className="titulo-cards">Historial:</h4>}
-          <Card key={product._id}favorite={favorite?favorite.some(e=>e===product._id):false} putFavorite={putFavorite}  id={product._id} name={product.productname} shDesc={product.shortDescription} price={product.price}img={product.img[0]} />
+          <Card DetalleProduct={DetalleProduct} key={product._id}favorite={favorite?favorite.some(e=>e===product._id):false} putFavorite={putFavorite}  id={product._id} name={product.productname} shDesc={product.shortDescription} price={product.price}img={product.img[0]} />
           </div>
           )
         })}
         </div>
         <div className="container-cards">
       {productsPopulate&&productsPopulate.map((product,index)=>{
-        console.log(productsPopulate)
         return(
           <div key={product._id}>
           {index===0&&<h4 className="titulo-cards">Populares:</h4>}
-          <Card key={product._id}favorite={favorite?favorite.some(e=>e===product._id):false} putFavorite={putFavorite}  id={product._id} name={product.productname} shDesc={product.shortDescription} price={product.price}img={product.img[0]} />
+          <Card DetalleProduct={DetalleProduct} key={product._id}favorite={favorite?favorite.some(e=>e===product._id):false} putFavorite={putFavorite}  id={product._id} name={product.productname} shDesc={product.shortDescription} price={product.price}img={product.img[0]} />
           </div>
           )
         })}
@@ -80,7 +79,7 @@ useEffect(()=>{
         return(
           <div key={product._id}>
           {index===0&&<h4 className="titulo-cards">Random:</h4>}
-          <Card key={product._id}favorite={favorite?favorite.some(e=>e===product._id):false} putFavorite={putFavorite}  id={product._id} name={product.productname} shDesc={product.shortDescription} price={product.price}img={product.img[0]} />
+          <Card DetalleProduct={DetalleProduct} key={product._id}favorite={favorite?favorite.some(e=>e===product._id):false} putFavorite={putFavorite}  id={product._id} name={product.productname} shDesc={product.shortDescription} price={product.price}img={product.img[0]} />
           </div>
           )
         })}

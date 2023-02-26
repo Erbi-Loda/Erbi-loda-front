@@ -13,6 +13,7 @@ export default function Card({
   name,
   favorite,
   putFavorite,
+  DetalleProduct,
   shDesc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor",
   price = "$$$",
   img,
@@ -20,10 +21,12 @@ export default function Card({
 }) {
   return (
     <CardBox
-      sx={{ margin: "15px", width: "224px" }}
-      className="contenedor-carta-postproduct"
+    sx={{ margin: "15px", width: "224px" }}
+    className="contenedor-carta-postproduct"
     >
-        <Link to={"/producto/" + id} style={{textDecoration:'none'}}>
+        <Link 
+      onClick={()=>DetalleProduct(id)}
+        to={"/producto/" + id} style={{textDecoration:'none'}}>
       <div className="conetnedor-hover-shDesct-postproduct">
           <div className="contenedor-img-card">
             <img
@@ -92,7 +95,7 @@ export default function Card({
         </div>{" "}
       </CardContent>
       <CardActions style={{ justifyContent: "space-around" }}>
-        <Link to={"/producto/" + id} style={{textDecoration:'none'}}>
+        <Link onClick={()=>DetalleProduct(id)} to={"/producto/" + id} style={{textDecoration:'none'}}>
           <Button size="small" style={{ border: "2px solid #016c12" }}>
             Ver mas
           </Button>
