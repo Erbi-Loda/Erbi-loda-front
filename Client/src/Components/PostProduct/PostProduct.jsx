@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import NavBarComponent2 from "../Navbar/NavBar2.jsx";
+import { useState } from "react";
 import steps1 from "./steps.jsx";
 import BoxSteps from "./BoxSteps";
 import ImgLarge from "./ImgLarge";
@@ -36,7 +36,7 @@ export default function PostProduct() {
   return (
     <div style={{ width: "100vw", display: "flex", justifyContent: "center" }}>
       <div>
-        <NavBarComponent2 />
+      <NavBarComponent2/>
         <BoxSteps steps={steps} />
         <div
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
