@@ -5,7 +5,7 @@
 .hover-shDesct-postproduct {
   display: flex;
   position: absolute;
-  background: #e0ffd6;
+  background: #97fffd;
   left: 0;
   top: 300px;
   border-top-left-radius: 20px;
@@ -25,7 +25,7 @@
   z-index: -1;
   transform: rotate(-175deg);
   border-radius: 50%;
-  box-shadow: inset 48px 48px #e0ffd6;
+  box-shadow: inset 48px 48px #97fffd;
 }
 .hover-shDesct-postproduct:before {
   content: "";
@@ -37,7 +37,7 @@
   z-index: -1;
   transform: rotate(-95deg);
   border-radius: 50%;
-  box-shadow: inset 48px 48px #e0ffd6;
+  box-shadow: inset 48px 48px #97fffd;
 }
 .contenedor-carta-postproduct:hover .hover-shDesct-postproduct {
   display: flex;
