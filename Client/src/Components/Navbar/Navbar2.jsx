@@ -108,7 +108,7 @@ export default function NavbarComponent2() {
               </>
             ) : (
               <>
-              <Link to={"/panle/user"}>
+              <Link to={"/login"}>
                 <ButtonLoda
                   fs={18}
 
