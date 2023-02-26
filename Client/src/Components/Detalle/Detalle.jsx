@@ -11,7 +11,7 @@ export default function Detalle() {
       'Origin': '',
       'authorization':'Bearer '+localStorage.getItem('userloda')
     } };
-    await fetch("http://localhost:8080/getProducto/"+idproducto, options)
+    await fetch("https://erbi-loda-back.vercel.app/getProducto/"+idproducto, options)
       .then((response) => response.json())
       .then((response) => {console.log(response);setproducto(response)})
       .catch((err) => console.error(err));

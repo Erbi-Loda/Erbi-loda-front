@@ -11,7 +11,7 @@ export default function Buscador() {
     const {buscar} = useParams()
     React.useEffect(() => {
         fetch(
-          "http://localhost:8080/"+buscar
+          "https://erbi-loda-back.vercel.app/"+buscar
         )
           .then((result) => {
             return result.json();

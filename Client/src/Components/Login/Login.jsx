@@ -40,7 +40,7 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     await axios
-      .post("http://localhost:8080/user/login", userLogin)
+      .post("https://erbi-loda-back.vercel.app/user/login", userLogin)
       .then((e) => {
         console.log("Usuario Logeado",e.data);
         localStorage.setItem('userloda',e.data)

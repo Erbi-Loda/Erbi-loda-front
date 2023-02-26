@@ -1,5 +1,4 @@
-
-// import NavBarComponent from "../Navbar/Navbar.jsx";
+import NavBarComponent2 from "../Navbar/Navbar2.jsx";
 import Card from "../Card/Card";
 import { useEffect, useState } from "react";
 import {useProductsStore} from '../../store/productosStore';
@@ -40,7 +39,7 @@ export default function Home() {
       'Origin': '',
       'authorization':'Bearer '+localStorage.getItem('userloda')
     } };
-    await fetch("http://localhost:8080/gethistorialuser", options)
+    await fetch("https://erbi-loda-back.vercel.app/gethistorialuser", options)
       .then((response) => response.json())
       .then((response) => {response.historial.length>0&&setHistorial(response.historial)})
       .catch((err) => console.error(err));
@@ -51,7 +50,7 @@ useEffect(()=>{
 },[])
   return (
     <div className="containerHome">
-      {/* <NavBarComponent></NavBarComponent> */}
+      <NavBarComponent2/>
       <CarouselBoostrap></CarouselBoostrap>
       <div className="container-container-cards">
 

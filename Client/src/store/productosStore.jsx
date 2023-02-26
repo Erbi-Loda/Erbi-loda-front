@@ -14,7 +14,7 @@ export const useProductsStore = create((set, get) => ({
       'Origin': '',
       'authorization':'Bearer '+localStorage.getItem('userloda')
     } };
-    await fetch("http://localhost:8080/getProductos", options)
+    await fetch("https://erbi-loda-back.vercel.app/getProductos", options)
       .then((response) => response.json())
       .then((response) => set((state) => ({ ...state, product: response })))
       .catch((err) => console.error(err));
@@ -26,7 +26,7 @@ export const useProductsStore = create((set, get) => ({
       'Origin': '',
       'authorization':'Bearer '+localStorage.getItem('userloda')
     } };
-    await fetch("http://localhost:8080/getProductosrandom?limit=5", options)
+    await fetch("https://erbi-loda-back.vercel.app/getProductosrandom?limit=5", options)
       .then((response) => response.json())
       .then((response) => set((state) => ({ ...state, productsRandom: response })))
       .catch((err) => console.error(err));
@@ -38,7 +38,7 @@ export const useProductsStore = create((set, get) => ({
       'Origin': '',
       'authorization':'Bearer '+localStorage.getItem('userloda')
     } };
-    await fetch("http://localhost:8080/getProductosFamous?limit=5", options)
+    await fetch("https://erbi-loda-back.vercel.app/getProductosFamous?limit=5", options)
       .then((response) => response.json())
       .then((response) => set((state) => ({ ...state, productsPopulate: response })))
       .catch((err) => console.error(err));
@@ -54,7 +54,7 @@ export const useProductsStore = create((set, get) => ({
           authorization: "Bearer " + localStorage.getItem("userloda"),
         },
       };
-      await fetch("http://localhost:8080/getFavoritoUser", options)
+      await fetch("https://erbi-loda-back.vercel.app/getFavoritoUser", options)
         .then((response) => response.json())
         .then((response) => { set((state)=>({...state,favorite:response.favoritos}))
         })
@@ -72,7 +72,7 @@ export const useProductsStore = create((set, get) => ({
         authorization: "Bearer " + localStorage.getItem("userloda"),
       },
     };
-    await fetch("http://localhost:8080/putFavoritoUser", options)
+    await fetch("https://erbi-loda-back.vercel.app/putFavoritoUser", options)
       .then((response) => response.json())
       .then((response) => { {set((state)=>({...state,favorite:response.favorito}))}
       })
