@@ -1,4 +1,4 @@
-import NavBarComponent2 from "../Navbar/NavBar2.jsx";
+import NavBarComponent2 from "../Navbar/Navbar2.jsx";
 import { useState } from "react";
 import steps1 from "./steps.jsx";
 import BoxSteps from "./BoxSteps";

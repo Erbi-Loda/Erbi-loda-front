@@ -1,4 +1,4 @@
-import NavBarComponent2 from "../Navbar/Navbar2";
+import NavBarComponent2 from "../Navbar/Navbar2.jsx";
 import SettingsIcon from '@mui/icons-material/Settings';
 import HistoryIcon from '@mui/icons-material/History';
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
