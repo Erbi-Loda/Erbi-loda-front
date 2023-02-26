@@ -108,8 +108,10 @@ export default function NavbarComponent2() {
               </>
             ) : (
               <>
+              <Link to={"/panle/user"}>
                 <ButtonLoda
                   fs={18}
+
                   text={"Ingresá"}
                   type={"small"}
                   icon={
@@ -121,6 +123,7 @@ export default function NavbarComponent2() {
                     />
                   }
                 />
+              </Link>
                 <ButtonLoda
                   fs={18}
                   text={"Creá tu cuenta"}
