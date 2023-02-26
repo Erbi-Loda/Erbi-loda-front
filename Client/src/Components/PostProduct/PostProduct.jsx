@@ -14,7 +14,7 @@ import "./PostProduct.css";
 export default function PostProduct() {
   const [loading, setLoading] = useState(false);
   const [imgGrande, setImgGrande] = useState("");
-  const [favorite, setfavorite] = React.useState(false);
+  const [favorite, setfavorite] = useState(false);
   const [state, setState] = useState({
     productoname: "",
     price: "",
