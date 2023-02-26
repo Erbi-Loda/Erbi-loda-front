@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "name": "erbiloda",
+    "builds": [
+       { "src": "main.js", "use": "@vercel/vite" }
+    ],
+    "routes": [
+       { "src": "/(.*)", "dest": "/main.js" }
+    ]
+ }
