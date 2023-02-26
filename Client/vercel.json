@@ -1,9 +1,6 @@
 {
     "version": 2,
     "name": "erbiloda",
-    "builds": [
-       { "src": "main.js" }
-    ],
     "routes": [
        { "src": "/(.*)", "dest": "/main.js" }
     ]
