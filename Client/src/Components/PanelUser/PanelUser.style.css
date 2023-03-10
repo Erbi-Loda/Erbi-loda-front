@@ -1,6 +1,6 @@
 .NavUser {
   border: 14px green solid;
-  height: calc( 100vh - 108px);
+  height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,8 @@
 
 .container-PanelUser {
   display: flex;
-  align-items: center;
+  align-items: center;  
+  height: calc(100vh - 80px);
 }
 
 .container-PhUser {

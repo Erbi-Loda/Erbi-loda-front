@@ -6,6 +6,13 @@
   position: relative;
   max-width: 300px;
  }
+.groupcarrito {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  max-width: 300px;
+ }
  
  .input {
   width: 100%;
@@ -138,7 +145,118 @@
   width: 100%;
   margin-top: 80px;
 }
+.CarritoEffect{  
+  height: calc(100vh - 80px);
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  min-width: 275px;
+  width: 100vw;
+  max-width: 355px;
+  position: fixed;
+  right: 0;
+  transition: right 0.1s;
+  margin-top: 80px;
+}
+.CarritoEffectNoactive{
+  height: calc(100vh - 80px);
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  min-width: 275px;
+  width: 100vw;
+  max-width: 355px;
+  position: fixed;
+  align-items: center;
+  right: -200vw;
+  transition: right 1s;
+  width: 100%;
+  margin-top: 80px;
+}
+.carrito-contenedor-productos{
+  width: 100%;
+  height: calc(100% - 110px);
+  margin-top: 55px;
+  overflow: auto;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.carrito-botones-fondo{  
+  width: 100%;
+  background: rgb(51, 51, 51);
+  height: max-content;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+}
+.carrito-botones-fondo-cerrar{  
+  width: 100%;
+  background: rgb(51, 51, 51);
+  height: max-content;
+  position: absolute;
+  display: flex;
+  justify-content: start;
+}
+.carrito-contenedor-productos {
+  scrollbar-width: thin;
+  scrollbar-color: black rgb(73, 253, 41);
+}
 
+/* Works on Chrome, Edge, and Safari */
+.carrito-contenedor-productos::-webkit-scrollbar {
+  width: 12px;
+}
+
+.carrito-contenedor-productos::-webkit-scrollbar-track {
+  background: rgb(73, 253, 41);
+}
+
+.carrito-contenedor-productos::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 20px;
+  border: 3px solid rgb(73, 253, 41);
+}
+.carta-carrito-individual{
+  background-color: aquamarine;
+  margin: 5px;
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+  position: relative;
+  animation-duration: 4s;
+  animation-name: slidein;
+  z-index: 2;
+}
+.carta-texto-individual-carrito{
+  width: 270px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0px 5px;
+}
+.carta-contenedor-texto-indivudual-carrito{  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@keyframes slidein {
+  0% {
+    margin-top: -120px;
+    z-index: 1;
+  }
+
+  99% {
+    margin-top: 0px;
+    z-index: 1;
+  }
+  100%{
+    z-index: 3;
+  }
+}
 @media(max-width: 800px){
   .burguer{
     display: flex;
@@ -147,6 +265,9 @@
     display: none;
   }
   .burguerEffect{
+    display: flex;
+  }
+  .CarritoEffect{
     display: flex;
   }
 }

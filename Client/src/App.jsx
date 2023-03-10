@@ -8,10 +8,15 @@ const Home=lazy(()=>import('./Components/Home/Home'))
 const Detalle =lazy(()=>import('./Components/Detalle/Detalle'))
 const PostProduct =lazy(()=>import('./Components/PostProduct/PostProduct'))
 const Loading =lazy(()=>import('./Components/Loading2/Loading'))
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <BrowserRouter>
+    <Toaster 
+  position="top-center"
+  reverseOrder={false}/>
+
     <Suspense fallback={<div className="loading"><Loading/></div>}>      
       <Routes>
         <Route path="*" element={<Navigate replace to ='/'/>} />

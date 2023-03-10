@@ -8,10 +8,13 @@ import registersvglogo from "../../imgs/svg/registersvg.svg";
 import profilesvglogo from "../../imgs/svg/profilesvg.svg";
 import miscomprassvglogo from "../../imgs/svg/miscomprassvg.svg";
 import carritosvglogo from "../../imgs/svg/carritosvg.svg";
+import {useProductsStore} from '../../store/productosStore';
 import "./navbar.css";
 
 export default function NavbarComponent2() {
+  const {carrito,Sumar1ProductoExistente,Eliminar1ProductoExistente}= useProductsStore()
   const [estado, setestado] = useState(false);
+  const [estadocarrito, setestadocarrito] = useState(false);
   const cambiarestado = () => {
     if (estado) {
       setestado(false);
@@ -22,6 +25,14 @@ export default function NavbarComponent2() {
       document.body.classList.add("no-scroll");
     }
   };
+  const cambiarestadocarrito = () => {
+    if (estadocarrito) {
+      setestadocarrito(false);
+    }
+    if (!estadocarrito) {
+      setestadocarrito(true);
+    }
+  };
   return (
     <>
       <div style={{ height: "80px" }}></div>
@@ -29,7 +40,7 @@ export default function NavbarComponent2() {
         style={{
           overflow: "hidden",
           position: "absolute",
-          zIndex: 10000,
+          zIndex: 10,
           top: "0",
         }}
       >
@@ -139,7 +150,10 @@ export default function NavbarComponent2() {
                 />
               </>
             )}
+            <div onClick={()=>cambiarestadocarrito()}>
+
             <ButtonLoda
+            
               fs={18}
               text={""}
               type={"small"}
@@ -152,6 +166,7 @@ export default function NavbarComponent2() {
                 />
               }
             />
+            </div>
           </div>
           {/* burger */}
         </nav>
@@ -225,6 +240,7 @@ export default function NavbarComponent2() {
               />
             </>
           )}
+            <div onClick={()=>cambiarestadocarrito()}>
           <ButtonLoda
             fs={18}
             text={""}
@@ -238,6 +254,66 @@ export default function NavbarComponent2() {
               />
             }
           />
+
+          </div>
+        </div>
+        <div className={estadocarrito ? "CarritoEffect" : "CarritoEffectNoactive"}>
+          
+          <div className="carrito-botones-fondo-cerrar" style={{left:'0'}}>
+
+          <div onClick={()=>cambiarestadocarrito()}>
+
+          <ButtonLoda
+            fs={18}
+            text={"Cerrar"}
+            type={"small"}
+            />
+              </div>
+            </div>
+              <div className="carrito-contenedor-productos">
+               {
+                 carrito?.map(product=>
+                  <div className="carta-carrito-individual">
+                    <div style={{display:'flex'}}>
+                      <img width={50} height={50} style={{borderRadius:'10px'}} src={product.img} alt={product.productoname}/>
+                      <div className="carta-contenedor-texto-indivudual-carrito">
+                      <div className="carta-texto-individual-carrito">{product.productoname}</div>
+                      <div className="carta-texto-individual-carrito">${product.price}</div>
+                      </div>
+                    </div>
+                      <div style={{display:'flex',alignItems:'center'}}>Cantidad:{product.quantity}
+                      <div onClick={()=>Sumar1ProductoExistente(product._id)}>
+
+                      <ButtonLoda            
+              fs={12}
+              text={'+ 1'}
+              type={"small"}
+              />
+              </div>
+              <div onClick={()=>Eliminar1ProductoExistente(product._id)}>
+
+                      <ButtonLoda            
+              fs={12}
+              text={product.quantity===1?'❌':'- 1'}
+              type={"small"}
+              />
+              </div>
+                      </div>
+                  </div>
+                  )
+                }
+              </div>
+              <div className="carrito-botones-fondo" style={{bottom:'0'}}>
+
+          <div>
+
+          <ButtonLoda
+            fs={18}
+            text={"Terminar Compra"}
+            type={"small"}
+              />
+              </div>
+              </div>
         </div>
       </div>
     </>

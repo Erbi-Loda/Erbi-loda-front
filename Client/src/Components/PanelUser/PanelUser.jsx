@@ -114,10 +114,11 @@ export default function PanelUser(params) {
             <h1 className="userName"> {infoUser.username} </h1>
           </div>
           <div className="container-Buttons">
-              <ButtonLoda fs={18} text={"Mi Historial"} icon={<HistoryIcon style={{fontSize:'18px'}}/>} />
-              <ButtonLoda fs={18} text={"Mis Compras"} icon={<ShoppingCartCheckoutIcon style={{fontSize:'18px'}}/>}/>
-              <ButtonLoda fs={18} text={"Configuracio"} icon={<SettingsIcon style={{fontSize:'18px'}}/>} />
-              <ButtonLoda fs={18} text={"Cerrar Secion"} icon={<MeetingRoomIcon style={{fontSize:'18px'}}/>} />
+              <ButtonLoda type={"small"}  fs={20} text={"Mi Historial"} icon={<HistoryIcon style={{fontSize:'18px'}}/>} />
+              <ButtonLoda  type={"small"}  fs={20} text={"Mis Compras"} icon={<ShoppingCartCheckoutIcon style={{fontSize:'18px'}}/>}/>
+              <ButtonLoda  type={"small"}  fs={20} text={"Mis Empresas"} icon={<ShoppingCartCheckoutIcon style={{fontSize:'18px'}}/>}/>
+              <ButtonLoda type={"small"}  fs={20} text={"Configuración"} icon={<SettingsIcon style={{fontSize:'18px'}}/>} />
+              <ButtonLoda type={"small"}  fs={20} text={"Cerrar Sesion"} icon={<MeetingRoomIcon style={{fontSize:'18px'}}/>} />
           </div>
         </section>
         {/* Espacio de Muestra para las compras/configuracion/historial */}

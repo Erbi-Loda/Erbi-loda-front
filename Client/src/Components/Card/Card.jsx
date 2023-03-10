@@ -8,26 +8,38 @@ import TurnedInIcon from "@mui/icons-material/TurnedIn";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./Card.style.css";
 import { Link } from "react-router-dom";
+import ButtonLoda from "../ButtonLoda/ButtonLoda";
 
 export default function Card({
   name,
   favorite,
+  favorite2,
   putFavorite,
   DetalleProduct,
+  agregarAlCarrito,
   shDesc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor",
   price = "$$$",
   img,
   id,
 }) {
+  const [estadofuncion, setEstadofuncion] = React.useState(false);
+  const functionput=async()=>{
+    setEstadofuncion(true)
+  await  Promise.all([putFavorite(id, favorite2)]).finally(()=>setEstadofuncion(false))
+  }
+  const [first, setfirst] = React.useState(localStorage.getItem("carrloer"))
+  console.log(JSON.parse(first))
   return (
     <CardBox
-    sx={{ margin: "15px", width: "224px" }}
-    className="contenedor-carta-postproduct"
+      sx={{ margin: "15px", width: "224px" }}
+      className="contenedor-carta-postproduct"
     >
-        <Link 
-      onClick={()=>DetalleProduct(id)}
-        to={"/producto/" + id} style={{textDecoration:'none'}}>
-      <div className="conetnedor-hover-shDesct-postproduct">
+      <Link
+        onClick={() => DetalleProduct(id)}
+        to={"/producto/" + id}
+        style={{ textDecoration: "none" }}
+      >
+        <div className="conetnedor-hover-shDesct-postproduct">
           <div className="contenedor-img-card">
             <img
               src={img}
@@ -35,22 +47,22 @@ export default function Card({
               style={{ maxWidth: "100%", maxHeight: "100%" }}
             />
           </div>
-        <div className="hover-shDesct-postproduct">
-          <Typography
-            style={{
-              width: "224px",
-              height: "80px",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-            }}
-            variant="body2"
-            color="text.secondary"
-          >
-            {shDesc.length > 70 ? shDesc.slice(0, 70) + "..." : shDesc}
-          </Typography>
+          <div className="hover-shDesct-postproduct">
+            <Typography
+              style={{
+                width: "224px",
+                height: "80px",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+              variant="body2"
+              color="text.secondary"
+            >
+              {shDesc.length > 70 ? shDesc.slice(0, 70) + "..." : shDesc}
+            </Typography>
+          </div>
         </div>
-      </div>
-        </Link>
+      </Link>
       <CardContent sx={{ position: "relative", padding: "16px 16px 0px 16px" }}>
         <Typography gutterBottom variant="h5" component="div">
           ${price}
@@ -67,7 +79,11 @@ export default function Card({
             style={{ position: "relative", width: "max-content", zIndex: "2" }}
           >
             <TurnedInIcon
-              onClick={()=>putFavorite(id)}
+              onClick={
+                !estadofuncion
+                  ? functionput
+                  : null
+              }
               sx={{
                 width: "55px",
                 height: "55px",
@@ -77,7 +93,11 @@ export default function Card({
               }}
             ></TurnedInIcon>
             <FavoriteIcon
-              onClick={()=>putFavorite(id)}
+              onClick={
+                !estadofuncion
+                  ? functionput
+                  : null
+              }
               sx={[
                 {
                   position: "absolute",
@@ -86,23 +106,23 @@ export default function Card({
                   left: "10px",
                   top: "0px",
                 },
-                favorite
-                  ? { color: "#00F106" }
-                  : { color: "white" },
+                favorite ? { color: "#00F106" } : { color: "white" },
               ]}
             ></FavoriteIcon>
           </div>
         </div>{" "}
       </CardContent>
       <CardActions style={{ justifyContent: "space-around" }}>
-        <Link onClick={()=>DetalleProduct(id)} to={"/producto/" + id} style={{textDecoration:'none'}}>
-          <Button size="small" style={{ border: "2px solid #016c12" }}>
-            Ver mas
-          </Button>
+        <Link
+          onClick={() => DetalleProduct(id)}
+          to={"/producto/" + id}
+          style={{ textDecoration: "none" }}
+        >
+          <ButtonLoda type={"small"} text={"Ver mas"} fs={14} />
         </Link>
-        <Button size="small" style={{ border: "2px solid #016c12" }}>
-          carrito
-        </Button>
+        <div onClick={()=>agregarAlCarrito({_id:id,img,price,description:DetalleProduct,productoname:name,quantity:1})}>
+        <ButtonLoda type={"small"} text={"+ Carrito"} fs={14} />
+        </div>
       </CardActions>
     </CardBox>
   );

@@ -39,6 +39,10 @@
   border-radius: 50%;
   box-shadow: inset 48px 48px #97fffd;
 }
+.contenedor-carta-postproduct{
+  background-color: #97fffd !important;
+  border-radius: 15px !important;
+}
 .contenedor-carta-postproduct:hover .hover-shDesct-postproduct {
   display: flex;
   top: 150px;

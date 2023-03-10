@@ -29,7 +29,7 @@ export default function NavbarComponent() {
         style={{
           overflow: "hidden",
           position: "absolute",
-          zIndex: 10000,
+          zIndex: 10,
           top: "0",
         }}
       >
