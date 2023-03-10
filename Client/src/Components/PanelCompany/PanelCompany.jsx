@@ -4,15 +4,17 @@ import HistoryIcon from '@mui/icons-material/History';
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 
-import "./PanelUser.style.css";
+import logoGraph from '../../imgs/svg/graphLogo.svg'
+
+import "./PanelCompany.style.css";
 import ButtonLoda from '../ButtonLoda/ButtonLoda';
 
-export default function PanelUser(params) {
+export default function PanelCompany(params) {
   const infoUser = {
-    username: "Vera",
-    password: "Vera123",
-    email: "VeraVcp123@gmail.com",
-    imgUrl:"https://randomuser.me/api/portraits/women/27.jpg",
+    companyName: "Herbalife",
+    password: "Herbalife123",
+    email: "HerbalifeVcp123@gmail.com",
+    imgUrl:"https://pict.sindonews.net/dyn/620/content/2018/02/18/34/1283091/herbalife-kembali-dukung-pelaksanaan-pesan-di-25-kota-nwr-thumb.jpg",
     compras: [
       {
         nameProduct: "producto",
@@ -111,14 +113,14 @@ export default function PanelUser(params) {
             <div className="container-PhUser">
               <img className="Ph-User" src={infoUser.imgUrl} alt="Aqui va la foto del usuario" />
             </div>
-            <h1 className="userName"> {infoUser.username} </h1>
+            <h1 className="companyName"> {infoUser.companyName} </h1>
           </div>
           <div className="container-Buttons">
-              <ButtonLoda type={"small"}  fs={20} text={"Mi Historial"} icon={<HistoryIcon style={{fontSize:'18px'}}/>} />
-              <ButtonLoda  type={"small"}  fs={20} text={"Mis Compras"} icon={<ShoppingCartCheckoutIcon style={{fontSize:'18px'}}/>}/>
-              <ButtonLoda  type={"small"}  fs={20} text={"Mis Empresas"} icon={<ShoppingCartCheckoutIcon style={{fontSize:'18px'}}/>}/>
-              <ButtonLoda type={"small"}  fs={20} text={"Configuración"} icon={<SettingsIcon style={{fontSize:'18px'}}/>} />
-              <ButtonLoda type={"small"}  fs={20} text={"Cerrar Sesion"} icon={<MeetingRoomIcon style={{fontSize:'18px'}}/>} />
+              <ButtonLoda fs={18} text={"Estadisticas"} icon={<img width={"27px"} src={logoGraph}/>} />
+              <ButtonLoda fs={18} text={"Mi Historial"} icon={<HistoryIcon style={{fontSize:'18px'}}/>} />
+              <ButtonLoda fs={18} text={"Mis Compras"} icon={<ShoppingCartCheckoutIcon style={{fontSize:'18px'}}/>}/>
+              <ButtonLoda fs={18} text={"Configuracio"} icon={<SettingsIcon style={{fontSize:'18px'}}/>} />
+              <ButtonLoda fs={18} text={"Cerrar Secion"} icon={<MeetingRoomIcon style={{fontSize:'18px'}}/>} />
           </div>
         </section>
         {/* Espacio de Muestra para las compras/configuracion/historial */}

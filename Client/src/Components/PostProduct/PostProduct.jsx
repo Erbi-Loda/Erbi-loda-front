@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import NavBarComponent from "../NavBar";
+import NavBarComponent2 from "../Navbar/Navbar2.jsx";
+import { useState } from "react";
 import steps1 from "./steps.jsx";
 import BoxSteps from "./BoxSteps";
 import ImgLarge from "./ImgLarge";
@@ -14,7 +14,7 @@ import "./PostProduct.css";
 export default function PostProduct() {
   const [loading, setLoading] = useState(false);
   const [imgGrande, setImgGrande] = useState("");
-  const [favorite, setfavorite] = React.useState(false);
+  const [favorite, setfavorite] = useState(false);
   const [state, setState] = useState({
     productoname: "",
     price: "",
@@ -34,15 +34,15 @@ export default function PostProduct() {
     imgGrande,
   });
   return (
-    <div style={{ width: "100vw", display: "flex", justifyContent: "center" }}>
+    <div style={{ width: "100vw",minHeight:'calc(100vh - 80px)', display: "flex", justifyContent: "center" }}>
       <div>
-        <NavBarComponent />
+      <NavBarComponent2/>
         <BoxSteps steps={steps} />
         <div
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
           <div className="contenedor-postproduct-producto">
-            <div style={{ width: "max-content", display: "flex" }}>
+            <div style={{display: "flex" }}>
               <div className="contenedor-fotos-postproduct">
                 {<ImgLarge imgGrande={imgGrande} />}
                 <div className="aspect-ratio-1-1-sub-content">
