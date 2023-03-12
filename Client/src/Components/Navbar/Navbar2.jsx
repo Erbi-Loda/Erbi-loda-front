@@ -90,19 +90,21 @@ export default function NavbarComponent2() {
           <div className="noburguer">
             {localStorage.getItem("userloda") ? (
               <>
+              <Link to="/panel/user" style={{textDecoration:'none'}}>
                 <ButtonLoda
                   fs={18}
                   text={"Perfil"}
                   type={"small"}
                   icon={
                     <img
-                      width={"27px"}
+                    width={"27px"}
                       style={{ filter: "invert(75%)" }}
                       src={profilesvglogo}
                       alt="nojoda"
+                      />
+                    }
                     />
-                  }
-                />
+                    </Link>
                 <ButtonLoda
                   fs={18}
                   text={"Mis compras"}
@@ -183,19 +185,21 @@ export default function NavbarComponent2() {
           </div>
           {localStorage.getItem("userloda") ? (
             <>
+            <Link  to="/panel/user" style={{textDecoration:'none'}}>
               <ButtonLoda
                 fs={18}
                 text={"Perfil"}
                 type={"normal"}
                 icon={
                   <img
-                    width={"27px"}
-                    style={{ filter: "invert(75%)" }}
-                    src={profilesvglogo}
-                    alt="nojoda"
+                  width={"27px"}
+                  style={{ filter: "invert(75%)" }}
+                  src={profilesvglogo}
+                  alt="nojoda"
                   />
                 }
-              />
+                />
+                </Link>
               <ButtonLoda
                 fs={18}
                 text={"Mis compras"}
@@ -275,7 +279,7 @@ export default function NavbarComponent2() {
                  carrito?.map(product=>
                   <div className="carta-carrito-individual">
                     <div style={{display:'flex'}}>
-                      <img width={50} height={50} style={{borderRadius:'10px'}} src={product.img} alt={product.productoname}/>
+                      <img width={50} height={50} style={{borderRadius:'10px'}} src={product.img.slice(0,50)+"q_55/"+product.img.slice(50,-4)+".avif"} alt={product.productoname}/>
                       <div className="carta-contenedor-texto-indivudual-carrito">
                       <div className="carta-texto-individual-carrito">{product.productoname}</div>
                       <div className="carta-texto-individual-carrito">${product.price}</div>

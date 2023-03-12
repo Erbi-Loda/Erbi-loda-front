@@ -1,5 +1,7 @@
 import { create } from "zustand";
 import toast, { Toaster } from "react-hot-toast";
+import { redirect } from "react-router-dom";
+
 const optionsGET = {
   method: "GET",
   headers: {
@@ -104,15 +106,17 @@ export const useProductsStore = create((set, get) => ({
     return putfavoritepromite;
   },
   DetalleProduct: async (idproducto) => {
+    
     {
       set((state) => ({ ...state, ProductDetailState: "Cargando" }));
     }
     await fetch(
-      "https://erbi-loda-back.vercel.app/getProducto/" + idproducto,
+      "http://localhost:8080/getProducto/" + idproducto,
       optionsGET
     )
       .then((response) => response.json())
       .then((response) => {
+        console.log(response)
         {
           set((state) => ({
             ...state,

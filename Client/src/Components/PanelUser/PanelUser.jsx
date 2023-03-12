@@ -6,6 +6,7 @@ import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 
 import "./PanelUser.style.css";
 import ButtonLoda from '../ButtonLoda/ButtonLoda';
+import { useEffect } from "react";
 
 export default function PanelUser(params) {
   const infoUser = {
@@ -100,6 +101,19 @@ export default function PanelUser(params) {
       },
     ],
   };
+const pedirhistorial=()=>{const options = { method: "GET",headers: {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json',
+  'Origin': '',
+  'authorization':'Bearer '+localStorage.getItem('userloda')
+} };
+  fetch("http://localhost:8080/gethistorialinfinitouser",options)
+  .then(e=>e.json())
+  .then(data=>console.log(data))
+}
+useEffect(() => {
+  pedirhistorial()
+}, [])
 
   return (
     <div>

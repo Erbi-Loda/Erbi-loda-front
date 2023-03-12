@@ -24,6 +24,7 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
       }
     );
     const file = await res.json();
+    console.log(file)
     setImgGrande(file.secure_url)
     setState({ ...estado, img: [...estado.img, file.secure_url] });
     setLoadingImagen(false);
