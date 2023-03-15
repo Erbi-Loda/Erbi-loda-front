@@ -111,12 +111,11 @@ export const useProductsStore = create((set, get) => ({
       set((state) => ({ ...state, ProductDetailState: "Cargando" }));
     }
     await fetch(
-      "http://localhost:8080/getProducto/" + idproducto,
+      "https://erbi-loda-back.vercel.app/getProducto/" + idproducto,
       optionsGET
     )
       .then((response) => response.json())
       .then((response) => {
-        console.log(response)
         {
           set((state) => ({
             ...state,

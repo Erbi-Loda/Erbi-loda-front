@@ -7,9 +7,8 @@ import Typography from "@mui/material/Typography";
 import TurnedInIcon from "@mui/icons-material/TurnedIn";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./Card.style.css";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ButtonLoda from "../ButtonLoda/ButtonLoda";
-import { useNavigate } from "react-router-dom";
 
 export default function Card({
   name,
@@ -28,15 +27,15 @@ export default function Card({
     setEstadofuncion(true)
   await  Promise.all([putFavorite(id, favorite2)]).finally(()=>setEstadofuncion(false))
   }
-  const navigate = useNavigate();
   const [first, setfirst] = React.useState(localStorage.getItem("carrloer"))
+  console.log(JSON.parse(first))
   return (
     <CardBox
       sx={{ margin: "15px", width: "224px" }}
       className="contenedor-carta-postproduct"
     >
-      <div
-        onClick={async() =>{await DetalleProduct(id).then(()=>navigate("/producto/"+id))} }
+      <Link
+        onClick={() => DetalleProduct(id)}
         to={"/producto/" + id}
         style={{ textDecoration: "none" }}
       >
@@ -45,7 +44,7 @@ export default function Card({
             <img
               src={img.slice(0,50)+"q_55/"+img.slice(50,-4)+".avif"}
               alt={"image product"}
-              style={{ maxWidth: "100%", maxHeight: "100%" }}
+              style={{ maxWidth: "100%", maxHeight: "100%",objectFit:'contain',objectPosition:'center' }}
             />
           </div>
           <div className="hover-shDesct-postproduct">
@@ -63,17 +62,17 @@ export default function Card({
             </Typography>
           </div>
         </div>
-      </div>
+      </Link>
       <CardContent sx={{ position: "relative", padding: "16px 16px 0px 16px" }}>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h5" component="div" style={{marginBottom:'none'}}>
           ${price}
         </Typography>
         <div
           style={{
             position: "absolute",
             width: "max-content",
-            top: "0",
-            right: "55px",
+            top: "-2px",
+            right: "75px",
           }}
         >
           <div
@@ -113,14 +112,14 @@ export default function Card({
           </div>
         </div>{" "}
       </CardContent>
-      <CardActions style={{ justifyContent: "space-around" }}>
-        <div
-        onClick={async() =>{await DetalleProduct(id).then(()=>navigate("/producto/"+id))} }
+      <CardActions style={{ justifyContent: "space-between" }}>
+        <Link
+          onClick={() => DetalleProduct(id)}
           to={"/producto/" + id}
           style={{ textDecoration: "none" }}
         >
           <ButtonLoda type={"small"} text={"Ver mas"} fs={14} />
-        </div>
+        </Link>
         <div onClick={()=>agregarAlCarrito({_id:id,img,price,description:DetalleProduct,productoname:name,quantity:1})}>
         <ButtonLoda type={"small"} text={"+ Carrito"} fs={14} />
         </div>

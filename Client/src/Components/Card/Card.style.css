@@ -52,7 +52,9 @@
   display: flex;
   background: #fff;
   height: 224px;
-  object-fit: cover;
+  object-fit:contain;
   object-position: center;
   justify-content: center;
+  border-radius:  0 0% 15% 15%;
+  overflow: hidden;
 }
