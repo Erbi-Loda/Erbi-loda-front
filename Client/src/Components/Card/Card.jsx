@@ -31,7 +31,7 @@ export default function Card({
   console.log(JSON.parse(first))
   return (
     <CardBox
-      sx={{ margin: "15px", width: "224px" }}
+      sx={{  width: "224px" }}
       className="contenedor-carta-postproduct"
     >
       <Link
@@ -64,9 +64,9 @@ export default function Card({
         </div>
       </Link>
       <CardContent sx={{ position: "relative", padding: "16px 16px 0px 16px" }}>
-        <Typography gutterBottom variant="h5" component="div" style={{marginBottom:'none'}}>
+        <h5 style={{fontWeight: 400,fontSize: '1.5rem',lineHeight: '1.334',letterSpacing: '0em',marginBottom: 0}}>
           ${price}
-        </Typography>
+        </h5>
         <div
           style={{
             position: "absolute",

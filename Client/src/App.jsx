@@ -8,6 +8,7 @@ const Home=lazy(()=>import('./Components/Home/Home'))
 const Detalle =lazy(()=>import('./Components/Detalle/Detalle'))
 const PostProduct =lazy(()=>import('./Components/PostProduct/PostProduct'))
 const Loading =lazy(()=>import('./Components/Loading2/Loading'))
+const Busqueda =lazy(()=>import('./Components/Busqueda/Busqueda'))
 import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/producto/:idproducto" element={<Detalle />} />
         <Route path="/panel/user" element={<PanelUser />} />
+        <Route path="/busqueda/:busquedaparams" element={<Busqueda />} />
         <Route path="/panel/company" element={<PanelCompany />} />
       </Routes>
     </Suspense>

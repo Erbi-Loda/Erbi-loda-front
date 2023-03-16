@@ -6,6 +6,7 @@ import {useProductsStore} from '../../store/productosStore';
 import './Home.style.css'
 import CarouselBoostrap from "./Carousel-Boostrap/Carousel";
 import toast, { Toaster } from 'react-hot-toast';
+import CartaCargando from "../Card/CartaCargando.jsx";
 
 export default function Home() {
   const {AgregarAlCarrito,getProductsRandom,getProducts,favorite,DetalleProduct,getfavorite,putFavorite,productsPopulate,productsRandom,getProductsPopulate}= useProductsStore()
@@ -43,7 +44,7 @@ export default function Home() {
     await fetch("https://erbi-loda-back.vercel.app/gethistorialuser", options)
       .then((response) => response.json())
       .then((response) => {response.historial.length>0&&setHistorial(response.historial)})
-      .catch((err) => console.error(err));
+      .catch((err) => setHistorial("error"));
   }
 useEffect(()=>{
   if(localStorage.getItem('userloda'))pedirHistorial()
@@ -53,49 +54,88 @@ const notify = () =>{console.log(3); toast('Here is your toast.')};
   return (
     <div className="containerHome">
       <NavBarComponent2/>
-      <CarouselBoostrap></CarouselBoostrap>
+      {/* <CarouselBoostrap></CarouselBoostrap> */}
       <div className="container-container-cards">
 
         <div className="container-cards">
-      {historial&&historial.map((product,index)=>{
+      {historial&&historial !=="error"?historial.map((product,index)=>{
         return(
           <div key={product._id}>
-          {index===0&&<h4 className="titulo-cards">Historial:</h4>}
+            {index===0&&<h4 className="titulo-cards">Historial:</h4>}
           <Card DetalleProduct={DetalleProduct}agregarAlCarrito={AgregarAlCarrito} key={product._id}favorite2={favorite}favorite={favorite?favorite.some(e=>e===product._id):false} putFavorite={putFavorite}  id={product._id} name={product.productoname} shDesc={product.shortDescription} price={product.price}img={product.img[0]} />
           </div>
           )
-        })}
+        })
+        :
+        historial === "error" ?
+        null
+        :
+        [1,2,3,4,5].map((e,index)=>{
+         return (         
+          <div key={e}>
+          {index===0&&<h4 className="titulo-cards">Historial:</h4>}
+         <CartaCargando/>
+         </div>
+         )
+        })
+      }
         </div>
         <div className="container-cards">
-      {productsPopulate&&productsPopulate.map((product,index)=>{
+      {productsPopulate&&productsPopulate!=="error"?productsPopulate.map((product,index)=>{
         return(
           <div key={product._id}>
           {index===0&&<h4 className="titulo-cards">Populares:</h4>}
           <Card DetalleProduct={DetalleProduct}agregarAlCarrito={AgregarAlCarrito} key={product._id}favorite2={favorite}favorite={favorite?favorite.some(e=>e===product._id):false} putFavorite={putFavorite}  id={product._id} name={product.productoname} shDesc={product.shortDescription} price={product.price}img={product.img[0]} />
           </div>
           )
-        })}
+        })
+        :
+        productsPopulate === "error" ?
+        null
+        :
+        [1,2,3,4,5].map((e,index)=>{
+         return (         
+          <div key={e}>
+          {index===0&&<h4 className="titulo-cards">Populares:</h4>}
+         <CartaCargando/>
+         </div>
+         )
+        })
+      }
         </div>
         <div className="container-cards">
-      {productsRandom&&productsRandom.map((product,index)=>{
+      {productsRandom&&productsRandom!=="error"?productsRandom.map((product,index)=>{
         return(
           <div key={product._id}>
           {index===0&&<h4 className="titulo-cards">Random:</h4>}
           <Card DetalleProduct={DetalleProduct}agregarAlCarrito={AgregarAlCarrito} key={product._id}favorite2={favorite}favorite={favorite?favorite.some(e=>e===product._id):false} putFavorite={putFavorite}  id={product._id} name={product.productoname} shDesc={product.shortDescription} price={product.price}img={product.img[0]} />
           </div>
           )
+        })
+        :
+        productsRandom === "error" ?
+        null
+        :
+        [1,2,3,4,5].map((e,index)=>{
+         return (         
+          <div key={e}>
+          {index===0&&<h4 className="titulo-cards">Random:</h4>}
+         <CartaCargando/>
+         </div>
+         )
+        })
+        }
+        </div>
+        <div className="container-cards">
+          {<h4 className="titulo-cards">Random:</h4>}
+        {[1,2,3,4,5].map((e,index)=>{
+         return (         
+          <div key={e}>
+         <CartaCargando/>
+         </div>
+         )
         })}
         </div>
-           {/* <div className="container-cards">
-       {product&&product.map((product,index)=>{
-        return(
-          <div key={product._id}>
-          {index===0&&<h4 className="titulo-cards">Productos:</h4>}
-          <Card key={product._id}favorite={favorite?favorite.some(e=>e===product._id):false} putFavorite={putFavorite} id={product._id} name={product.productname} shDesc={product.shortDescription} price={product.price} img={product.img[0]}/>
-          </div>
-          )
-        })} 
-        </div>*/}
       </div>
     </div>
   );
