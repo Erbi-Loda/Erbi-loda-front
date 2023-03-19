@@ -1,3 +1,4 @@
+
 .NavUser {
   border: 14px green solid;
   height: 100%;
@@ -21,11 +22,18 @@
   display: flex;
   border: 10px solid green;
   width: 200px;
+  background-color:#333;
   height: 200px;
   border-radius: 120px;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  font-size: 100px;
+}
+
+.container-PhUser h1{
+  font-weight: bolder;
+  color:white;
 }
 
 .Ph-User{
@@ -43,4 +51,29 @@
     flex-direction: column;
     justify-content: space-around;
     height: 30vh;
+}
+
+.infoUser{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.container-cards{
+   
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+.container-cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(224px, 224px));
+  max-width: 1200px;
+  justify-content: center;
+  padding-top: 35px;
+  position: relative;
+  gap: 10px;
+  margin-bottom: 20px;
 }

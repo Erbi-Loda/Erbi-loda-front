@@ -1,142 +1,164 @@
 import NavBarComponent2 from "../Navbar/Navbar2.jsx";
-import SettingsIcon from '@mui/icons-material/Settings';
-import HistoryIcon from '@mui/icons-material/History';
+import SettingsIcon from "@mui/icons-material/Settings";
+import HistoryIcon from "@mui/icons-material/History";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
-import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
+import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 
 import "./PanelUser.style.css";
-import ButtonLoda from '../ButtonLoda/ButtonLoda';
-import { useEffect } from "react";
+import ButtonLoda from "../ButtonLoda/ButtonLoda";
+import { useEffect, useState } from "react";
+
+import { useProductsStore } from "../../store/productosStore";
+import Card from "../Card/Card";
 
 export default function PanelUser(params) {
-  const infoUser = {
-    username: "Vera",
-    password: "Vera123",
-    email: "VeraVcp123@gmail.com",
-    imgUrl:"https://randomuser.me/api/portraits/women/27.jpg",
-    compras: [
-      {
-        nameProduct: "producto",
-        urlImg:
-          "https://pixabay.com/es/photos/granos-de-caf%c3%a9-caf%c3%a9-asado-frijoles-917613/",
-        idProducto: 1,
-        descriptionShort:
-          "Lorem aoishdka sdi usadpifnalsd fhpiasn ekfjn aps udhfasen fpausi he;fonaspoefh a;sefpiaoseh f;oiasje fpoans df npoasfehf",
+  const [currentUser, setCurrentUser] = useState(undefined);
+  const [muestra, setMuestra] = useState("CONF"); //COMP, EMPR, HIST,CONF
+  const { AgregarAlCarrito, favorite, DetalleProduct, putFavorite } =
+    useProductsStore();
+  const infoUser = () => {
+    const options = {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Origin: "",
+        authorization: "Bearer " + localStorage.getItem("userloda"),
       },
-      {
-        nameProduct: "producto",
-        urlImg:
-          "https://pixabay.com/es/photos/granos-de-caf%c3%a9-caf%c3%a9-asado-frijoles-917613/",
-        idProducto: 2,
-        descriptionShort:
-          "Lorem aoishdka sdi usadpifnalsd fhpiasn ekfjn aps udhfasen fpausi he;fonaspoefh a;sefpiaoseh f;oiasje fpoans df npoasfehf",
-      },
-      {
-        nameProduct: "producto",
-        urlImg:
-          "https://pixabay.com/es/photos/granos-de-caf%c3%a9-caf%c3%a9-asado-frijoles-917613/",
-        idProducto: 3,
-        descriptionShort:
-          "Lorem aoishdka sdi usadpifnalsd fhpiasn ekfjn aps udhfasen fpausi he;fonaspoefh a;sefpiaoseh f;oiasje fpoans df npoasfehf",
-      },
-      {
-        nameProduct: "producto",
-        urlImg:
-          "https://pixabay.com/es/photos/granos-de-caf%c3%a9-caf%c3%a9-asado-frijoles-917613/",
-        idProducto: 4,
-        descriptionShort:
-          "Lorem aoishdka sdi usadpifnalsd fhpiasn ekfjn aps udhfasen fpausi he;fonaspoefh a;sefpiaoseh f;oiasje fpoans df npoasfehf",
-      },
-      {
-        nameProduct: "producto",
-        urlImg:
-          "https://pixabay.com/es/photos/granos-de-caf%c3%a9-caf%c3%a9-asado-frijoles-917613/",
-        idProducto: 5,
-        descriptionShort:
-          "Lorem aoishdka sdi usadpifnalsd fhpiasn ekfjn aps udhfasen fpausi he;fonaspoefh a;sefpiaoseh f;oiasje fpoans df npoasfehf",
-      },
-    ],
-    companies: [
-      {
-        nameProduct: "producto",
-        urlImg:
-          "https://pixabay.com/es/photos/granos-de-caf%c3%a9-caf%c3%a9-asado-frijoles-917613/",
-        idProducto: 2,
-        descriptionShort:
-          "Lorem aoishdka sdi usadpifnalsd fhpiasn ekfjn aps udhfasen fpausi he;fonaspoefh a;sefpiaoseh f;oiasje fpoans df npoasfehf",
-      },
-      {
-        nameProduct: "producto",
-        urlImg:
-          "https://pixabay.com/es/photos/granos-de-caf%c3%a9-caf%c3%a9-asado-frijoles-917613/",
-        idProducto: 4,
-        descriptionShort:
-          "Lorem aoishdka sdi usadpifnalsd fhpiasn ekfjn aps udhfasen fpausi he;fonaspoefh a;sefpiaoseh f;oiasje fpoans df npoasfehf",
-      },
-    ],
-    historial: [
-      {
-        nameProduct: "producto",
-        urlImg:
-          "https://pixabay.com/es/photos/granos-de-caf%c3%a9-caf%c3%a9-asado-frijoles-917613/",
-        idProducto: 2,
-        descriptionShort:
-          "Lorem aoishdka sdi usadpifnalsd fhpiasn ekfjn aps udhfasen fpausi he;fonaspoefh a;sefpiaoseh f;oiasje fpoans df npoasfehf",
-      },
-      {
-        nameProduct: "producto",
-        urlImg:
-          "https://pixabay.com/es/photos/granos-de-caf%c3%a9-caf%c3%a9-asado-frijoles-917613/",
-        idProducto: 3,
-        descriptionShort:
-          "Lorem aoishdka sdi usadpifnalsd fhpiasn ekfjn aps udhfasen fpausi he;fonaspoefh a;sefpiaoseh f;oiasje fpoans df npoasfehf",
-      },
-      {
-        nameProduct: "producto",
-        urlImg:
-          "https://pixabay.com/es/photos/granos-de-caf%c3%a9-caf%c3%a9-asado-frijoles-917613/",
-        idProducto: 4,
-        descriptionShort:
-          "Lorem aoishdka sdi usadpifnalsd fhpiasn ekfjn aps udhfasen fpausi he;fonaspoefh a;sefpiaoseh f;oiasje fpoans df npoasfehf",
-      },
-    ],
+    };
+    fetch("http://localhost:8080/user", options)
+      .then((e) => e.json())
+      .then((data) => setCurrentUser(data));
   };
-const pedirhistorial=()=>{const options = { method: "GET",headers: {
-  'Accept': 'application/json',
-  'Content-Type': 'application/json',
-  'Origin': '',
-  'authorization':'Bearer '+localStorage.getItem('userloda')
-} };
-  fetch("http://localhost:8080/gethistorialinfinitouser",options)
-  .then(e=>e.json())
-  .then(data=>console.log(data))
-}
-useEffect(() => {
-  pedirhistorial()
-}, [])
+  // const pedirhistorial = () => {
+  //   const options = {
+  //     method: "GET",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //       Origin: "",
+  //       authorization: "Bearer " + localStorage.getItem("userloda"),
+  //     },
+  //   };
+  //   fetch("http://localhost:8080/gethistorialinfinitouser", options)
+  //     .then((e) => e.json())
+  //     .then((data) => console.log(data));
+  // };
+
+  const getHistorial = () => {
+    console.log("Si funciona XD", currentUser.historial);
+    setMuestra("HIST");
+  };
+
+  useEffect(() => {
+    infoUser();
+    // pedirhistorial();
+  }, []);
+
+  function compare(){
+    switch(muestra){
+      case "HIST":
+        console.log("Entraste al historial...")
+        return(<div>
+              {currentUser?.historial.length == 0 ? (
+                <div>
+                  <h1>ESTA VACIOOOOO VEEES? No hay productos aqui...</h1>
+                </div>
+              ) : (
+                <div className="container-cards">
+                  {currentUser?.historial.map((product, index) => {
+                    return (
+                      <Card
+                        DetalleProduct={DetalleProduct}
+                        agregarAlCarrito={AgregarAlCarrito}
+                        key={product._id}
+                        favorite2={favorite}
+                        favorite={
+                          favorite
+                            ? favorite.some((e) => e === product._id)
+                            : false
+                        }
+                        putFavorite={putFavorite}
+                        id={product._id}
+                        name={product.productoname}
+                        shDesc={product.shortDescription}
+                        price={product.price}
+                        img={product.img[0]}
+                      />
+                    );
+                  })}
+                </div>
+              )}
+            </div>)
+      case "CONF":
+      default:
+        console.log("Solo se reciben visitas")
+      break;
+    }
+  }
 
   return (
     <div>
-      <NavBarComponent2/>
+      <NavBarComponent2 />
       <div className="container-PanelUser">
         {/* Barra de navegacion de el usuario */}
         <section className="NavUser">
           <div className="infoUser">
             <div className="container-PhUser">
-              <img className="Ph-User" src={infoUser.imgUrl} alt="Aqui va la foto del usuario" />
+              <h1>{currentUser?.name[0].toUpperCase()}</h1>
             </div>
-            <h1 className="userName"> {infoUser.username} </h1>
+            <h1 className="userName">
+              {" "}
+              {currentUser?.name.slice(0, 7)}
+              {currentUser?.name.length > 7 && "..."}{" "}
+            </h1>
           </div>
           <div className="container-Buttons">
-              <ButtonLoda type={"small"}  fs={20} text={"Mi Historial"} icon={<HistoryIcon style={{fontSize:'18px'}}/>} />
-              <ButtonLoda  type={"small"}  fs={20} text={"Mis Compras"} icon={<ShoppingCartCheckoutIcon style={{fontSize:'18px'}}/>}/>
-              <ButtonLoda  type={"small"}  fs={20} text={"Mis Empresas"} icon={<ShoppingCartCheckoutIcon style={{fontSize:'18px'}}/>}/>
-              <ButtonLoda type={"small"}  fs={20} text={"Configuración"} icon={<SettingsIcon style={{fontSize:'18px'}}/>} />
-              <ButtonLoda type={"small"}  fs={20} text={"Cerrar Sesion"} icon={<MeetingRoomIcon style={{fontSize:'18px'}}/>} />
+            <ButtonLoda
+              type={"small"}
+              fs={20}
+              text={"Historial"}
+              icon={<HistoryIcon style={{ fontSize: "18px" }} />}
+              cb={getHistorial}
+            />
+            <ButtonLoda
+              type={"small"}
+              fs={20}
+              text={"Compras"}
+              icon={<ShoppingCartCheckoutIcon style={{ fontSize: "18px" }} />}
+            />
+            <ButtonLoda
+              type={"small"}
+              fs={20}
+              text={"Favoritos"}
+              icon={<ShoppingCartCheckoutIcon style={{ fontSize: "18px" }} />}
+            />
+            <ButtonLoda
+              type={"small"}
+              fs={20}
+              text={"Empresas"}
+              icon={<ShoppingCartCheckoutIcon style={{ fontSize: "18px" }} />}
+            />
+            <ButtonLoda
+              type={"small"}
+              fs={20}
+              text={"Configuración"}
+              icon={<SettingsIcon style={{ fontSize: "18px" }} />}
+            />
+            <ButtonLoda
+              type={"small"}
+              fs={20}
+              text={"Cerrar Sesion"}
+              icon={<MeetingRoomIcon style={{ fontSize: "18px" }} />}
+            />
           </div>
         </section>
         {/* Espacio de Muestra para las compras/configuracion/historial */}
-        <div className="muestras"></div>
+        <div className="muestras">
+          {
+            compare()
+          }
+        </div>
       </div>
     </div>
   );

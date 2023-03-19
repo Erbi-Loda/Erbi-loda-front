@@ -28,7 +28,6 @@ export default function Card({
   await  Promise.all([putFavorite(id, favorite2)]).finally(()=>setEstadofuncion(false))
   }
   const [first, setfirst] = React.useState(localStorage.getItem("carrloer"))
-  console.log(JSON.parse(first))
   return (
     <CardBox
       sx={{  width: "224px" }}
