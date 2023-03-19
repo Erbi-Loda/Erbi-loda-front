@@ -12,6 +12,7 @@
     padding-top: 35px;
     position: relative;
     gap: 10px;
+    margin-bottom: 20px;
 }
 .container-container-cards{    
     display: flex;

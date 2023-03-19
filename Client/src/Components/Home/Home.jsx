@@ -54,7 +54,7 @@ const notify = () =>{console.log(3); toast('Here is your toast.')};
   return (
     <div className="containerHome">
       <NavBarComponent2/>
-      {/* <CarouselBoostrap></CarouselBoostrap> */}
+      <CarouselBoostrap></CarouselBoostrap>
       <div className="container-container-cards">
 
         <div className="container-cards">
@@ -126,16 +126,7 @@ const notify = () =>{console.log(3); toast('Here is your toast.')};
         })
         }
         </div>
-        <div className="container-cards">
-          {<h4 className="titulo-cards">Random:</h4>}
-        {[1,2,3,4,5].map((e,index)=>{
-         return (         
-          <div key={e}>
-         <CartaCargando/>
-         </div>
-         )
-        })}
-        </div>
+        
       </div>
     </div>
   );
