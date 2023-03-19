@@ -159,6 +159,7 @@ export default function PanelUser(params) {
               fs={20}
               text={"Configuración"}
               icon={<SettingsIcon style={{ fontSize: "18px" }} />}
+              cb={ getConfiguration}
             />
             <ButtonLoda
               type={"small"}
