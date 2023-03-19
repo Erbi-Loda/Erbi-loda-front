@@ -77,3 +77,8 @@
   gap: 10px;
   margin-bottom: 20px;
 }
+.muestras{
+  width: calc(99vw - 300px);
+  height: calc(99vh - 80px);
+  padding: 20px;
+}

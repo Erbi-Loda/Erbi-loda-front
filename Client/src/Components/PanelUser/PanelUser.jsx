@@ -6,12 +6,13 @@ import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 
 import "./PanelUser.style.css";
 import ButtonLoda from "../ButtonLoda/ButtonLoda";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useProductsStore } from "../../store/productosStore";
 import Card from "../Card/Card";
 
-import io from "socket.io-client";
+import {io} from "socket.io-client";
+import Chat from "../Chat/Chat.jsx";
 
 const socket = io("http://localhost:8080/");
 
@@ -34,30 +35,24 @@ export default function PanelUser(params) {
       .then((e) => e.json())
       .then((data) => setCurrentUser(data));
   };
-  // const pedirhistorial = () => {
-  //   const options = {
-  //     method: "GET",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //       Origin: "",
-  //       authorization: "Bearer " + localStorage.getItem("userloda"),
-  //     },
-  //   };
-  //   fetch("http://localhost:8080/gethistorialinfinitouser", options)
-  //     .then((e) => e.json())
-  //     .then((data) => console.log(data));
-  // };
-
+  const socket=useRef()
   const getHistorial = () => {
-    console.log("Si funciona XD", currentUser.historial);
-    socket.emit('ingreso al historial',currentUser._id)
+    console.log("Si funciona XD", currentUser);
     setMuestra("HIST");
   };
 
   const getConfiguration = () =>{
     console.log("CONF");
     setMuestra("CONF");
+  }
+  const getCompras = () =>{
+    console.log("COMPRAS");
+    setMuestra("COMPRAS");
+  }
+  const [chat, setChat] = useState(false)
+  const getchat = ({user,secondUser,secondUserName}) =>{
+setChat({user,secondUser,secondUserName})
+    setMuestra("chat");
   }
 
   useEffect(() => {
@@ -106,6 +101,21 @@ export default function PanelUser(params) {
             <h1>Configuration... to be continued...</h1>
           </div>
         )
+        case "COMPRAS":
+          return(
+            <div>
+              {currentUser?.compras.map(e=>{
+                return (
+                  <h2 onClick={()=>getchat({user:e._id,secondUser:e.companyId._id,secondUserName:e.companyId.companyname})}>Vendedor:{e.companyId.companyname}</h2>
+                )
+              })}
+            </div>
+          )
+        case "chat":
+        return(
+            <Chat user={chat.user} seconduser={chat.secondUser} seconduserName={chat.secondUserName} cbcerrar={getCompras}></Chat>
+          
+        )
       default:
         console.log("No se reciben visitas")
       break;
@@ -140,7 +150,7 @@ export default function PanelUser(params) {
               fs={20}
               text={"Compras"}
               icon={<ShoppingCartCheckoutIcon style={{ fontSize: "18px" }} />}
-              cb={getConfiguration}
+              cb={getCompras}
             />
             <ButtonLoda
               type={"small"}
