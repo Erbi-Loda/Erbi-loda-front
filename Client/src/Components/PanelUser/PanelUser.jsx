@@ -7,20 +7,24 @@ import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 import "./PanelUser.style.css";
 import ButtonLoda from "../ButtonLoda/ButtonLoda";
 import { useEffect, useRef, useState } from "react";
+import { Link, redirect } from "react-router-dom";
 
 import { useProductsStore } from "../../store/productosStore";
 import Card from "../Card/Card";
 
-import {io} from "socket.io-client";
+import { io } from "socket.io-client";
 import Chat from "../Chat/Chat.jsx";
 
 const socket = io("http://localhost:8080/");
 
 export default function PanelUser(params) {
   const [currentUser, setCurrentUser] = useState(undefined);
-  const [muestra, setMuestra] = useState("WELC"); //COMP, EMPR
+  const [muestra, setMuestra] = useState(""); //COMP, EMPR
   const { AgregarAlCarrito, favorite, DetalleProduct, putFavorite } =
     useProductsStore();
+  const [chat, setChat] = useState(false);
+  const socket = useRef();
+
   const infoUser = () => {
     const options = {
       method: "GET",
@@ -35,90 +39,140 @@ export default function PanelUser(params) {
       .then((e) => e.json())
       .then((data) => setCurrentUser(data));
   };
-  const socket=useRef()
-  const getHistorial = () => {
-    console.log("Si funciona XD", currentUser);
-    setMuestra("HIST");
-  };
 
-  const getConfiguration = () =>{
-    console.log("CONF");
-    setMuestra("CONF");
-  }
-  const getCompras = () =>{
-    console.log("COMPRAS");
-    setMuestra("COMPRAS");
-  }
-  const [chat, setChat] = useState(false)
-  const getchat = ({user,secondUser,secondUserName}) =>{
-setChat({user,secondUser,secondUserName})
-    setMuestra("chat");
-  }
+  const getchat = ({ user, secondUser, secondUserName }) => {
+    setChat({ user, secondUser, secondUserName });
+    setMuestra("CHAT");
+  };
 
   useEffect(() => {
     infoUser();
-    // pedirhistorial();
   }, []);
 
-  function compare(){
-    switch(muestra){
+  function compare() {
+    switch (muestra) {
       case "HIST":
-        console.log("Entraste al historial...")
-        return(<div>
-              {currentUser?.historial.length == 0 ? (
-                <div>
-                  <h1>ESTA VACIOOOOO VEEES? No hay productos aqui...</h1>
-                </div>
-              ) : (
-                <div className="container-cards">
-                  {currentUser?.historial.map((product, index) => {
-                    return (
-                      <Card
-                        DetalleProduct={DetalleProduct}
-                        agregarAlCarrito={AgregarAlCarrito}
-                        key={product._id}
-                        favorite2={favorite}
-                        favorite={
-                          favorite
-                            ? favorite.some((e) => e === product._id)
-                            : false
-                        }
-                        putFavorite={putFavorite}
-                        id={product._id}
-                        name={product.productoname}
-                        shDesc={product.shortDescription}
-                        price={product.price}
-                        img={product.img[0]}
-                      />
-                    );
-                  })}
-                </div>
-              )}
-            </div>)
+        console.log("Entraste al historial...");
+        return (
+          <div>
+            {currentUser?.historial.length == 0 ? (
+              <div>
+                <h1>ESTA VACIOOOOO VEEES? No hay productos aqui...</h1>
+              </div>
+            ) : (
+              <div className="container-cards">
+                {currentUser?.historial.map((product, index) => {
+                  return (
+                    <Card
+                      DetalleProduct={DetalleProduct}
+                      agregarAlCarrito={AgregarAlCarrito}
+                      key={product._id}
+                      favorite2={favorite}
+                      favorite={
+                        favorite
+                          ? favorite.some((e) => e === product._id)
+                          : false
+                      }
+                      putFavorite={putFavorite}
+                      id={product._id}
+                      name={product.productoname}
+                      shDesc={product.shortDescription}
+                      price={product.price}
+                      img={product.img[0]}
+                    />
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        );
       case "CONF":
-        return(
+        return (
           <div>
             <h1>Configuration... to be continued...</h1>
           </div>
-        )
-        case "COMPRAS":
-          return(
-            <div>
-              {currentUser?.compras.map(e=>{
-                return (
-                  <h2 onClick={()=>getchat({user:e._id,secondUser:e.companyId._id,secondUserName:e.companyId.companyname})}>Vendedor:{e.companyId.companyname}</h2>
-                )
-              })}
-            </div>
-          )
-        case "chat":
-        return(
-            <Chat user={chat.user} seconduser={chat.secondUser} seconduserName={chat.secondUserName} cbcerrar={getCompras}></Chat>
-          
-        )
+        );
+      case "COMPRAS":
+        return (
+          <div>
+            {currentUser?.compras.map((e) => {
+              return (
+                <h2
+                  onClick={() =>
+                    getchat({
+                      user: e._id,
+                      secondUser: e.companyId._id,
+                      secondUserName: e.companyId.companyname,
+                    })
+                  }
+                  key={e._id}
+                >
+                  Vendedor:{e.companyId.companyname}
+                </h2>
+              );
+            })}
+          </div>
+        );
+      case "FAVO":
+        return (
+          <div>
+            {currentUser?.favorite.length == 0 ? (
+              <div>
+                <h1>ESTA VACIOOOOO VEEES? No hay productos aqui...</h1>
+              </div>
+            ) : (
+              <div className="container-cards">
+                {currentUser?.favorite.map((product, index) => {
+                  return (
+                    <Card
+                      DetalleProduct={DetalleProduct}
+                      agregarAlCarrito={AgregarAlCarrito}
+                      key={product._id}
+                      favorite2={favorite}
+                      favorite={
+                        favorite
+                          ? favorite.some((e) => e === product._id)
+                          : false
+                      }
+                      putFavorite={putFavorite}
+                      id={product._id}
+                      name={product.productoname}
+                      shDesc={product.shortDescription}
+                      price={product.price}
+                      img={product.img[0]}
+                    />
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        );
+      case "CHAT":
+        return (
+          <Chat
+            user={chat.user}
+            seconduser={chat.secondUser}
+            seconduserName={chat.secondUserName}
+            cbcerrar={() => {
+              setMuestra("HIST");
+            }}
+          ></Chat>
+        );
+      case "EMPR":
+        return (
+          <div>
+            <h1>EMPRESAS... to be continued...</h1>
+          </div>
+        );
       default:
-        console.log("No se reciben visitas")
-      break;
+        return (
+          <div>
+            <h1>
+              Bienvenido a tu <strong>Panel de Usuario</strong>.
+            </h1>
+          </div>
+        );
+        break;
     }
   }
 
@@ -143,48 +197,63 @@ setChat({user,secondUser,secondUserName})
               fs={20}
               text={"Historial"}
               icon={<HistoryIcon style={{ fontSize: "18px" }} />}
-              cb={getHistorial}
+              cb={() => {
+                setMuestra("HIST");
+              }}
             />
             <ButtonLoda
               type={"small"}
               fs={20}
               text={"Compras"}
               icon={<ShoppingCartCheckoutIcon style={{ fontSize: "18px" }} />}
-              cb={getCompras}
+              cb={() => {
+                console.log("COMPRAS");
+                setMuestra("COMPRAS");
+              }}
             />
             <ButtonLoda
               type={"small"}
               fs={20}
               text={"Favoritos"}
               icon={<ShoppingCartCheckoutIcon style={{ fontSize: "18px" }} />}
+              cb={() => setMuestra("FAVO")}
             />
             <ButtonLoda
               type={"small"}
               fs={20}
               text={"Empresas"}
               icon={<ShoppingCartCheckoutIcon style={{ fontSize: "18px" }} />}
+              cb={() => {
+                console.log("EMPR");
+                setMuestra("EMPR");
+              }}
             />
             <ButtonLoda
               type={"small"}
               fs={20}
               text={"Configuración"}
               icon={<SettingsIcon style={{ fontSize: "18px" }} />}
-              cb={ getConfiguration}
+              cb={() => {
+                console.log("CONF");
+                setMuestra("CONF");
+              }}
             />
-            <ButtonLoda
-              type={"small"}
-              fs={20}
-              text={"Cerrar Sesion"}
-              icon={<MeetingRoomIcon style={{ fontSize: "18px" }} />}
-            />
+            <Link to={"/"}>
+              <ButtonLoda
+                type={"small"}
+                fs={20}
+                text={"Cerrar Sesion"}
+                icon={<MeetingRoomIcon style={{ fontSize: "18px" }} />}
+                cb={() => {
+                  redirect("/register")
+                  localStorage.removeItem('userloda')
+                }}
+              />
+            </Link>
           </div>
         </section>
-        {/* Espacio de Muestra para las compras/configuracion/historial */}
-        <div className="muestras">
-          {
-            compare()
-          }
-        </div>
+        {/* Espacio de Muestra para las compras/configuracion/historial/ etc etc. */}
+        <div className="muestras">{compare()}</div>
       </div>
     </div>
   );
