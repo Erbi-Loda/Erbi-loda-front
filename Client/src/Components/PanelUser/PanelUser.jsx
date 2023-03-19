@@ -11,6 +11,10 @@ import { useEffect, useState } from "react";
 import { useProductsStore } from "../../store/productosStore";
 import Card from "../Card/Card";
 
+import io from "socket.io-client";
+
+const socket = io("http://localhost:8080/");
+
 export default function PanelUser(params) {
   const [currentUser, setCurrentUser] = useState(undefined);
   const [muestra, setMuestra] = useState("WELC"); //COMP, EMPR
@@ -47,6 +51,7 @@ export default function PanelUser(params) {
 
   const getHistorial = () => {
     console.log("Si funciona XD", currentUser.historial);
+    socket.emit('ingreso al historial',currentUser._id)
     setMuestra("HIST");
   };
 
