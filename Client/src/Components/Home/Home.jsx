@@ -7,6 +7,9 @@ import './Home.style.css'
 import CarouselBoostrap from "./Carousel-Boostrap/Carousel";
 import toast, { Toaster } from 'react-hot-toast';
 import CartaCargando from "../Card/CartaCargando.jsx";
+import io from "socket.io-client";
+
+const socket = io("http://localhost:8080/");
 
 export default function Home() {
   const {AgregarAlCarrito,getProductsRandom,getProducts,favorite,DetalleProduct,getfavorite,putFavorite,productsPopulate,productsRandom,getProductsPopulate}= useProductsStore()

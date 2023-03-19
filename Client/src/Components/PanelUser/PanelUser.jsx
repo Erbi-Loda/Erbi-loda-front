@@ -13,7 +13,7 @@ import Card from "../Card/Card";
 
 export default function PanelUser(params) {
   const [currentUser, setCurrentUser] = useState(undefined);
-  const [muestra, setMuestra] = useState("CONF"); //COMP, EMPR, HIST,CONF
+  const [muestra, setMuestra] = useState("WELC"); //COMP, EMPR
   const { AgregarAlCarrito, favorite, DetalleProduct, putFavorite } =
     useProductsStore();
   const infoUser = () => {
@@ -49,6 +49,11 @@ export default function PanelUser(params) {
     console.log("Si funciona XD", currentUser.historial);
     setMuestra("HIST");
   };
+
+  const getConfiguration = () =>{
+    console.log("CONF");
+    setMuestra("CONF");
+  }
 
   useEffect(() => {
     infoUser();
@@ -91,8 +96,13 @@ export default function PanelUser(params) {
               )}
             </div>)
       case "CONF":
+        return(
+          <div>
+            <h1>Configuration... to be continued...</h1>
+          </div>
+        )
       default:
-        console.log("Solo se reciben visitas")
+        console.log("No se reciben visitas")
       break;
     }
   }
@@ -108,9 +118,8 @@ export default function PanelUser(params) {
               <h1>{currentUser?.name[0].toUpperCase()}</h1>
             </div>
             <h1 className="userName">
-              {" "}
               {currentUser?.name.slice(0, 7)}
-              {currentUser?.name.length > 7 && "..."}{" "}
+              {currentUser?.name.length > 7 && "..."}
             </h1>
           </div>
           <div className="container-Buttons">
@@ -126,6 +135,7 @@ export default function PanelUser(params) {
               fs={20}
               text={"Compras"}
               icon={<ShoppingCartCheckoutIcon style={{ fontSize: "18px" }} />}
+              cb={getConfiguration}
             />
             <ButtonLoda
               type={"small"}
