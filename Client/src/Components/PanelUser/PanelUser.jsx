@@ -14,6 +14,7 @@ import Card from "../Card/Card";
 
 import { io } from "socket.io-client";
 import Chat from "../Chat/Chat.jsx";
+import Conf_Panel from "../Conf_Panel/Configuration.jsx";
 
 const socket = io("http://localhost:8080/");
 
@@ -88,9 +89,10 @@ export default function PanelUser(params) {
         );
       case "CONF":
         return (
-          <div>
-            <h1>Configuration... to be continued...</h1>
-          </div>
+          <>
+            <Conf_Panel/>
+            {/* <h1>Configuration... to be continued...</h1> */}
+          </>
         );
       case "COMPRAS":
         return (
