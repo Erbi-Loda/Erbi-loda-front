@@ -1,7 +1,7 @@
 .box-setting{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     border: 10px solid rgb(209, 209, 209);
     height: 100%;
@@ -13,3 +13,28 @@
     border-bottom: 5px solid white;
 }
 
+.button-setting{
+    width: 300px;
+    height: 100px;
+    font-size: x-large;
+    border-radius: 18px ;
+    background-color: rgba(500, 500, 500, 0.1);
+    color: white;
+    margin: 20px;
+}
+
+.settings{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: row;
+    list-style: none;
+}
+
+.show-setting{
+    border: 2px red solid;
+    width: 90%;
+    height: 70%;
+    margin-bottom: 2rem;
+}
