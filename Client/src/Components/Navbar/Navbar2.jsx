@@ -107,19 +107,6 @@ export default function NavbarComponent2() {
                     }
                     />
                     </Link>
-                <ButtonLoda
-                  fs={18}
-                  text={"Mis compras"}
-                  type={"small"}
-                  icon={
-                    <img
-                      width={"20px"}
-                      style={{ filter: "invert(75%)" }}
-                      src={miscomprassvglogo}
-                      alt="nojoda"
-                    />
-                  }
-                />
               </>
             ) : (
               <>
@@ -202,19 +189,7 @@ export default function NavbarComponent2() {
                 }
                 />
                 </Link>
-              <ButtonLoda
-                fs={18}
-                text={"Mis compras"}
-                type={"normal"}
-                icon={
-                  <img
-                    width={"20px"}
-                    style={{ filter: "invert(75%)" }}
-                    src={miscomprassvglogo}
-                    alt="nojoda"
-                  />
-                }
-              />
+              
             </>
           ) : (
             <>

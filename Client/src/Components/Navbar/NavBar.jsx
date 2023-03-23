@@ -92,7 +92,7 @@ export default function NavbarComponent() {
                     />
                   }
                 />
-                <ButtonLoda
+                {/* <ButtonLoda
                   fs={18}
                   text={"Mis compras"}
                   type={"small"}
@@ -104,7 +104,7 @@ export default function NavbarComponent() {
                       alt="nojoda"
                     />
                   }
-                />
+                /> */}
               </>
             ) : (
               <>

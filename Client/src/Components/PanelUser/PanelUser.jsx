@@ -7,7 +7,7 @@ import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 import "./PanelUser.style.css";
 import ButtonLoda from "../ButtonLoda/ButtonLoda";
 import { useEffect, useRef, useState } from "react";
-import { Link, redirect } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 
 import { useProductsStore } from "../../store/productosStore";
 import Card from "../Card/Card";
@@ -15,6 +15,7 @@ import Card from "../Card/Card";
 import { io } from "socket.io-client";
 import Chat from "../Chat/Chat.jsx";
 import Conf_Panel from "../Conf_Panel/Configuration.jsx";
+import Loading2 from "../Loading2/Loading.jsx";
 
 const socket = io("http://localhost:8080/");
 
@@ -25,6 +26,7 @@ export default function PanelUser(params) {
     useProductsStore();
   const [chat, setChat] = useState(false);
   const socket = useRef();
+  const [companyName, setCompanyName] = useState("");
 
   const infoUser = () => {
     const options = {
@@ -46,9 +48,33 @@ export default function PanelUser(params) {
     setMuestra("CHAT");
   };
 
+  const generatorCompany = (e) => {
+    e.preventDefault();
+    const options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Origin: "",
+        authorization: "Bearer " + localStorage.getItem("userloda"),
+      },
+      body: JSON.stringify({
+        companyname: companyName,
+        userId: currentUser._id,
+      }),
+    };
+    fetch(`http://localhost:8080/company/register`, options)
+      .then((e) => e.json())
+      .then((data) => console.log(data));
+  };
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     infoUser();
+    localStorage.getItem("userloda")? "" : navigate("/")
   }, []);
+  console.log(currentUser);
 
   function compare() {
     switch (muestra) {
@@ -90,7 +116,7 @@ export default function PanelUser(params) {
       case "CONF":
         return (
           <>
-            <Conf_Panel/>
+            <Conf_Panel />
             {/* <h1>Configuration... to be continued...</h1> */}
           </>
         );
@@ -163,7 +189,25 @@ export default function PanelUser(params) {
       case "EMPR":
         return (
           <div>
-            <h1>EMPRESAS... to be continued...</h1>
+            {currentUser.companies.map((c) => {
+              return (
+                <>
+                  <p>{c.companyname}</p>
+                </>
+              );
+            })}
+            <hr />
+            <h1>Generar empresa</h1>
+            <form onSubmit={generatorCompany}>
+              <input
+                type="text"
+                placeholder="nameCompany"
+                onChange={(e) => {
+                  setCompanyName(e.target.value);
+                }}
+              />
+              <button>+</button>
+            </form>
           </div>
         );
       default:
@@ -179,84 +223,94 @@ export default function PanelUser(params) {
   }
 
   return (
-    <div>
-      <NavBarComponent2 />
-      <div className="container-PanelUser">
-        {/* Barra de navegacion de el usuario */}
-        <section className="NavUser">
-          <div className="infoUser">
-            <div className="container-PhUser">
-              <h1>{currentUser?.name[0].toUpperCase()}</h1>
-            </div>
-            <h1 className="userName">
-              {currentUser?.name.slice(0, 7)}
-              {currentUser?.name.length > 7 && "..."}
-            </h1>
+    <>
+      {currentUser ? (
+        <div>
+          <NavBarComponent2 />
+          <div className="container-PanelUser">
+            {/* Barra de navegacion de el usuario */}
+            <section className="NavUser">
+              <div className="infoUser">
+                <div className="container-PhUser">
+                  <h1>{currentUser?.name[0].toUpperCase()}</h1>
+                </div>
+                <h1 className="userName">
+                  {currentUser?.name.slice(0, 7)}
+                  {currentUser?.name.length > 7 && "..."}
+                </h1>
+              </div>
+              <div className="container-Buttons">
+                <ButtonLoda
+                  type={"small"}
+                  fs={20}
+                  text={"Historial"}
+                  icon={<HistoryIcon style={{ fontSize: "18px" }} />}
+                  cb={() => {
+                    setMuestra("HIST");
+                  }}
+                />
+                <ButtonLoda
+                  type={"small"}
+                  fs={20}
+                  text={"Compras"}
+                  icon={
+                    <ShoppingCartCheckoutIcon style={{ fontSize: "18px" }} />
+                  }
+                  cb={() => {
+                    console.log("COMPRAS");
+                    setMuestra("COMPRAS");
+                  }}
+                />
+                <ButtonLoda
+                  type={"small"}
+                  fs={20}
+                  text={"Favoritos"}
+                  icon={
+                    <ShoppingCartCheckoutIcon style={{ fontSize: "18px" }} />
+                  }
+                  cb={() => setMuestra("FAVO")}
+                />
+                <ButtonLoda
+                  type={"small"}
+                  fs={20}
+                  text={"Empresas"}
+                  icon={
+                    <ShoppingCartCheckoutIcon style={{ fontSize: "18px" }} />
+                  }
+                  cb={() => {
+                    console.log("EMPR");
+                    setMuestra("EMPR");
+                  }}
+                />
+                <ButtonLoda
+                  type={"small"}
+                  fs={20}
+                  text={"Configuración"}
+                  icon={<SettingsIcon style={{ fontSize: "18px" }} />}
+                  cb={() => {
+                    console.log("CONF");
+                    setMuestra("CONF");
+                  }}
+                />
+                <ButtonLoda
+                  type={"small"}
+                  fs={20}
+                  text={"Cerrar Sesion"}
+                  icon={<MeetingRoomIcon style={{ fontSize: "18px" }} />}
+                  cb={() => {
+                    navigate("/login");
+                    localStorage.removeItem("userloda");
+                  }}
+                />
+              </div>
+            </section>
+            {/* Espacio de Muestra para las compras/configuracion/historial/ etc etc. */}
+            <div className="muestras">{compare()}</div>
           </div>
-          <div className="container-Buttons">
-            <ButtonLoda
-              type={"small"}
-              fs={20}
-              text={"Historial"}
-              icon={<HistoryIcon style={{ fontSize: "18px" }} />}
-              cb={() => {
-                setMuestra("HIST");
-              }}
-            />
-            <ButtonLoda
-              type={"small"}
-              fs={20}
-              text={"Compras"}
-              icon={<ShoppingCartCheckoutIcon style={{ fontSize: "18px" }} />}
-              cb={() => {
-                console.log("COMPRAS");
-                setMuestra("COMPRAS");
-              }}
-            />
-            <ButtonLoda
-              type={"small"}
-              fs={20}
-              text={"Favoritos"}
-              icon={<ShoppingCartCheckoutIcon style={{ fontSize: "18px" }} />}
-              cb={() => setMuestra("FAVO")}
-            />
-            <ButtonLoda
-              type={"small"}
-              fs={20}
-              text={"Empresas"}
-              icon={<ShoppingCartCheckoutIcon style={{ fontSize: "18px" }} />}
-              cb={() => {
-                console.log("EMPR");
-                setMuestra("EMPR");
-              }}
-            />
-            <ButtonLoda
-              type={"small"}
-              fs={20}
-              text={"Configuración"}
-              icon={<SettingsIcon style={{ fontSize: "18px" }} />}
-              cb={() => {
-                console.log("CONF");
-                setMuestra("CONF");
-              }}
-            />
-            <Link to={"/"}>
-              <ButtonLoda
-                type={"small"}
-                fs={20}
-                text={"Cerrar Sesion"}
-                icon={<MeetingRoomIcon style={{ fontSize: "18px" }} />}
-                cb={() => {
-                  redirect("/register")
-                  localStorage.removeItem('userloda')
-                }}
-              />
-            </Link>
-          </div>
-        </section>
-        {/* Espacio de Muestra para las compras/configuracion/historial/ etc etc. */}
-        <div className="muestras">{compare()}</div>
-      </div>
-    </div>
+        </div>
+      ) : (
+        <Loading2 />
+      )}
+    </>
   );
 }

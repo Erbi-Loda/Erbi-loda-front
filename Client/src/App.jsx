@@ -28,7 +28,7 @@ function App() {
         <Route path="/producto/:idproducto" element={<Detalle />} />
         <Route path="/panel/user" element={<PanelUser />} />
         <Route path="/busqueda/:busquedaparams" element={<Busqueda />} />
-        <Route path="/panel/company" element={<PanelCompany />} />
+        <Route path="/panel/company/:idCompany" element={<PanelCompany />} />
       </Routes>
     </Suspense>
     </BrowserRouter>
