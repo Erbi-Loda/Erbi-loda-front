@@ -17,7 +17,7 @@ import Chat from "../Chat/Chat.jsx";
 import Conf_Panel from "../Conf_Panel/Configuration.jsx";
 import Loading2 from "../Loading2/Loading.jsx";
 
-const socket = io("http://localhost:8080/");
+const socket = io(`${import.meta.env.VITE_BACK}/`);
 
 export default function PanelUser(params) {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -38,7 +38,7 @@ export default function PanelUser(params) {
         authorization: "Bearer " + localStorage.getItem("userloda"),
       },
     };
-    fetch("http://localhost:8080/user", options)
+    fetch(`${import.meta.env.VITE_BACK}/user`, options)
       .then((e) => e.json())
       .then((data) => setCurrentUser(data));
   };
@@ -63,7 +63,7 @@ export default function PanelUser(params) {
         userId: currentUser._id,
       }),
     };
-    fetch(`http://localhost:8080/company/register`, options)
+    fetch(`${import.meta.env.VITE_BACK}/company/register`, options)
       .then((e) => e.json())
       .then((data) => console.log(data));
   };
@@ -74,12 +74,10 @@ export default function PanelUser(params) {
     infoUser();
     localStorage.getItem("userloda")? "" : navigate("/")
   }, []);
-  console.log(currentUser);
 
   function compare() {
     switch (muestra) {
       case "HIST":
-        console.log("Entraste al historial...");
         return (
           <div>
             {currentUser?.historial.length == 0 ? (
@@ -257,7 +255,6 @@ export default function PanelUser(params) {
                     <ShoppingCartCheckoutIcon style={{ fontSize: "18px" }} />
                   }
                   cb={() => {
-                    console.log("COMPRAS");
                     setMuestra("COMPRAS");
                   }}
                 />
@@ -278,7 +275,6 @@ export default function PanelUser(params) {
                     <ShoppingCartCheckoutIcon style={{ fontSize: "18px" }} />
                   }
                   cb={() => {
-                    console.log("EMPR");
                     setMuestra("EMPR");
                   }}
                 />
@@ -288,7 +284,6 @@ export default function PanelUser(params) {
                   text={"Configuración"}
                   icon={<SettingsIcon style={{ fontSize: "18px" }} />}
                   cb={() => {
-                    console.log("CONF");
                     setMuestra("CONF");
                   }}
                 />

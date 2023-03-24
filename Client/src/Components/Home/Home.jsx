@@ -7,15 +7,12 @@ import './Home.style.css'
 import CarouselBoostrap from "./Carousel-Boostrap/Carousel";
 import toast, { Toaster } from 'react-hot-toast';
 import CartaCargando from "../Card/CartaCargando.jsx";
-// import io from "socket.io-client";
-
-// const socket = io("http://localhost:8080/");
 
 export default function Home() {
   const {AgregarAlCarrito,getProductsRandom,getProducts,favorite,DetalleProduct,getfavorite,putFavorite,productsPopulate,productsRandom,getProductsPopulate}= useProductsStore()
   
  useEffect(()=>{
-  getProducts()
+  // getProducts()
   getfavorite()
   getProductsRandom()
  },[])
@@ -44,7 +41,7 @@ export default function Home() {
       'Origin': '',
       'authorization':'Bearer '+localStorage.getItem('userloda')
     } };
-    await fetch("https://erbi-loda-back.vercel.app/gethistorialuser", options)
+    await fetch(import.meta.env.VITE_BACK+"/gethistorialuser", options)
       .then((response) => response.json())
       .then((response) => {response.historial.length>0&&setHistorial(response.historial)})
       .catch((err) => setHistorial("error"));
@@ -53,7 +50,7 @@ useEffect(()=>{
   if(localStorage.getItem('userloda'))pedirHistorial()
   getProductsPopulate()
 },[])
-const notify = () =>{console.log(3); toast('Here is your toast.')};
+const notify = () =>{toast('Here is your toast.')};
   return (
     <div className="containerHome">
       <NavBarComponent2/>

@@ -1,7 +1,6 @@
 import "./Card.style.css";
 
 export default function CartaCargando(i) {
-console.log(i)
   return (
     <div className="contenedor-cargando-cartas">
         <div className="img-cargando-cartas"/>

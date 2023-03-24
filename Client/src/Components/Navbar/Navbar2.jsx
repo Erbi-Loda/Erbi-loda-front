@@ -253,8 +253,8 @@ export default function NavbarComponent2() {
             </div>
               <div className="carrito-contenedor-productos">
                {
-                 carrito?.map(product=>
-                  <div className="carta-carrito-individual">
+                 carrito?.map((product,index)=>
+                  <div className="carta-carrito-individual" key={index}>
                     <div style={{display:'flex'}}>
                       <img width={50} height={50} style={{borderRadius:'10px'}} src={product.img.slice(0,50)+"q_55/"+product.img.slice(50,-4)+".avif"} alt={product.productoname}/>
                       <div className="carta-contenedor-texto-indivudual-carrito">

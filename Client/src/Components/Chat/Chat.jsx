@@ -36,7 +36,7 @@ export default function Chat({user,seconduser,seconduserName,cbcerrar}) {
 
 
     const handleSendMsg=async()=>{
-        await fetch("http://localhost:8080/user/addMenssage",options)
+        await fetch(`${import.meta.env.VITE_BACK}/user/addMenssage`,options)
         socket.current.emit("send-msg",{
             from:user,
             to:seconduser,
@@ -61,7 +61,7 @@ export default function Chat({user,seconduser,seconduserName,cbcerrar}) {
     
     useEffect(() => {
         const peticion=async()=>{
-            const response=await fetch("http://localhost:8080/user/getAllMenssage",options2)
+            const response=await fetch(`${import.meta.env.VITE_BACK}/user/getAllMenssage`,options2)
             .then(data=>data.json())
             setmsg(response)
         }
@@ -70,7 +70,7 @@ export default function Chat({user,seconduser,seconduserName,cbcerrar}) {
 
 
     useEffect(() => {
-        socket.current=io("http://localhost:8080")
+        socket.current=io(`${import.meta.env.VITE_BACK}`)
         socket.current.emit("add-user",user)
     }, [])
 

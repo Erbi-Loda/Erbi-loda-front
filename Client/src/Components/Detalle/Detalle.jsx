@@ -44,7 +44,7 @@ export default function Detalle() {
         authorization: "Bearer " + localStorage.getItem("userloda"),
       },
     };
-    await fetch("http://localhost:8080/pagoProducto", options)
+    await fetch(`${import.meta.env.VITE_BACK}/pagoProducto`, options)
       .then((response) => response.json())
       .then((res) => (window.location.href = res.response.body.init_point))
       .catch((er) => console.log({ error: er }));

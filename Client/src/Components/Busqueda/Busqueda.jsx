@@ -20,7 +20,7 @@ export default function Busqueda() {
       },
     };
     await fetch(
-      "http://localhost:8080/buscarproductos?" + "busqueda=" + busquedaparams,
+      `${import.meta.env.VITE_BACK}/buscarproductos?` + "busqueda=" + busquedaparams,
       options
     )
       .then((response) => response.json())

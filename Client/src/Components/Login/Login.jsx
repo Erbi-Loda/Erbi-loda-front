@@ -37,9 +37,8 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     await axios
-      .post("https://erbi-loda-back.vercel.app/user/login", userLogin)
+      .post(import.meta.env.VITE_BACK+"/user/login", userLogin)
       .then((e) => {
-        console.log("Usuario Logeado",e.data);
         localStorage.setItem('userloda',e.data)
         navigate("/");
       })

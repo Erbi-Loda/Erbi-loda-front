@@ -24,7 +24,6 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
       }
     );
     const file = await res.json();
-    console.log(file)
     setImgGrande(file.secure_url)
     setState({ ...estado, img: [...estado.img, file.secure_url] });
     setLoadingImagen(false);
@@ -32,7 +31,7 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
   const enviarProducto = async () => {
     setLoading(true);
     await axios
-      .post("https://erbi-loda-back.vercel.app/company/postProduct", state)
+      .post(import.meta.env.VITE_BACK+"/company/postProduct", state)
       .then((e) =>
         {setState({
           productoname: "",

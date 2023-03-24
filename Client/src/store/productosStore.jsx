@@ -21,7 +21,7 @@ export const useProductsStore = create((set, get) => ({
   carrito:JSON.parse(localStorage.getItem("carrloer")),
   getProducts: async () => {
     let promesagetproductos = fetch(
-      "https://erbi-loda-back.vercel.app/getProductos",
+      `${import.meta.env.VITE_BACK}/getProductos`,
       optionsGET
     )
       .then((response) => response.json())
@@ -30,7 +30,7 @@ export const useProductsStore = create((set, get) => ({
   },
   getProductsRandom: async () => {
     await fetch(
-      "https://erbi-loda-back.vercel.app/getProductosrandom?limit=5",
+      `${import.meta.env.VITE_BACK}/getProductosrandom?limit=5`,
       optionsGET
     )
       .then((response) => response.json())
@@ -41,7 +41,7 @@ export const useProductsStore = create((set, get) => ({
   },
   getProductsPopulate: async () => {
     await fetch(
-      "https://erbi-loda-back.vercel.app/getProductosFamous?limit=5",
+      `${import.meta.env.VITE_BACK}/getProductosFamous?limit=5`,
       optionsGET
     )
       .then((response) => response.json())
@@ -53,7 +53,7 @@ export const useProductsStore = create((set, get) => ({
   getfavorite: async () => {
     if (localStorage.getItem("userloda")) {
       await fetch(
-        "https://erbi-loda-back.vercel.app/getFavoritoUser",
+        `${import.meta.env.VITE_BACK}/getFavoritoUser`,
         optionsGET
       )
         .then((response) => response.json())
@@ -75,7 +75,7 @@ export const useProductsStore = create((set, get) => ({
       },
     };
     let putfavoritepromite = fetch(
-      "https://erbi-loda-back.vercel.app/putFavoritoUser",
+      `${import.meta.env.VITE_BACK}/putFavoritoUser`,
       options
     )
       .then((response) => response.json())
@@ -111,7 +111,7 @@ export const useProductsStore = create((set, get) => ({
       set((state) => ({ ...state, ProductDetailState: "Cargando" }));
     }
     await fetch(
-      "https://erbi-loda-back.vercel.app/getProducto/" + idproducto,
+      `${import.meta.env.VITE_BACK}/getProducto/` + idproducto,
       optionsGET
     )
       .then((response) => response.json())
@@ -191,7 +191,6 @@ export const useProductsStore = create((set, get) => ({
     let segunda= cero[primera].quantity=cero[primera].quantity-1
     if(cero[primera].quantity===0){
       let cuarta= cero.filter(e=>e._id!==id)
-      console.log({cuarta})
       localStorage.setItem("carrloer", JSON.stringify(cero.filter(e=>e._id!==id)));
       set((state) => ({ ...state, carrito: cero.filter(e=>e._id!==id) }))
     }
