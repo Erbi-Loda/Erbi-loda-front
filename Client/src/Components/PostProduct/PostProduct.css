@@ -1,8 +1,7 @@
 .aspect-ratio-1-1 {
-    width: 41.75rem;
     display: flex;
     background: #fff;
-    height: 29.25rem;
+    height: 35vw;
  object-fit: cover; 
     object-position: center; 
     justify-content: center;
@@ -117,10 +116,13 @@
   }
 
   .contenedor-postproduct-producto{    
-    width: max-content;
+    width: 80vw;
     padding: 20px;
     border-radius: 10px;
     margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
   }
   .titulo-postproduct{
     text-align: center;
@@ -131,7 +133,7 @@
     gap: 10px;
   }
   .descripcion-completa-post-product{    
-    max-width: 64.75rem;
+    max-width: 100%;
     border-radius: 10px;
     padding: 10px;
     background: #ffffff70;
@@ -248,5 +250,6 @@
   background: #ffffff70;
   border-radius: 10px;
   margin-right: 10px;
-  padding: 10px;
+  padding: 10px;  
+  width: calc(100% - 330px);
  }

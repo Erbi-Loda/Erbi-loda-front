@@ -1,0 +1,276 @@
+
+.group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  max-width: 300px;
+  overflow: hidden;
+  border-radius: 8px;
+ }
+.groupcarrito {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  max-width: 300px;
+ }
+ 
+ .input {
+  width: 100%;
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  padding-left: 2.5rem;
+  border: 2px solid transparent;
+  outline: none;
+  background-color: #f3f3f4;
+  color: #0d0c22;
+  transition: .3s ease;
+ }
+ 
+ .input::placeholder {
+  color: #9e9ea7;
+ }
+ 
+ .input:focus, input:hover {
+  outline: none;
+  border-color: rgba(46, 231, 71, 0.4);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+ }
+ 
+ .icon {
+  position: absolute;
+  fill: #9e9ea7;
+  width: 38px;
+  height: 100%;
+  background: aqua;
+  padding: 10px;
+  cursor: pointer;
+ }
+ 
+ 
+ 
+ 
+ .nav-icon-5{
+  width: 35px;
+  height: 30px;
+  margin: 10px 10px;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+.nav-icon-5 span{
+  background-color:#fff;
+  position: absolute;
+  border-radius: 2px;
+  transition: .3s cubic-bezier(.8, .5, .2, 1.4);
+  width:100%;
+  height: 4px;
+  transition-duration: 500ms
+}
+.nav-icon-5 span:nth-child(1){
+  top:0px;
+  left: 0px;
+}
+.nav-icon-5 span:nth-child(2){
+  top:13px;
+  left: 0px;
+  opacity:1;
+}
+.nav-icon-5 span:nth-child(3){
+  bottom:0px;
+  left: 0px;
+}
+.nav-icon-5:not(.open):hover span:nth-child(1){
+  transform: rotate(-3deg) scaleY(1.1);
+}
+.nav-icon-5:not(.open):hover span:nth-child(2){
+  transform: rotate(3deg) scaleY(1.1);
+}
+.nav-icon-5:not(.open):hover span:nth-child(3){
+  transform: rotate(-4deg) scaleY(1.1);
+}
+.nav-icon-5.open span:nth-child(1){
+  transform: rotate(45deg);
+  top: 13px;
+}
+.nav-icon-5.open span:nth-child(2){
+  opacity:0;
+}
+.nav-icon-5.open span:nth-child(3){
+  transform: rotate(-45deg);
+  top: 13px;
+}
+.burguer{
+  display: none;
+  align-items: center;
+}
+.noburguer{
+  display: flex;
+}
+
+.NavContainer{
+  padding: .4rem;
+  height: 80px;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+.burguerEffect{  
+  height: calc(100vh - 80px);
+  background: #333;
+  display: none;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  position: fixed;
+  right: 0;
+  transition: right 1s;
+  width: 100%;
+  margin-top: 80px;
+}
+.burguerEffectNoactive{
+  height: calc(100vh - 80px);
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  position: fixed;
+  align-items: center;
+  right: -200vw;
+  transition: right 1s;
+  width: 100%;
+  margin-top: 80px;
+}
+.CarritoEffect{  
+  height: calc(100vh - 80px);
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  min-width: 275px;
+  width: 100vw;
+  max-width: 355px;
+  position: fixed;
+  right: 0;
+  transition: right 0.1s;
+  margin-top: 80px;
+}
+.CarritoEffectNoactive{
+  height: calc(100vh - 80px);
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  min-width: 275px;
+  width: 100vw;
+  max-width: 355px;
+  position: fixed;
+  align-items: center;
+  right: -200vw;
+  transition: right 1s;
+  width: 100%;
+  margin-top: 80px;
+}
+.carrito-contenedor-productos{
+  width: 100%;
+  height: calc(100% - 110px);
+  margin-top: 55px;
+  overflow: auto;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.carrito-botones-fondo{  
+  width: 100%;
+  background: rgb(51, 51, 51);
+  height: max-content;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+}
+.carrito-botones-fondo-cerrar{  
+  width: 100%;
+  background: rgb(51, 51, 51);
+  height: max-content;
+  position: absolute;
+  display: flex;
+  justify-content: start;
+}
+.carrito-contenedor-productos {
+  scrollbar-width: thin;
+  scrollbar-color: black rgb(73, 253, 41);
+}
+
+/* Works on Chrome, Edge, and Safari */
+.carrito-contenedor-productos::-webkit-scrollbar {
+  width: 12px;
+}
+
+.carrito-contenedor-productos::-webkit-scrollbar-track {
+  background: rgb(73, 253, 41);
+}
+
+.carrito-contenedor-productos::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 20px;
+  border: 3px solid rgb(73, 253, 41);
+}
+.carta-carrito-individual{
+  background-color: aquamarine;
+  margin: 5px;
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+  position: relative;
+  animation-duration: 4s;
+  animation-name: slidein;
+  z-index: 2;
+}
+.carta-texto-individual-carrito{
+  width: 270px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0px 5px;
+}
+.carta-contenedor-texto-indivudual-carrito{  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@keyframes slidein {
+  0% {
+    margin-top: -120px;
+    z-index: 1;
+  }
+
+  99% {
+    margin-top: 0px;
+    z-index: 1;
+  }
+  100%{
+    z-index: 3;
+  }
+}
+@media(max-width: 800px){
+  .burguer{
+    display: flex;
+  }
+  .noburguer{
+    display: none;
+  }
+  .burguerEffect{
+    display: flex;
+  }
+  .CarritoEffect{
+    display: flex;
+  }
+}

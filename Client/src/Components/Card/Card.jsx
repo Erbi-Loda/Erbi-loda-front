@@ -2,114 +2,87 @@ import * as React from "react";
 import CardBox from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TurnedInIcon from "@mui/icons-material/TurnedIn";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./Card.style.css";
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import ButtonLoda from "../ButtonLoda/ButtonLoda";
 
 export default function Card({
   name,
   favorite,
+  favorite2,
+  putFavorite,
+  DetalleProduct,
+  agregarAlCarrito,
   shDesc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor",
   price = "$$$",
   img,
   id,
 }) {
-  // const [favorite, setfavorite] = React.useState([]);
-  // const getFavorite = async (e) => {
-  //   if (localStorage.getItem("userloda")) {
-  //     const options = {
-  //       method: "GET",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //         Origin: "",
-  //         authorization: "Bearer " + localStorage.getItem("userloda"),
-  //       },
-  //     };
-  //     await fetch("http://localhost:8080/getFavoritoUser", options)
-  //       .then((response) => response.json())
-  //       .then((response) => {
-  //         console.log(response.favoritos);
-  //         setfavorite(response.favoritos);
-  //       })
-  //       .catch((err) => console.error(err));
-  //   }
-  // };
-  // useEffect(() => {
-  //   getFavorite();
-  // }, []);
-
-  const putFavorite = async () => {
-    const options = {
-      method: "PUT",
-      body: JSON.stringify({ producto: id }),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Origin: "",
-        authorization: "Bearer " + localStorage.getItem("userloda"),
-      },
-    };
-    await fetch("http://localhost:8080/putFavoritoUser", options)
-      .then((response) => response.json())
-      .then((response) => {
-        console.log("response", response);
-        setfavorite(response.favorito);
-      })
-      .catch((err) => console.error(err));
-  };
+  const [estadofuncion, setEstadofuncion] = React.useState(false);
+  const functionput=async()=>{
+    setEstadofuncion(true)
+  await  Promise.all([putFavorite(id, favorite2)]).finally(()=>setEstadofuncion(false))
+  }
+  const [first, setfirst] = React.useState(localStorage.getItem("carrloer"))
   return (
     <CardBox
-      sx={{ margin: "15px", width: "224px" }}
+      sx={{  width: "224px" }}
       className="contenedor-carta-postproduct"
     >
-        <Link to={"/producto/" + id} style={{textDecoration:'none'}}>
-      <div className="conetnedor-hover-shDesct-postproduct">
+      <Link
+        onClick={() => DetalleProduct(id)}
+        to={"/producto/" + id}
+        style={{ textDecoration: "none" }}
+      >
+        <div className="conetnedor-hover-shDesct-postproduct">
           <div className="contenedor-img-card">
             <img
-              src={img}
+              src={img.slice(0,50)+"q_55/"+img.slice(50,-4)+".avif"}
               alt={"image product"}
-              style={{ maxWidth: "100%", maxHeight: "100%" }}
+              style={{ maxWidth: "100%", maxHeight: "100%",objectFit:'contain',objectPosition:'center' }}
             />
           </div>
-        <div className="hover-shDesct-postproduct">
-          <Typography
-            style={{
-              width: "224px",
-              height: "80px",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-            }}
-            variant="body2"
-            color="text.secondary"
-          >
-            {shDesc.length > 70 ? shDesc.slice(0, 70) + "..." : shDesc}
-          </Typography>
+          <div className="hover-shDesct-postproduct">
+            <Typography
+              style={{
+                width: "224px",
+                height: "80px",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+              variant="body2"
+              color="text.secondary"
+            >
+              {shDesc.length > 70 ? shDesc.slice(0, 70) + "..." : shDesc}
+            </Typography>
+          </div>
         </div>
-      </div>
-        </Link>
+      </Link>
       <CardContent sx={{ position: "relative", padding: "16px 16px 0px 16px" }}>
-        <Typography gutterBottom variant="h5" component="div">
+        <h5 style={{fontWeight: 400,fontSize: '1.5rem',lineHeight: '1.334',letterSpacing: '0em',marginBottom: 0}}>
           ${price}
-        </Typography>
+        </h5>
         <div
           style={{
             position: "absolute",
             width: "max-content",
-            top: "0",
-            right: "55px",
+            top: "-2px",
+            right: "75px",
           }}
         >
           <div
             style={{ position: "relative", width: "max-content", zIndex: "2" }}
           >
             <TurnedInIcon
-              //onClick={putFavorite}
+              onClick={
+                !estadofuncion
+                  ? functionput
+                  : null
+              }
               sx={{
                 width: "55px",
                 height: "55px",
@@ -119,7 +92,11 @@ export default function Card({
               }}
             ></TurnedInIcon>
             <FavoriteIcon
-              //onClick={putFavorite}
+              onClick={
+                !estadofuncion
+                  ? functionput
+                  : null
+              }
               sx={[
                 {
                   position: "absolute",
@@ -128,23 +105,23 @@ export default function Card({
                   left: "10px",
                   top: "0px",
                 },
-                favorite
-                  ? { color: "#00F106" }
-                  : { color: "white" },
+                favorite ? { color: "#00F106" } : { color: "white" },
               ]}
             ></FavoriteIcon>
           </div>
         </div>{" "}
       </CardContent>
-      <CardActions style={{ justifyContent: "space-around" }}>
-        <Link to={"/producto/" + id} style={{textDecoration:'none'}}>
-          <Button size="small" style={{ border: "2px solid #016c12" }}>
-            Ver mas
-          </Button>
+      <CardActions style={{ justifyContent: "space-between" }}>
+        <Link
+          onClick={() => DetalleProduct(id)}
+          to={"/producto/" + id}
+          style={{ textDecoration: "none" }}
+        >
+          <ButtonLoda type={"small"} text={"Ver mas"} fs={14} />
         </Link>
-        <Button size="small" style={{ border: "2px solid #016c12" }}>
-          carrito
-        </Button>
+        <div onClick={()=>agregarAlCarrito({_id:id,img,price,description:DetalleProduct,productoname:name,quantity:1})}>
+        <ButtonLoda type={"small"} text={"+ Carrito"} fs={14} />
+        </div>
       </CardActions>
     </CardBox>
   );

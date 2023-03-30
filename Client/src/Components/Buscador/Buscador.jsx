@@ -11,7 +11,7 @@ export default function Buscador() {
     const {buscar} = useParams()
     React.useEffect(() => {
         fetch(
-          "http://localhost:8080/"+buscar
+          import.meta.env.VITE_BACK+"/"+buscar
         )
           .then((result) => {
             return result.json();

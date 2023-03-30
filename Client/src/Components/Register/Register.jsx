@@ -41,9 +41,8 @@ export default function Register() {
     e.preventDefault();
     setLoading(true);
     await axios
-      .post("http://localhost:8080/user/register", userRegister)
+      .post(import.meta.env.VITE_BACK+"/user/register", userRegister)
       .then(() => {
-        console.log("Usuario creado");
         navigate("/login");
       })
       .catch((err) => {

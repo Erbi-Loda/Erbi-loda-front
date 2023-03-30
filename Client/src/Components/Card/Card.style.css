@@ -2,10 +2,11 @@
   position: relative;
   overflow: hidden;
 }
+
 .hover-shDesct-postproduct {
   display: flex;
   position: absolute;
-  background: whitesmoke;
+  background: #97fffd;
   left: 0;
   top: 300px;
   border-top-left-radius: 20px;
@@ -15,6 +16,7 @@
   text-align: center;
   box-shadow: inset 0px -33px 10px -17px black
 }
+
 .hover-shDesct-postproduct:after {
   content: "";
   position: absolute;
@@ -25,8 +27,9 @@
   z-index: -1;
   transform: rotate(-175deg);
   border-radius: 50%;
-  box-shadow: inset 48px 48px whitesmoke;
+  box-shadow: inset 48px 48px #97fffd;
 }
+
 .hover-shDesct-postproduct:before {
   content: "";
   position: absolute;
@@ -37,18 +40,78 @@
   z-index: -1;
   transform: rotate(-95deg);
   border-radius: 50%;
-  box-shadow: inset 48px 48px whitesmoke;
+  box-shadow: inset 48px 48px #97fffd;
 }
+
+.contenedor-carta-postproduct {
+  background-color: #97fffd !important;
+  border-radius: 15px !important;
+}
+
 .contenedor-carta-postproduct:hover .hover-shDesct-postproduct {
   display: flex;
   top: 150px;
 }
+
 .contenedor-img-card {
   width: 224px;
   display: flex;
   background: #fff;
   height: 224px;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   justify-content: center;
+  border-radius: 0 0% 15% 15%;
+  overflow: hidden;
 }
+
+.contenedor-cargando-cartas {
+  width: 224px;
+  height: 337px;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.37);
+  animation: 1.5s ease-in-out 0.5s infinite normal none running slide-slow;
+}
+
+.img-cargando-cartas {
+  width: 224px;
+  height: 224px;
+  border-radius: 0 0% 15% 15%;
+  background-color: rgb(0 0 0 / 20%);
+  animation: 1.5s ease-in-out 0.5s infinite normal none running slide-slow;
+}
+
+.precio-cargando-cartas {
+  width: 224px;
+  height: 48px;
+  /* background-color: rgb(0 0 0 / 20%); */
+  /* animation: 1.5s ease-in-out 0.5s infinite normal none running slide-slow; */
+}
+.contenedor-boton-cargando-cartas{
+  width: 224px;
+  height: 65px;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+}
+.boton-cargando-cartas {
+  border: 0;
+  border-radius: 8px;
+  margin: 5px;
+height: 39px;
+width: 76px;
+background-color: rgb(0 0 0 / 20%);
+animation: 1.5s ease-in-out 0.5s infinite normal none running slide-slow;
+}
+@keyframes slide-slow {
+  0% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0.4;
+  }
+  100% {
+      opacity: 1;
+  }
+  }

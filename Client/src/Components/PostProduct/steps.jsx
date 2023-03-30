@@ -31,7 +31,7 @@ export default function({state,setState,loading,setLoading,setImgGrande,imgGrand
   const enviarProducto = async () => {
     setLoading(true);
     await axios
-      .post("http://localhost:8080/company/postProduct", state)
+      .post(import.meta.env.VITE_BACK+"/company/postProduct", state)
       .then((e) =>
         {setState({
           productoname: "",

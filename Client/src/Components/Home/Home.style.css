@@ -6,12 +6,13 @@
 }
 .container-cards{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(224px, 240px));
+    grid-template-columns: repeat(auto-fit, minmax(224px, 224px));
     max-width: 1200px;
     justify-content: center;
-    padding-top: 16px;
+    padding-top: 35px;
     position: relative;
-    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 .container-container-cards{    
     display: flex;
