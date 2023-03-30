@@ -183,62 +183,7 @@
 .color4 { #006400 };
 .color5 { #003A00 }; */
 
-.contenedor-boton-postproduct button {
-  display: inline-block;
-  border-radius: 10px;
-  border: 1px solid #003A00;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.5s ease-in;
-  z-index: 1;
-  padding: 7px;
-  width: 100%;
-  cursor: pointer;
- }
- 
- .contenedor-boton-postproduct button::before,
- .contenedor-boton-postproduct button::after {
-  content: '';
-  position: absolute;
-  top: -10px;
-  width: 0;
-  height: 150%;
-  transform: skew(15deg);
-  transition: all 0.3s;
-  overflow: hidden;
-  z-index: -1;
- }
- 
- .contenedor-boton-postproduct button::before {
-  left: -25px;
-  background: #006400;
-  filter: blur(8px);
- }
- 
- .contenedor-boton-postproduct button::after {
-  right: -25px;
-  background: #009200;
-  filter: blur(8px);
- }
- 
- .contenedor-boton-postproduct button:hover::before,
- .contenedor-boton-postproduct button:hover::after {
-  width: 62%;
- }
- 
- .contenedor-boton-postproduct button:hover span {
-  color: #ffffff;
-  transition: 0.3s;
- }
- 
- .contenedor-boton-postproduct button span {
-  color: #003A00;
-  font-size: 18px;
-  transition: all 0.3s ease-in;
-  display: flex;
-  justify-content: center;
-  align-items: center;
- }
+
  .contenedor-derecha-postproduct{  
   background: #009200;
   border: 0.5rem solid #006400;
