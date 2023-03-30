@@ -157,13 +157,6 @@ export default function Detalle() {
                         fechmp()
                       }}
                     />
-                    {/* <button onClick={() => }>
-                      <span>
-                        {" "}
-                        {" "}
-                        COMPRAR
-                      </span> */}
-                    {/* </button> */}
                     <ButtonLoda
                       type={"small"}
                       fs={20}
@@ -173,13 +166,6 @@ export default function Detalle() {
                         console.log('me diste click en "agregar a carrito"')
                       }}
                     />
-                    {/* <button>
-                      <span>
-                        {" "}
-                        <AddShoppingCartIcon></AddShoppingCartIcon> Agregar al
-                        carrito
-                      </span>
-                    </button> */}
                   </div>
                   <div className="rating-completa-post-product">
                     <Rating
@@ -193,9 +179,8 @@ export default function Detalle() {
                 </div>
               </div>
             </div>
-            <h6 className="descripcion-completa-post-product">
+            <h4 className="descripcion-completa-post-product">
               {" "}
-              {console.log(ProductDetail.description.split('\n'))}
               {ProductDetail.description?.length < 1
                 ? "DESCRIPCION LARGA DEL PRODUCTO"
                 : ProductDetail.description.split('\n').map(ren =>{
@@ -203,7 +188,7 @@ export default function Detalle() {
                       <p>{ren}</p>
                   )
                 })}
-            </h6>
+            </h4>
           </div>
         </div>
       ) : (
