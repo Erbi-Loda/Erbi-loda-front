@@ -16,6 +16,8 @@ import { io } from "socket.io-client";
 import Chat from "../Chat/Chat.jsx";
 import Conf_Panel from "../Conf_Panel/Configuration.jsx";
 import Loading2 from "../Loading2/Loading.jsx";
+import Historial from "./Paneles/Historial.jsx";
+import Compras from "./Paneles/Compras.jsx";
 
 const socket = io(`${import.meta.env.VITE_BACK}/`);
 
@@ -40,7 +42,7 @@ export default function PanelUser(params) {
     };
     fetch(`${import.meta.env.VITE_BACK}/user`, options)
       .then((e) => e.json())
-      .then((data) => setCurrentUser(data));
+      .then((data) => {console.log(data);setCurrentUser(data)});
   };
 
   const getchat = ({ user, secondUser, secondUserName }) => {
@@ -79,37 +81,7 @@ export default function PanelUser(params) {
     switch (muestra) {
       case "HIST":
         return (
-          <div>
-            {currentUser?.historial.length == 0 ? (
-              <div>
-                <h1>ESTA VACIOOOOO VEEES? No hay productos aqui...</h1>
-              </div>
-            ) : (
-              <div className="container-cards">
-                {currentUser?.historial.map((product, index) => {
-                  return (
-                    <Card
-                      DetalleProduct={DetalleProduct}
-                      agregarAlCarrito={AgregarAlCarrito}
-                      key={product._id}
-                      favorite2={favorite}
-                      favorite={
-                        favorite
-                          ? favorite.some((e) => e === product._id)
-                          : false
-                      }
-                      putFavorite={putFavorite}
-                      id={product._id}
-                      name={product.productoname}
-                      shDesc={product.shortDescription}
-                      price={product.price}
-                      img={product.img[0]}
-                    />
-                  );
-                })}
-              </div>
-            )}
-          </div>
+          <Historial currentUser={currentUser} DetalleProduct={DetalleProduct} AgregarAlCarrito={AgregarAlCarrito} favorite={favorite} putFavorite={putFavorite}/>
         );
       case "CONF":
         return (
@@ -120,24 +92,7 @@ export default function PanelUser(params) {
         );
       case "COMPRAS":
         return (
-          <div>
-            {currentUser?.compras.map((e) => {
-              return (
-                <h2
-                  onClick={() =>
-                    getchat({
-                      user: e._id,
-                      secondUser: e.companyId._id,
-                      secondUserName: e.companyId.companyname,
-                    })
-                  }
-                  key={e._id}
-                >
-                  Vendedor:{e.companyId.companyname}
-                </h2>
-              );
-            })}
-          </div>
+          <Compras currentUser={currentUser} getchat={getchat}/>
         );
       case "FAVO":
         return (

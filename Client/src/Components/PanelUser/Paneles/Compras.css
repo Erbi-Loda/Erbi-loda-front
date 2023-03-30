@@ -1,0 +1,14 @@
+.contenedor-compras-compras-paneluser{    
+    width: 100%;
+    background: #ffffff1f;
+    margin: 10px 0px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: inset 0 0 20px 5px #ffffff52;
+    border-radius: 10px;
+}
+.contenedor-compras-compras-paneluser:hover{
+    background: #ffffff5e;
+transition: all 1s;
+}
