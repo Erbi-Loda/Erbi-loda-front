@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { json, useParams } from "react-router-dom";
 import NavBarComponent2 from "../Navbar/Navbar2.jsx";
 import ImgLarge from "../PostProduct/ImgLarge";
 import ImgSmalls from "../PostProduct/ImgSmalls";
@@ -11,6 +11,7 @@ import Rating from "@mui/material/Rating";
 import { useProductsStore } from "../../store/productosStore";
 import Loading2 from "../Loading2/Loading";
 import "../PostProduct/PostProduct.css";
+import ButtonLoda from "../ButtonLoda/ButtonLoda.jsx";
 
 export default function Detalle() {
   const {
@@ -147,20 +148,38 @@ export default function Detalle() {
                 </h6>
                 <div className="buttons-postproduct-contenedor">
                   <div className="contenedor-boton-postproduct">
-                    <button onClick={() => fechmp()}>
+                    <ButtonLoda
+                      type={"small"}
+                      fs={20}
+                      text={"COMPRAR"}
+                      icon={<ShoppingCartCheckoutIcon/>}
+                      cb={() => {
+                        fechmp()
+                      }}
+                    />
+                    {/* <button onClick={() => }>
                       <span>
                         {" "}
-                        <ShoppingCartCheckoutIcon></ShoppingCartCheckoutIcon>{" "}
+                        {" "}
                         COMPRAR
-                      </span>
-                    </button>
-                    <button>
+                      </span> */}
+                    {/* </button> */}
+                    <ButtonLoda
+                      type={"small"}
+                      fs={20}
+                      text={"Agregar al carrito"}
+                      icon={<AddShoppingCartIcon/>}
+                      cb={() => {
+                        console.log('me diste click en "agregar a carrito"')
+                      }}
+                    />
+                    {/* <button>
                       <span>
                         {" "}
                         <AddShoppingCartIcon></AddShoppingCartIcon> Agregar al
                         carrito
                       </span>
-                    </button>
+                    </button> */}
                   </div>
                   <div className="rating-completa-post-product">
                     <Rating
@@ -176,9 +195,14 @@ export default function Detalle() {
             </div>
             <h6 className="descripcion-completa-post-product">
               {" "}
+              {console.log(ProductDetail.description.split('\n'))}
               {ProductDetail.description?.length < 1
                 ? "DESCRIPCION LARGA DEL PRODUCTO"
-                : ProductDetail.description}
+                : ProductDetail.description.split('\n').map(ren =>{
+                  return(
+                      <p>{ren}</p>
+                  )
+                })}
             </h6>
           </div>
         </div>
