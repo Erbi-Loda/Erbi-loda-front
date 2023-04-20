@@ -1,0 +1,10 @@
+.contenedor-boton-detail{
+    display: flex;
+    flex-direction: row;
+}
+
+.contenedor-derecha-detail{
+    width: 430px;
+    border: 10px solid green;
+    background-color: rgb(13, 154, 13);
+}

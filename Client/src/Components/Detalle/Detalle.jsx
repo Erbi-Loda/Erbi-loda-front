@@ -11,6 +11,7 @@ import Rating from "@mui/material/Rating";
 import { useProductsStore } from "../../store/productosStore";
 import Loading2 from "../Loading2/Loading";
 import "../PostProduct/PostProduct.css";
+import "./detalle.style.css"
 import ButtonLoda from "../ButtonLoda/ButtonLoda.jsx";
 
 export default function Detalle() {
@@ -80,7 +81,7 @@ export default function Detalle() {
                   )}
                 </div>
               </div>
-              <div className="contenedor-derecha-postproduct">
+              <div className="contenedor-derecha-detail">
                 {/* aqui */}
                 <div
                   style={{
@@ -147,7 +148,7 @@ export default function Detalle() {
                     : "Stock: " + ProductDetail.stock}
                 </h6>
                 <div className="buttons-postproduct-contenedor">
-                  <div className="contenedor-boton-postproduct">
+                  <div className="contenedor-boton-detail">
                     <ButtonLoda
                       type={"small"}
                       fs={20}
@@ -157,13 +158,6 @@ export default function Detalle() {
                         fechmp()
                       }}
                     />
-                    {/* <button onClick={() => }>
-                      <span>
-                        {" "}
-                        {" "}
-                        COMPRAR
-                      </span> */}
-                    {/* </button> */}
                     <ButtonLoda
                       type={"small"}
                       fs={20}
@@ -173,13 +167,6 @@ export default function Detalle() {
                         console.log('me diste click en "agregar a carrito"')
                       }}
                     />
-                    {/* <button>
-                      <span>
-                        {" "}
-                        <AddShoppingCartIcon></AddShoppingCartIcon> Agregar al
-                        carrito
-                      </span>
-                    </button> */}
                   </div>
                   <div className="rating-completa-post-product">
                     <Rating
@@ -193,9 +180,8 @@ export default function Detalle() {
                 </div>
               </div>
             </div>
-            <h6 className="descripcion-completa-post-product">
+            <h4 className="descripcion-completa-post-product">
               {" "}
-              {console.log(ProductDetail.description.split('\n'))}
               {ProductDetail.description?.length < 1
                 ? "DESCRIPCION LARGA DEL PRODUCTO"
                 : ProductDetail.description.split('\n').map(ren =>{
@@ -203,7 +189,7 @@ export default function Detalle() {
                       <p>{ren}</p>
                   )
                 })}
-            </h6>
+            </h4>
           </div>
         </div>
       ) : (
