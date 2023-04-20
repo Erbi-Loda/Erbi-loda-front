@@ -11,6 +11,7 @@ import Rating from "@mui/material/Rating";
 import { useProductsStore } from "../../store/productosStore";
 import Loading2 from "../Loading2/Loading";
 import "../PostProduct/PostProduct.css";
+import "./detalle.style.css"
 import ButtonLoda from "../ButtonLoda/ButtonLoda.jsx";
 
 export default function Detalle() {
@@ -80,7 +81,7 @@ export default function Detalle() {
                   )}
                 </div>
               </div>
-              <div className="contenedor-derecha-postproduct">
+              <div className="contenedor-derecha-detail">
                 {/* aqui */}
                 <div
                   style={{
@@ -147,7 +148,7 @@ export default function Detalle() {
                     : "Stock: " + ProductDetail.stock}
                 </h6>
                 <div className="buttons-postproduct-contenedor">
-                  <div className="contenedor-boton-postproduct">
+                  <div className="contenedor-boton-detail">
                     <ButtonLoda
                       type={"small"}
                       fs={20}

@@ -8,6 +8,19 @@ export default function Conf_Panel() {
     // alert(muestra)
   },[muestra])
 
+  function listenMuestra(show) {
+    switch (show) {
+      case "Name":
+        return (
+          <h1>Hola Usuario, quieres cambiar tu nombre?</h1>
+        )
+        break;
+      default:
+        break;
+    }
+    
+  }
+
   return (
     <div className="box-setting">
       <ul className="settings">
@@ -18,7 +31,10 @@ export default function Conf_Panel() {
       </ul>
       <section className="show-setting">
         {/* aqui van a ir los componentes que debemos mostrar al usuario. */}
-        {muestra=="Name"?<h1>Hola Usuario, quieres cambiar tu nombre?</h1>:""}
+        {/* {muestra=="Name"?<h1>Hola Usuario, quieres cambiar tu nombre?</h1>:""} */}
+        {
+          listenMuestra(muestra)
+        }
       </section>
     </div>
   );

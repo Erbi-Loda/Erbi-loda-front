@@ -14,19 +14,20 @@
 }
 
 .button-setting{
-    width: 300px;
+    width: 200px;
     height: 100px;
-    font-size: x-large;
+    font-size: large;
     border-radius: 18px ;
     background-color: rgba(500, 500, 500, 0.1);
     color: white;
-    margin: 20px;
+    /* margin: 20px; */
 }
 
 .settings{
-    width: 100%;
+    margin-top: 20px;
+    width: 80%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: start;
     flex-direction: row;
     list-style: none;
